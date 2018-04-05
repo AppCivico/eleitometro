@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-import Hello from '@/Hello.vue'
+import Hello from '@/Hello.vue';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 /*
  * Uncomment this section and use "load()" if you want
@@ -15,7 +15,7 @@ function load (component) {
 */
 
 export default new VueRouter({
-  /*
+	/*
    * NOTE! VueRouter "history" mode DOESN'T works for Cordova builds,
    * it is only to be used only for websites.
    *
@@ -27,7 +27,7 @@ export default new VueRouter({
    * build publicPath back to '' so Cordova builds work again.
    */
 
-  routes: [
-    { path: '/', component: Hello }
-  ]
-})
+	routes: [
+		{ path: '/', component: Hello },
+	],
+});
