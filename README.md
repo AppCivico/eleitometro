@@ -2,6 +2,8 @@
 
 > A PWA build using Quasar powered by Vue.js
 
+Requires NPM version > 5
+
 ## Build Setup
 
 ``` bash
