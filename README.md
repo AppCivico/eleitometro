@@ -1,6 +1,6 @@
 # Eleitômetro
 
-> A PWA build using Quasar powered by Vue.js
+> A PWA powered by Vue.js
 
 Requires NPM version > 5
 
@@ -11,14 +11,14 @@ Requires NPM version > 5
 $ npm install
 
 # serve with hot reload at localhost:8081 and open cypress test suite
-$ quasar dev
+$ npm run serve
 
 # build for production with minification
-$ quasar build
+$ npm run build
 
 # test code
 $ npm test
 
 # lint code
-$ quasar lint
+$ npm run lint
 ```

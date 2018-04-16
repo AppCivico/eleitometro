@@ -1,30 +1,30 @@
 <template>
-  <!-- Don't drop "q-app" class -->
-  <div id="q-app">
-    <header></header>
-    <main>
-      <img src="~assets/quasar-logo-full.svg" alt="Quasar PWA">
-      <router-view></router-view>
-    </main>
+  <div id="app">
+    <router-view/>
   </div>
 </template>
 
-<script>
-/*
- * Root component
- */
-export default {};
-</script>
+<style lang="scss">
+html {
+  height: 100%;
+}
 
-<style lang="stylus">
-@import '~variables'
+body {
+  background: grey;
+  margin: 0;
+  height: 100%;
+}
 
-main
-  text-align center
-  margin-top 40px
-
-header
-  margin 0
-  height 10px
-  background-color $primary
+#app {
+  position: relative;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin: 0 auto;
+  background: white;
+  max-width: 600px;
+  min-height: 100%;
+}
 </style>
