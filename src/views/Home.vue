@@ -22,6 +22,7 @@ export default {
     }
   },
   mounted() {
+    this.$store.dispatch('LOAD_CARDS');
     setTimeout(() => {
       this.status = 'loading';
       setTimeout(() => {
