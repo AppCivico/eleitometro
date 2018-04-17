@@ -1,7 +1,13 @@
 <template>
-  <div class="card">
+  <div
+    class="card"
+    :style="{
+      width: `${width}%`,
+      backgroundColor: content.backgroundColor,
+    }"
+  >
     <h1>Card</h1>
-    <h2>{{ content.title }}</h2>
+    <div v-html="content.frontHTML" />
   </div>
 </template>
 
@@ -10,11 +16,14 @@ export default {
   name: 'Card',
   props: {
     content: Object,
+    width: Number,
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+  .card {
+    float: left;
+  }
 </style>
