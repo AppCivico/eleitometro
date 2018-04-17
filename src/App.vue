@@ -18,6 +18,7 @@ html {
 body {
   background: grey;
   height: 100%;
+  font-size: 62.5%;
 }
 
 #app {
