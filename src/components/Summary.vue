@@ -14,7 +14,7 @@
       <span
         :style="{
           width: `${100 / cardsQt}%`,
-          marginLeft: `${activeCard * (100 / cardsQt)}%`,
+          left: `${activeCard * (100 / cardsQt)}%`,
           backgroundColor: barColor,
         }" />
     </div>
@@ -99,16 +99,23 @@ export default {
   margin-bottom: 20px;
 }
 .scrollBar {
+  position: relative;
   width: 90%;
   margin: 0 auto;
   height: 2px;
   background: #dcdcdc;
+  border-radius: 2px;
+  margin-bottom: 1px;
 }
 .scrollBar span {
+  position: absolute;
+  top: -1px;
+  left: 0;
   display: block;
   height: 4px;
   width: 20%;
   background: gray;
-  transition: margin-left 250ms, background-color 250ms;
+  transition: left 250ms, background-color 250ms;
+  border-radius: 2px;
 }
 </style>
