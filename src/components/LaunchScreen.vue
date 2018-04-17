@@ -48,6 +48,7 @@ export default {
   max-height: 1000px;
   overflow: hidden;
   transition: opacity 500ms, max-height 100ms 500ms;
+  z-index: 5;
 
   &.hidden {
     max-height: 0;
@@ -55,16 +56,22 @@ export default {
   }
 }
 .loadingBar {
+  position: relative;
   width: 90%;
   margin: 0 auto;
   height: 2px;
   background: #dcdcdc;
+  border-radius: 2px;
 }
 .loadingBar span {
+  position: absolute;
+  top: -1px;
+  left: 0;
   display: block;
   height: 4px;
   width: 0;
   background: gray;
   transition: width 250ms;
+  border-radius: 2px;
 }
 </style>
