@@ -18,7 +18,6 @@
           backgroundColor: barColor,
         }" />
     </div>
-    <button @click="swipeCard">swipe</button>
   </div>
 </template>
 
@@ -95,6 +94,7 @@ export default {
 .summary__wrapper {
   display: table;
   transition: margin-left 250ms;
+  margin-bottom: 20px;
 }
 .scrollBar {
   width: 90%;
