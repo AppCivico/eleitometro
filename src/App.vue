@@ -1,8 +1,31 @@
 <template>
   <div id="app">
+    <button @click="toggleSidebar('active')">Open sidebar</button>
+    <Sidebar :status="sidebar" @closeSidebar="toggleSidebar('')"/>
     <router-view/>
   </div>
 </template>
+
+<script>
+import Sidebar from '@/components/Sidebar.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Sidebar,
+  },
+  data() {
+    return {
+      sidebar: '',
+    }
+  },
+  methods: {
+    toggleSidebar(status) {
+      this.sidebar = status;
+    },
+  },
+}
+</script>
 
 <style lang="scss">
 * {
