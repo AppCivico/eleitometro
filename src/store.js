@@ -13,7 +13,15 @@ export default new Vuex.Store({
     cards: [],
   },
   mutations: {
-    SET_PROGRAMS(state, { res }) {
+    SET_CARDS(state, { res }) {
+      // remove after admin in ready
+      const resColor = res;
+      resColor[0].backgroundColor = '#3ea0fb';
+      resColor[1].backgroundColor = '#33cc66';
+      resColor[2].backgroundColor = '#f4900c';
+      resColor[3].backgroundColor = '#f94e63';
+      resColor[4].backgroundColor = '#3ea0fb';
+
       state.cards = res;
     },
   },
@@ -22,7 +30,6 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios.get(`${api}/cards`).then(
           (response) => {
-            console.log('res', response);
             commit('SET_CARDS', { res: response.data });
             resolve();
           },
