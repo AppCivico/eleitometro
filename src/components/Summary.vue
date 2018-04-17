@@ -55,7 +55,7 @@ export default {
     swipeCard(movement) {
       if (movement === 'left' && this.activeCard < this.cardsQt - 1) {
         this.activeCard = this.activeCard + 1;
-      } else if (movement === 'right' && this.activeCard > -1) {
+      } else if (movement === 'right' && this.activeCard > 0) {
         this.activeCard = this.activeCard - 1;
       }
     },
@@ -75,17 +75,19 @@ export default {
       }, false);
     },
     handleGesture(start, end) {
-      if (end < start) {
-        this.swipeCard('left');
-      } else if (end > start) {
-        this.swipeCard('right');
+      const handleWidth = Math.abs(end - start);
+      if (handleWidth > 100) {
+        if (end < start) {
+          this.swipeCard('left');
+        } else if (end > start) {
+          this.swipeCard('right');
+        }
       }
     }
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .summary {
   width: 100%;
