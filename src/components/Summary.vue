@@ -1,7 +1,24 @@
 <template>
   <div class="summary">
     <h1>Resumo</h1>
-    <Card v-for="card in cards" :key="card.id" :content="card"/>
+    <div
+      class="summary__wrapper"
+      :style="{
+        width: `${cardsQt * 100}%`,
+        marginLeft: `-${activeCard * 100}%`,
+      }"
+    >
+      <Card v-for="card in cards" :key="card.id" :content="card" :width="100 / cardsQt"/>
+    </div>
+    <div class="scrollBar">
+      <span
+        :style="{
+          width: `${100 / cardsQt}%`,
+          marginLeft: `${activeCard * (100 / cardsQt)}%`,
+          backgroundColor: barColor,
+        }" />
+    </div>
+    <button @click="swipeCard">swipe</button>
   </div>
 </template>
 
@@ -15,26 +32,78 @@ export default {
   },
   data() {
     return {
-      cards: [
-        {
-          id: 1,
-          title: 'aaaa',
-        },
-        {
-          id: 2,
-          title: 'bbbb',
-        },
-        {
-          id: 3,
-          title: 'cccc',
-        },
-      ]
+      activeCard: 0,
     }
-  }
+  },
+  computed: {
+    cards() {
+      return this.$store.state.cards;
+    },
+    cardsQt() {
+      return this.cards.length;
+    },
+    barColor() {
+      return this.cards[this.activeCard].backgroundColor;
+    }
+  },
+  mounted() {
+    this.handleTouch();
+  },
+  methods: {
+    swipeCard(movement) {
+      if (movement === 'left' && this.activeCard < this.cardsQt - 1) {
+        this.activeCard = this.activeCard + 1;
+      } else if (movement === 'right' && this.activeCard > -1) {
+        this.activeCard = this.activeCard - 1;
+      }
+    },
+    handleTouch() {
+      let touchstartX = 0;
+      let touchendX = 0;
+
+      const gestureZone = document.querySelector('.summary');
+
+      gestureZone.addEventListener('touchstart', (event) => {
+        this.touchStart = event.changedTouches[0].screenX;
+      }, false);
+
+      gestureZone.addEventListener('touchend', (event) => {
+        this.touchEnd = event.changedTouches[0].screenX;
+        this.handleGesture(this.touchStart, this.touchEnd);
+      }, false);
+    },
+    handleGesture(start, end) {
+      if (end < start) {
+        this.swipeCard('left');
+      } else if (end > start) {
+        this.swipeCard('right');
+      }
+    }
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+.summary {
+  width: 100%;
+  overflow: hidden;
+}
+.summary__wrapper {
+  display: table;
+  transition: margin-left 250ms;
+}
+.scrollBar {
+  width: 90%;
+  margin: 0 auto;
+  height: 2px;
+  background: #dcdcdc;
+}
+.scrollBar span {
+  display: block;
+  height: 4px;
+  width: 20%;
+  background: gray;
+  transition: margin-left 250ms, background-color 250ms;
+}
 </style>
