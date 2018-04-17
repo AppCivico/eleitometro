@@ -22,12 +22,11 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('LOAD_CARDS');
     setTimeout(() => {
-      this.status = 'loading';
-      setTimeout(() => {
-        this.status = 'done';
-      }, 1000);
+      this.$store.dispatch('LOAD_CARDS')
+        .then(() => {
+          this.status = 'done';
+        });
     }, 1000);
   }
 };
