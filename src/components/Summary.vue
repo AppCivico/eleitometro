@@ -43,7 +43,10 @@ export default {
       return this.cards.length;
     },
     barColor() {
-      return this.cards[this.activeCard].backgroundColor;
+      if (this.cards.length > 0) {
+        return this.cards[this.activeCard].backgroundColor;
+      }
+      return '#3ea0fb';
     }
   },
   mounted() {
