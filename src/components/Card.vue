@@ -8,11 +8,11 @@
         class="card__front"
         :style="{ backgroundColor: content.backgroundColor }">
         <div v-html="content.frontHTML" />
-        <button @click="flipCard">flip this</button>
+        <button class="card__flipBtn" @click="flipCard">flip this</button>
       </div>
       <div class="card__back">
         <h2>Verso</h2>
-        <button @click="flipCard">flip this</button>
+        <button class="card__flipBtn card__flipBtn--back" @click="flipCard">flip this</button>
       </div>
     </div>
   </div>
@@ -38,7 +38,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .card {
   float: left;
@@ -52,32 +51,50 @@ export default {
   position: relative;
   transition: 0.6s;
   transform-style: preserve-3d;
+  height: 100%;
 
   &.flip {
     transform: rotateY(180deg);
   }
 }
 
-/* hide back of pane during swap */
 .card__front, .card__back {
 	backface-visibility: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
   width: 100%;
-  height: 480px;
+  height: 100%;
+  padding: 50px 30px;
+  border-radius: 14px;
 }
 
-/* front pane, placed above back */
 .card__front {
 	z-index: 2;
-	/* for firefox 31 */
 	transform: rotateY(0deg);
+  color: #fff;
+  font-size: 3em;
+  text-align: left;
 }
 
-/* back, initially hidden pane */
 .card__back {
 	transform: rotateY(180deg);
   background-color: #f2f2f2;
+}
+
+.card__flipBtn{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  background-image: url('../assets/icon-graph.png');
+  width: 30px;
+  height: 30px;
+  border: 0;
+  text-indent: -9999px;
+}
+
+.card__flipBtn--back {
+  background-image: url('../assets/icon-back.png');
 }
 </style>
