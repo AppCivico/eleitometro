@@ -42,7 +42,7 @@ export default {
 .card {
   float: left;
   padding: 0 1%;
-  height: 480px;
+  height: 470px;
   width: 100%;
   perspective: 1000px;
 }
@@ -74,7 +74,12 @@ export default {
 	transform: rotateY(0deg);
   color: #fff;
   font-size: 3em;
+  font-weight: 300;
   text-align: left;
+}
+
+.card__front strong {
+  font-weight: 700;
 }
 
 .card__back {
