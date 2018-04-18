@@ -46,6 +46,10 @@ html {
   height: 100%;
 }
 
+button {
+  outline: 0;
+}
+
 body {
   background: grey;
   height: 100%;
