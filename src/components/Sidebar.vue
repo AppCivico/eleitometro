@@ -1,5 +1,5 @@
 <template>
-  <div :class="`sideBar ${status === 'active' ? 'open' : ''}`">
+  <div :class="`sidebar ${status === 'active' ? 'open' : ''}`">
     <button @click="close">Close</button>
     <img src="../assets/logo.png">
     <h1>Resumo</h1>
@@ -39,16 +39,42 @@ export default {
   props: {
     status: String,
   },
+  mounted() {
+    this.handleTouch();
+  },
   methods: {
     close() {
       this.$emit('closeSidebar', '');
     },
+    handleTouch() {
+      let touchstartX = 0;
+      let touchendX = 0;
+
+      const gestureZone = document.querySelector('.sidebar');
+
+      gestureZone.addEventListener('touchstart', (event) => {
+        this.touchStart = event.changedTouches[0].screenX;
+      }, false);
+
+      gestureZone.addEventListener('touchend', (event) => {
+        this.touchEnd = event.changedTouches[0].screenX;
+        this.handleGesture(this.touchStart, this.touchEnd);
+      }, false);
+    },
+    handleGesture(start, end) {
+      const handleWidth = Math.abs(end - start);
+      if (handleWidth > 100) {
+        if (end > start) {
+          this.close();
+        }
+      }
+    }
   }
 };
 </script>
 
 <style scoped lang="scss">
-.sideBar {
+.sidebar {
   position: absolute;
   top: 0;
   right: -100%;
@@ -57,7 +83,7 @@ export default {
   background: #f2f2f2;
   opacity: 1;
   overflow: hidden;
-  transition: right 250ms;
+  transition: right 500ms;
   z-index: 5;
 
   &.open {
