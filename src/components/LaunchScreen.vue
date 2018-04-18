@@ -1,12 +1,14 @@
 <template>
   <div :class="`launchScreen ${status === 'done' ? 'hidden' : ''}`">
-    <img src="../assets/logo.png">
-    <h1>Eleitômetro</h1>
-    <h2>{{ subtitle }}</h2>
+    <div class="launchScreen__container">
+      <img src="../assets/logo.png">
+      <h1>Eleitômetro</h1>
+      <h2>{{ subtitle }}</h2>
+    </div>
     <div class="loadingBar">
       <span :style="{ width: `${loading}%` }" />
     </div>
-    <img src="../assets/fgv-logo.png">
+    <img src="../assets/fgv-logo.png" class="fgvlogo">
   </div>
 </template>
 
@@ -55,10 +57,45 @@ export default {
     opacity: 0;
   }
 }
+
+.launchScreen__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.launchScreen__container img {
+  min-width: 130px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.launchScreen__container h1 {
+  font-weight: 400;
+  font-size: 4.2em;
+  margin-bottom: 10px;
+}
+
+.launchScreen__container h2 {
+  font-weight: 300;
+  font-size: 2.4em;
+}
+
+.launchScreen .fgvlogo {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  max-width: 120px;
+  height: auto;
+  margin-left: -60px;
+}
+
 .loadingBar {
-  position: relative;
-  width: 90%;
-  margin: 0 auto;
+  position: absolute;
+  bottom: 100px;
+  left: 10%;
+  width: 80%;
   height: 2px;
   background: #dcdcdc;
   border-radius: 2px;
