@@ -9,6 +9,7 @@
         :style="{ backgroundColor: content.backgroundColor }">
         <div v-html="content.frontHTML" />
         <button class="card__flipBtn" @click="flipCard">flip this</button>
+        <button class="card__shareBtn" @click="shareCard">share this</button>
       </div>
       <div class="card__back">
         <h2>Verso</h2>
@@ -28,11 +29,15 @@ export default {
   data() {
     return {
       isFlipped: false,
+      shareComponent: false,
     }
   },
   methods: {
     flipCard() {
       this.isFlipped = !this.isFlipped;
+    },
+    shareCard() {
+      this.share = !this.shareComponent;
     },
   },
 };
@@ -95,6 +100,18 @@ export default {
   background-image: url('../assets/icon-graph.png');
   width: 30px;
   height: 30px;
+  border: 0;
+  text-indent: -9999px;
+}
+
+.card__shareBtn{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: transparent;
+  background-image: url('../assets/icon-share.png');
+  width: 30px;
+  height: 31px;
   border: 0;
   text-indent: -9999px;
 }
