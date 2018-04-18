@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <button @click="toggleSidebar('active')">Open sidebar</button>
+    <header class="app__header">
+      <h2>{{ pageTitle }}</h2>
+      <button @click="toggleSidebar('active')" class="header__menuIcon">Abrir menu</button>
+    </header>
     <Sidebar :status="sidebar" @closeSidebar="toggleSidebar('')"/>
     <router-view/>
   </div>
@@ -13,6 +16,11 @@ export default {
   name: 'App',
   components: {
     Sidebar,
+  },
+  computed: {
+    pageTitle() {
+      return this.$route.name;
+    }
   },
   data() {
     return {
@@ -54,5 +62,30 @@ body {
   max-width: 600px;
   min-height: 100%;
   overflow: hidden;
+}
+
+.app__header {
+  width: 100%;
+  display: table;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+.app__header h2 {
+  font-weight: 400;
+  font-size: 2.4em;
+  line-height: 1em;
+}
+
+.header__menuIcon {
+  position: absolute;
+  top: 35px;
+  right: 15px;
+  width: 20px;
+  height: 13px;
+  background-color: transparent;
+  background-image: url('./assets/icon-menu.png');
+  border: 0;
+  text-indent: -9999px;
 }
 </style>
