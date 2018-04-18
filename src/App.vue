@@ -55,5 +55,6 @@ body {
   background: white;
   max-width: 600px;
   min-height: 100%;
+  overflow: hidden;
 }
 </style>
