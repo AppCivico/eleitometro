@@ -1,6 +1,5 @@
 <template>
   <div class="summary">
-    <h1>Resumo</h1>
     <div
       class="summary__wrapper"
       :style="{
