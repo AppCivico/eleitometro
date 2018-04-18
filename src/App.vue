@@ -46,11 +46,9 @@ body {
 
 #app {
   position: relative;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto Slab', serif;
   text-align: center;
-  color: #2c3e50;
+  color: #000;
   margin: 0 auto;
   background: white;
   max-width: 600px;
