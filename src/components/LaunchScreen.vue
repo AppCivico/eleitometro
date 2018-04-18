@@ -5,8 +5,11 @@
       <h1>Eleitômetro</h1>
       <h2>{{ subtitle }}</h2>
     </div>
-    <div class="loadingBar">
-      <span :style="{ width: `${loading}%` }" />
+    <div :class="`loadingBar ${status !== 'start' ? 'visible' : ''}`">
+      <span :style="{
+        width: `${loading}%`,
+        backgroundColor: status === 'done' ? '#3ea0fb' : '',
+      }" />
     </div>
     <img src="../assets/fgv-logo.png" class="fgvlogo">
   </div>
@@ -99,7 +102,14 @@ export default {
   height: 2px;
   background: #dcdcdc;
   border-radius: 2px;
+  opacity: 0;
+  transition: opacity 100ms;
+
+  &.visible {
+    opacity: 1;
+  }
 }
+
 .loadingBar span {
   position: absolute;
   top: -1px;
@@ -107,7 +117,7 @@ export default {
   display: block;
   height: 4px;
   width: 0;
-  background: gray;
+  background: #66757f;
   transition: width 250ms;
   border-radius: 2px;
 }
