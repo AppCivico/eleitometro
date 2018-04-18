@@ -31,12 +31,14 @@ export default {
   data() {
     return {
       activeCard: 0,
+      // hardcode data because of api
+      cards: [{"id":2,"frontHTML":"<p>O topico <strong>Infraestrutura</strong> foi o mais associado ao candidato</p>","verse":{},"backgroundColor":'#3ea0fb',"order":1},{"id":1,"frontHTML":"<p>O topico <strong>Seguranca</strong> foi o mais associado ao candidato</p>","verse":{},"backgroundColor":'#33cc66',"order":2},{"id":3,"frontHTML":"<p>O tópico <strong>homofobia</strong> aumentou em 20% e <stong>Jair Bolsonaro</strong> foi o candidato mais associado ao tema.</p>","verse":{},"backgroundColor":'#f4900c',"order":3},{"id":4,"frontHTML":"<p>O tópico <strong>saúde</strong> foi o mais citado em <stong>São Paulo</strong> e Lula estava em 30% das menções sobre o tema.</p>","verse":{},"backgroundColor":'#f94e63',"order":4},{"id":5,"frontHTML":"<p>O tópico <strong>emprego</strong> foi o mais associado ao candidato</p>","verse":{},"backgroundColor":'#3ea0fb',"order":5}],
     }
   },
   computed: {
-    cards() {
+    /* cards() {
       return this.$store.state.cards;
-    },
+    }, */
     cardsQt() {
       return this.cards.length;
     },
