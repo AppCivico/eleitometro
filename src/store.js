@@ -4,7 +4,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 
-const api = 'https://159.89.51.41:1667';
+const api = 'https://dapi-eleitometro.appcivico.com';
 
 Vue.use(Vuex);
 
