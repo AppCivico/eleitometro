@@ -7,9 +7,18 @@
       <div
         class="card__front"
         :style="{ backgroundColor: content.backgroundColor }">
-        <div v-html="content.frontHTML" />
+        <div v-html="content.frontHTML" class="front__content" />
+        <div :class="`card__share ${showShare ? 'open' : ''}`">
+          <h3>Compartilhe<br>este card</h3>
+          <ul>
+            <li class="facebook"><a href="#">Compartilhe no Facebook</a></li>
+            <li class="twitter"><a href="#">Compartilhe no Twitter</a></li>
+            <li class="whatsapp"><a href="#">Compartilhe no Whatsapp</a></li>
+            <li class="telegram"><a href="#">Compartilhe no Telegram</a></li>
+          </ul>
+        </div>
         <button class="card__flipBtn" @click="flipCard">flip this</button>
-        <button class="card__shareBtn" @click="shareCard">share this</button>
+        <button class="card__shareBtn" @click="toggleShare">share this</button>
       </div>
       <div class="card__back">
         <h2>Verso</h2>
@@ -29,15 +38,15 @@ export default {
   data() {
     return {
       isFlipped: false,
-      shareComponent: false,
+      showShare: false,
     }
   },
   methods: {
     flipCard() {
       this.isFlipped = !this.isFlipped;
     },
-    shareCard() {
-      this.share = !this.shareComponent;
+    toggleShare() {
+      this.showShare = !this.showShare;
     },
   },
 };
@@ -78,9 +87,12 @@ export default {
 	z-index: 2;
 	transform: rotateY(0deg);
   color: #fff;
+  text-align: left;
+}
+
+.card__front .front__content {
   font-size: 3em;
   font-weight: 300;
-  text-align: left;
 }
 
 .card__front strong {
@@ -114,6 +126,74 @@ export default {
   height: 31px;
   border: 0;
   text-indent: -9999px;
+}
+
+.card__share {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 50px 30px;
+  background-color: inherit;
+  border-radius: 14px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: opacity 250ms, max-height 500ms;
+  text-align: center;
+
+    &.open {
+      display: block;
+      max-height: 1000px;
+      opacity: 1;
+    }
+}
+
+.card__share h3 {
+  font-weight: 300;
+  font-size: 2em;
+}
+
+.card__share ul {
+  list-style: none;
+  margin-top: 30px;
+}
+
+.card__share ul li {
+  display: inline-block;
+  width: 49.5%;
+  text-align: left;
+
+  &:nth-of-type(odd) {
+    text-align: right;
+    padding-right: 10px;
+  }
+  &.facebook a {
+    background-image: url('../assets/share-facebook.png');
+  }
+  &.twitter a {
+    background-image: url('../assets/share-twitter.png');
+  }
+  &.whatsapp a {
+    background-image: url('../assets/share-whatsapp.png');
+  }
+  &.telegram a {
+    background-image: url('../assets/share-telegram.png');
+  }
+}
+
+.card__share ul li a {
+  display: inline-block;
+  width: 81px;
+  height: 81px;
+  font-size: 0;
+  border-radius: 50%;
+  background-size: 100%;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
 }
 
 .card__flipBtn--back {
