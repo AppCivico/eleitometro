@@ -1,8 +1,11 @@
-// https://docs.cypress.io/api/introduction/api.html
+import Sidebar from '../../../src/components/Sidebar.vue';
 
-describe('LaunchScreen', () => {
+const mountVue = require('cypress-vue-unit-test');
+
+describe('Sidebar', () => {
+  beforeEach(mountVue(Sidebar));
+
   it('Renders correctly', () => {
-    cy.visit('/');
-    cy.contains('h1', 'Eleitômetro');
+    cy.contains('h2', 'Resumo');
   });
 });
