@@ -23,7 +23,10 @@ describe('LaunchScreen', () => {
 
     it('Animate loading bar', () => {
       createCmp({ status: 'done' });
-      cy.wrap(Cypress.vue.loading).should('equal', 100);
+      cy
+        .wrap(Cypress)
+        .its('vue.loading')
+        .should('equal', 100);
     });
   });
 
@@ -33,7 +36,8 @@ describe('LaunchScreen', () => {
     });
 
     it('Hide LaunchScreen', () => {
-      cy.get('.launchScreen').wait(1000).should('not.have.class', 'hidden');
+      cy.wait(1500);
+      cy.get('.launchScreen').should('have.class', 'hidden');
     });
   });
 });
