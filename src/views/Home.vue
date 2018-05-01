@@ -2,6 +2,7 @@
   <div class="home">
     <LaunchScreen :status="status"/>
     <Summary />
+    <Analysis />
   </div>
 </template>
 
@@ -9,12 +10,14 @@
 // @ is an alias to /src
 import LaunchScreen from '@/components/LaunchScreen.vue';
 import Summary from '@/components/Summary.vue';
+import Analysis from '@/components/Analysis.vue';
 
 export default {
   name: 'home',
   components: {
     LaunchScreen,
     Summary,
+    Analysis,
   },
   data() {
     return {
