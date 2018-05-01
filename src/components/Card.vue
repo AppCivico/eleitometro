@@ -39,7 +39,7 @@
         <button class="card__shareBtn" @click="toggleShare">share this</button>
       </div>
       <div class="card__back">
-        <h2>Verso</h2>
+        <Chart :content="content.verse"/>
         <button class="card__flipBtn card__flipBtn--back" @click="flipCard">flip this</button>
       </div>
     </div>
@@ -47,11 +47,16 @@
 </template>
 
 <script>
+import Chart from './Chart.vue';
+
 export default {
   name: 'Card',
   props: {
     content: Object,
     width: Number,
+  },
+  components: {
+    Chart,
   },
   data() {
     return {
