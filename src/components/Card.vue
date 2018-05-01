@@ -11,10 +11,26 @@
         <div :class="`card__share ${showShare ? 'open' : ''}`">
           <h3>Compartilhe<br>este card</h3>
           <ul>
-            <li class="facebook"><a href="#">Compartilhe no Facebook</a></li>
-            <li class="twitter"><a href="#">Compartilhe no Twitter</a></li>
-            <li class="whatsapp"><a href="#">Compartilhe no Whatsapp</a></li>
-            <li class="telegram"><a href="#">Compartilhe no Telegram</a></li>
+            <li class="facebook">
+              <a target="_blank" :href="`https://www.facebook.com/sharer.php?u=${shareUrl}`">
+                Compartilhe no Facebook
+              </a>
+            </li>
+            <li class="twitter">
+              <a target="_blank" :href="`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`">
+                Compartilhe no Twitter
+              </a>
+            </li>
+            <li class="whatsapp">
+              <a target="_blank" :href="`https://api.whatsapp.com/send?text=${shareTitle}%20.%20Saiba%20mais%20em%20${shareUrl}`">
+                Compartilhe no Whatsapp
+              </a>
+            </li>
+            <li class="telegram">
+              <a target="_blank" :href="`https://telegram.me/share/url?url=${shareUrl}&text=${shareTitle}`">
+                Compartilhe no Telegram
+              </a>
+            </li>
           </ul>
         </div>
         <button class="card__flipBtn" @click="flipCard">flip this</button>
@@ -40,6 +56,15 @@ export default {
       isFlipped: false,
       showShare: false,
     }
+  },
+  computed: {
+    shareUrl() {
+      return encodeURIComponent(`${window.location.href}card/${this.content.id}`);
+    },
+    shareTitle() {
+      const cleanTitle = this.content.frontHTML.replace(/(<([^>]+)>)/ig, '');
+      return encodeURI(cleanTitle);
+    },
   },
   methods: {
     flipCard() {
