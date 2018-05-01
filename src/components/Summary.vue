@@ -98,7 +98,6 @@ export default {
 <style scoped lang="scss">
 .summary {
   width: 100%;
-  overflow: hidden;
 }
 .summary__wrapper {
   display: table;
