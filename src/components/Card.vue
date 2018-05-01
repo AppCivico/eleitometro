@@ -32,6 +32,8 @@
               </a>
             </li>
           </ul>
+          <button class="card__flipBtn card__flipBtn--back" @click="toggleShare">flip this</button>
+          <button class="card__shareBtn" @click="toggleShare">share this</button>
         </div>
         <button class="card__flipBtn" @click="flipCard">flip this</button>
         <button class="card__shareBtn" @click="toggleShare">share this</button>
@@ -167,11 +169,20 @@ export default {
   opacity: 0;
   transition: opacity 250ms, max-height 500ms;
   text-align: center;
+  z-index: 1;
+  display: none;
 
     &.open {
       display: block;
       max-height: 1000px;
       opacity: 1;
+
+      .card__flipBtn--back {
+        background-image: url('../assets/icon-close-w.png');
+      }
+      .card__shareBtn {
+        background-image: url('../assets/icon-share-w.png');
+      }
     }
 }
 
