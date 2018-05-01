@@ -3,10 +3,10 @@
     <h3 class="chart__title" v-html="content.title" />
     <template v-if="content.graph">
       <div class="chart__graph">
-        <canvas ref="myChartCanvas" width="400" height="150"></canvas>
+        <canvas ref="myChartCanvas" width="400" height="200"></canvas>
       </div>
-      <hr>
-      <p class="total">{{ content.graph.total}}</p>
+      <hr class="graph__separator">
+      <p class="graph__total">Total: {{ total }}</p>
     </template>
     <div class="chart__description" v-html="content.description" />
   </div>
@@ -26,11 +26,16 @@ export default {
       firstFlip: true,
     }
   },
+  computed: {
+    total() {
+      return this.content.graph.total.toLocaleString('pt-BR');
+    },
+  },
   watch: {
     visibility(value) {
       if (value === 'visible' && this.firstFlip) {
         this.firstFlip = false;
-        
+
         if (this.content.graph){
           setTimeout(() => {
             this.mountChart();
@@ -61,7 +66,7 @@ export default {
               label: '',
               data,
               fill: false,
-              borderColor: "rgb(75, 192, 192)",
+              borderColor: 'rgb(244,144,12)',
               lineTension: 0.1,
             },
           ],
@@ -94,6 +99,18 @@ export default {
 
 .chart__graph {
   min-height: 150px;
+  margin: 20px 0 10px;
 }
-</style>
 
+.graph__total {
+  background: #fff;
+  color: #66757f;
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+</style>
