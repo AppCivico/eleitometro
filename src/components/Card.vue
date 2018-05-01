@@ -39,7 +39,7 @@
         <button class="card__shareBtn" @click="toggleShare">share this</button>
       </div>
       <div class="card__back">
-        <Chart :content="content.verse"/>
+        <Chart :content="content.verse" :visibility="isFlipped ? 'visible' : ''"/>
         <button class="card__flipBtn card__flipBtn--back" @click="flipCard">flip this</button>
       </div>
     </div>

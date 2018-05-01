@@ -1,7 +1,7 @@
 <template>
   <div class="chart">
     <div class="chart__title" v-html="content.title" />
-    <canvas ref="myChartCanvas" width="400" height="400"></canvas>
+    <canvas ref="myChartCanvas" width="400" height="150"></canvas>
     <div class="chart__description" v-html="content.description" />
   </div>
 </template>
@@ -13,19 +13,24 @@ export default {
   name: 'Chart',
   props: {
     content: Object,
+    visibility: String,
   },
   data() {
     return {
-      type: {
-        linha: 'line',
-        barras: 'bar',
-      }
+      firstFlip: true,
     }
   },
-  mounted() {
-    if (this.content.graph) {
-      this.mountChart();
-    }
+  computed: {
+    visible() {
+      if (this.visibility === 'visible' && this.firstFlip) {
+        this.firstFlip = false;
+        if (this.content.graph){
+          setTimeout(() => {
+            this.mountChart();
+          }, 600);
+        }
+      }
+    },
   },
   methods: {
     mountChart() {
@@ -54,7 +59,9 @@ export default {
               },
             ],
           },
-          options: {},
+          options: {
+            responsive: true,
+          },
         });
     },
   }
