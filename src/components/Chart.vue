@@ -49,9 +49,11 @@ export default {
       const { graph } = this.content;
       const ctx = this.$refs.myChartCanvas;
 
-      if (graph.points) {
+      if (graph.type === 'linha') {
         this.lineChart(ctx, graph);
-      }      
+      } else {
+        this.barChart(ctx, graph);
+      }
     },
     lineChart(ctx, graph) {
       const data = graph.points;
@@ -75,6 +77,42 @@ export default {
           responsive: true,
           legend: {
             display: false,
+          },
+          scales: {
+            xAxes: [{
+              display: false,
+            }],
+          },
+        },
+      });
+    },
+    barChart(ctx, graph) {
+      const data = graph.points;
+      const labels = data.map((item, i) => `${i}`);
+
+      const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: '',
+              data,
+              fill: true,
+              backgroundColor: 'rgb(244,144,12)',
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          legend: {
+            display: false,
+          },
+          scales: {
+            xAxes: [{
+              display: false,
+              barThickness: 10,
+            }],
           },
         },
       });
