@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header class="app__header">
+    <header class="header">
       <h2>{{ pageTitle }}</h2>
       <button @click="toggleSidebar('active')" class="header__menuIcon">Abrir menu</button>
     </header>
@@ -68,17 +68,28 @@ body {
   overflow: hidden;
 }
 
-.app__header {
+.header {
   width: 100%;
   display: table;
   text-align: center;
   padding: 30px 15px;
 }
 
-.app__header h2 {
+.header h2 {
   font-weight: 400;
   font-size: 2.4em;
   line-height: 1em;
+}
+
+.header h3 {
+  font-weight: 300;
+  font-size: 2em;
+  line-height: 1em;
+  margin: 20px 0;
+}
+
+.header p {
+  font-size: 1.4em;
 }
 
 .header__menuIcon {
