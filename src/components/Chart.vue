@@ -51,6 +51,8 @@ export default {
 
       if (graph.type === 'linha') {
         this.lineChart(ctx, graph);
+      } else if(graph.type === 'pizza') {
+        this.pieChart(ctx, graph);
       } else {
         this.barChart(ctx, graph);
       }
@@ -114,6 +116,30 @@ export default {
               barThickness: 10,
             }],
           },
+        },
+      });
+    },
+    pieChart(ctx, graph) {
+      const data = graph.points.map(item => item.value);
+      const labels = graph.points.map(item => item.label);
+
+      const myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels,
+          datasets: [
+            {
+              data,
+              backgroundColor: [
+                'rgb(244,144,12)',
+                'rgb(62, 160, 251)',
+              ]
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          cutoutPercentage: 90,
         },
       });
     },
