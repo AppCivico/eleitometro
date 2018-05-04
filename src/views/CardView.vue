@@ -46,9 +46,12 @@ export default {
 	text-decoration: none;
 	text-align: left;
 	background-color: #66757f;
+	background-image: url('../assets/icon-arrow-right.png');
+	background-repeat: no-repeat;
+	background-position: center right 20px;
 	display: block;
 	padding: 20px;
-	margin-top: 20px
+	margin-top: 20px;
 }
 </style>
 
