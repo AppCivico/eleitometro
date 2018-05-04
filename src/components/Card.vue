@@ -169,19 +169,17 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 50px 30px;
   background-color: inherit;
   border-radius: 14px;
   overflow: hidden;
   max-height: 0;
   opacity: 0;
-  transition: opacity 250ms, max-height 500ms;
+  transition: opacity 250ms;
   text-align: center;
   z-index: 1;
-  display: none;
 
     &.open {
-      display: block;
+      padding: 50px 30px;
       max-height: 1000px;
       opacity: 1;
 
