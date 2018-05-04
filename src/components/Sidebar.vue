@@ -7,7 +7,7 @@
     <nav>
       <ul>
         <li>
-          <a href="#" @click.prevent="toggleSubmenu(1)">Panoarama (3)</a>
+          <a href="#" @click.prevent="toggleSubmenu(1)">Panorama (3)</a>
           <ul :class="submenu === 1 ? 'open' : ''">
             <li><a href="#">Debate Geral</a></li>
             <li><a href="#">Robôs na Rede</a></li>
