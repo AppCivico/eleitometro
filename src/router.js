@@ -12,7 +12,6 @@ export default new Router({
       path: '/',
       name: 'Resumo',
       component: Home,
-      query: { card: true },
     },
     {
       path: '/about',

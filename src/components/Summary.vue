@@ -48,17 +48,9 @@ export default {
     }
   },
   mounted() {
-    this.checkCard();
     this.handleTouch();
   },
   methods: {
-    checkCard() {
-      if (this.$route.query.card) {
-        if (this.$route.query.card < 5 && this.$route.query.card >= 0) {
-          this.activeCard = this.$route.query.card;
-        }
-      }
-    },
     swipeCard(movement) {
       if (movement === 'left' && this.activeCard < this.cardsQt - 1) {
         this.activeCard = this.activeCard + 1;
