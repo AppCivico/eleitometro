@@ -56,6 +56,11 @@ body {
   font-size: 62.5%;
 }
 
+img {
+  max-width: 100%;
+	height: auto;
+}
+
 #app {
   position: relative;
   font-family: 'Roboto Slab', serif;
