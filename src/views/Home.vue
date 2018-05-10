@@ -25,15 +25,20 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
-      this.status = 'loading';
-      this.$store.dispatch('LOAD_CARDS')
-        .then(() => {
-          setTimeout(() => {
-            this.status = 'done';
-          }, 1000);
-        });
-    }, 1000);
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      this.status = 'done';
+      this.$store.dispatch('LOAD_CARDS');
+    } else {
+      setTimeout(() => {
+        this.status = 'loading';
+        this.$store.dispatch('LOAD_CARDS')
+          .then(() => {
+            setTimeout(() => {
+              this.status = 'done';
+            }, 1000);
+          });
+      }, 1000);
+    }
   }
 };
 </script>
