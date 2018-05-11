@@ -95,6 +95,7 @@ export default {
   display: table;
   transition: margin-left 250ms;
   margin-bottom: 20px;
+  min-height: 470px;
 }
 .scrollBar {
   position: relative;
