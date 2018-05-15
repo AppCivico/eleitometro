@@ -69,12 +69,18 @@
 				</li>
 			</ul>
 		</nav>
+		<Footer></Footer>
 	</div>
 </template>
 
 <script>
+import Footer from './Footer';
+
 export default {
 	name: 'Analysis',
+	components: {
+		Footer,
+	},
 	data() {
     return {
       submenu: 0,
