@@ -6,30 +6,36 @@
     <h2>Análise</h2>
     <nav>
       <ul>
-        <li>
-          <a href="#" @click.prevent="toggleSubmenu(1)">Panorama (3)</a>
-          <ul :class="submenu === 1 ? 'open' : ''">
-            <li><a href="#">Debate Geral</a></li>
-            <li><a href="#">Robôs na Rede</a></li>
-            <li><a href="#">Civilidade</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" @click.prevent="toggleSubmenu(2)">Candidatos (3)</a>
-          <ul :class="submenu === 2 ? 'open' : ''">
-            <li><a href="#">Lula</a></li>
-            <li><a href="#">Marina</a></li>
-            <li><a href="#">Manuela</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" @click.prevent="toggleSubmenu(3)">Temas (3)</a>
-          <ul :class="submenu === 3 ? 'open' : ''">
-            <li><a href="#">Economia</a></li>
-            <li><a href="#">Educação</a></li>
-            <li><a href="#">Segurança</a></li>
-          </ul>
-        </li>
+        <li v-if="panorams.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(1)">Panorama ({{ panorams.length }})</a>
+					<ul :class="`${submenu === 1 ? 'open' : ''}`">
+						<li v-for="item in panorams" :key="item.id">
+							<router-link :to="`/panorams/${item.id}`">
+								{{ item.name }}
+							</router-link>
+						</li>
+					</ul>
+				</li>
+				<li v-if="candidates.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(2)">Candidatos ({{ candidates.length }})</a>
+					<ul :class="`${submenu === 2 ? 'open' : ''}`">
+						<li v-for="item in candidates" :key="item.id">
+							<router-link :to="`/candidates/${item.id}`">
+								{{ item.name }}
+							</router-link>
+						</li>
+					</ul>
+				</li>
+				<li v-if="themes.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(3)">Temas ({{ themes.length }})</a>
+					<ul :class="`${submenu === 3 ? 'open' : ''}`">
+						<li v-for="item in themes" :key="item.id">
+							<router-link :to="`/themes/${item.id}`">
+								{{ item.name }}
+							</router-link>
+						</li>
+					</ul>
+				</li>
       </ul>
     </nav>
     <ul class="secundary">
@@ -56,8 +62,20 @@ export default {
       submenu: 0,
     }
   },
+  computed: {
+		candidates() {
+			return this.$store.state.candidates
+		},
+		themes() {
+			return this.$store.state.themes
+		},
+		panorams() {
+			return this.$store.state.panorams
+		},
+	},
   mounted() {
     this.handleTouch();
+    this.$store.dispatch('LOAD_ANALYSIS');
   },
   methods: {
     close() {
