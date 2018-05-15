@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign, prefer-destructuring */
 
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -12,6 +12,9 @@ export default new Vuex.Store({
   state: {
     cards: [],
     card: {},
+    candidates: [],
+    panorams: [],
+    themes: [],
   },
   mutations: {
     SET_CARDS(state, { res }) {
@@ -26,10 +29,18 @@ export default new Vuex.Store({
       state.cards = res;
     },
     SET_CARD(state, { res }) {
-      // eslint-disable-next-line prefer-destructuring
       state.card = res[0];
       // remove after admin in ready
       state.card.backgroundColor = '#3ea0fb';
+    },
+    SET_CANDIDATES(state, { res }) {
+      state.candidates = res;
+    },
+    SET_THEMES(state, { res }) {
+      state.themes = res;
+    },
+    SET_PANORAMS(state, { res }) {
+      state.panorams = res;
     },
   },
   actions: {
@@ -60,6 +71,24 @@ export default new Vuex.Store({
           },
         );
       });
+    },
+    LOAD_ANALYSIS({ commit }) {
+      function getCandidates() {
+        return axios.get(`${api}/candidates`);
+      }
+      function getThemes() {
+        return axios.get(`${api}/themes`);
+      }
+      function getPanorams() {
+        return axios.get(`${api}/panoramas`);
+      }
+
+      axios.all([getCandidates(), getThemes(), getPanorams()])
+        .then(axios.spread((candidates, themes, panorams) => {
+          commit('SET_CANDIDATES', { res: candidates.data });
+          commit('SET_THEMES', { res: themes.data });
+          commit('SET_PANORAMS', { res: panorams.data });
+        }));
     },
   },
 });

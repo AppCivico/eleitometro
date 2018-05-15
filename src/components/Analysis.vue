@@ -7,69 +7,39 @@
 		</header>
 		<nav>
 			<ul>
-				<li>
-					<a href="#" @click.prevent="toggleSubmenu(1)">Panorama (3)</a>
+				<li v-if="panorams.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(1)">Panorama ({{ panorams.length }})</a>
 					<ul :class="`analysis__submenu ${submenu === 1 ? 'open' : ''}`">
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Debate Geral
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Robôs na Rede
-								</a>
-							</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Civilidade
-							</a>
+						<li v-for="item in panorams" :key="item.id">
+							<router-link :to="`/panorams/${item.id}`">
+								<img src="../assets/logo.png"> {{ item.name }}
+							</router-link>
 						</li>
 					</ul>
 				</li>
-				<li>
-					<a href="#" @click.prevent="toggleSubmenu(2)">Candidatos (3)</a>
+				<li v-if="candidates.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(2)">Candidatos ({{ candidates.length }})</a>
 					<ul :class="`analysis__submenu ${submenu === 2 ? 'open' : ''}`">
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Lula
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Marina
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Manuela
-							</a>
+						<li v-for="item in candidates" :key="item.id">
+							<router-link :to="`/candidates/${item.id}`">
+								<img src="../assets/logo.png"> {{ item.name }}
+							</router-link>
 						</li>
 					</ul>
 				</li>
-				<li>
-					<a href="#" @click.prevent="toggleSubmenu(3)">Temas (3)</a>
+				<li v-if="themes.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(3)">Temas ({{ themes.length }})</a>
 					<ul :class="`analysis__submenu ${submenu === 3 ? 'open' : ''}`">
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Economia
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Educação
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Segurança
-							</a>
+						<li v-for="item in themes" :key="item.id">
+							<router-link :to="`/themes/${item.id}`">
+								<img src="../assets/logo.png"> {{ item.name }}
+							</router-link>
 						</li>
 					</ul>
 				</li>
 			</ul>
 		</nav>
-		<Footer></Footer>
+		<Footer />
 	</div>
 </template>
 
@@ -85,7 +55,21 @@ export default {
     return {
       submenu: 0,
     }
-  },
+	},
+	computed: {
+		candidates() {
+			return this.$store.state.candidates
+		},
+		themes() {
+			return this.$store.state.themes
+		},
+		panorams() {
+			return this.$store.state.panorams
+		},
+	},
+	mounted() {
+		this.$store.dispatch('LOAD_ANALYSIS');
+	},
 	methods: {
 		toggleSubmenu(item) {
       if (this.submenu === item) {
