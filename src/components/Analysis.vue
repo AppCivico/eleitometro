@@ -53,7 +53,7 @@ export default {
 	},
 	data() {
     return {
-      submenu: 0,
+			submenu: 0,
     }
 	},
 	computed: {
