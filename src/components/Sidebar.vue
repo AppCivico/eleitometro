@@ -97,7 +97,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .sidebar {
   position: absolute;
   top: 0;
@@ -184,7 +184,7 @@ export default {
   text-decoration: none;
 }
 
-.sidebar .social li {
+.social li {
   display: inline-block;
   margin-right: 10px;
 
@@ -199,7 +199,7 @@ export default {
   }
 }
 
-.sidebar .social li a {
+.social li a {
   display: block;
   width: 50px;
   height: 50px;
