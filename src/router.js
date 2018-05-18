@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import About from './views/About.vue';
 import CardView from './views/CardView.vue';
+import Analyze from './views/Analyze.vue';
 
 Vue.use(Router);
 
@@ -14,14 +14,24 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/about',
-      name: 'about',
-      component: About,
-    },
-    {
       path: '/card/:id',
       name: 'Resumo em',
       component: CardView,
+    },
+    {
+      path: '/candidate/:id',
+      name: 'Candidatos',
+      component: Analyze,
+    },
+    {
+      path: '/theme/:id',
+      name: 'Temas',
+      component: Analyze,
+    },
+    {
+      path: '/panorama/:id',
+      name: 'Panoramas',
+      component: Analyze,
     },
   ],
 });

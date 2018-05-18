@@ -1,0 +1,67 @@
+<template>
+  <footer class="footer">
+    <section class="footer__section section--border">
+      <ul class="secundary">
+        <li><a href="#">Sobre a FVG DAPP</a></li>
+        <li><a href="#">Metodologia</a></li>
+        <li><a href="#">Assinar Newsletter</a></li>
+      </ul>
+      <ul class="social">
+        <li class="facebook"><a href="#">Facebook</a></li>
+        <li class="twitter"><a href="#">Twitter</a></li>
+        <li class="instagram"><a href="#">Instagram</a></li>
+      </ul>
+    </section>
+    <section class="footer__section">
+      <img src="../assets/logo-white.png">
+      <p class="footer__disclaimer">
+        <strong>Eleitômetro 2018</strong><br>
+        FGV DAPP – Todos os direitos reservados®
+      </p>
+    </section>
+  </footer>
+</template>
+
+<script>
+export default {
+  name: 'Footer',
+}
+</script>
+
+<style scoped>
+.footer {
+  background-color: #66757f;
+  color: #fff;
+  text-align: left;
+
+}
+
+.footer .footer__section {
+  padding: 10%;
+}
+
+.section--border {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer .secundary {
+  margin: 0 0 40px 0;
+  list-style: none;
+}
+
+.footer .secundary li {
+  margin-bottom: 15px;
+}
+
+.footer .secundary a {
+  font-weight: 300;
+  font-size: 2em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer .footer__disclaimer {
+  font-weight: 300;
+  font-size: 1.4em;
+}
+</style>

@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign, prefer-destructuring */
 
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -10,8 +10,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    analyze: [],
     cards: [],
     card: {},
+    candidates: [],
+    panorams: [],
+    themes: [],
   },
   mutations: {
     SET_CARDS(state, { res }) {
@@ -26,10 +30,21 @@ export default new Vuex.Store({
       state.cards = res;
     },
     SET_CARD(state, { res }) {
-      // eslint-disable-next-line prefer-destructuring
       state.card = res[0];
       // remove after admin in ready
       state.card.backgroundColor = '#3ea0fb';
+    },
+    SET_CANDIDATES(state, { res }) {
+      state.candidates = res;
+    },
+    SET_THEMES(state, { res }) {
+      state.themes = res;
+    },
+    SET_PANORAMS(state, { res }) {
+      state.panorams = res;
+    },
+    SET_ANALYZE(state, { res }) {
+      state.analyze = res;
     },
   },
   actions: {
@@ -52,6 +67,37 @@ export default new Vuex.Store({
         axios.get(`${api}/cards/${id}`).then(
           (response) => {
             commit('SET_CARD', { res: response.data });
+            resolve();
+          },
+          (err) => {
+            reject(err.response);
+            console.error(err);
+          },
+        );
+      });
+    },
+    LOAD_ANALYSIS({ commit }) {
+      function getCandidates() {
+        return axios.get(`${api}/candidates`);
+      }
+      function getThemes() {
+        return axios.get(`${api}/themes`);
+      }
+      function getPanorams() {
+        return axios.get(`${api}/panoramas`);
+      }
+
+      axios.all([getCandidates(), getThemes(), getPanorams()]).then(axios.spread((candidates, themes, panorams) => {
+        commit('SET_CANDIDATES', { res: candidates.data });
+        commit('SET_THEMES', { res: themes.data });
+        commit('SET_PANORAMS', { res: panorams.data });
+      }));
+    },
+    LOAD_ANALYZE({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        axios.get(`${api}/analyse/${payload.type}/${payload.id}`).then(
+          (response) => {
+            commit('SET_ANALYZE', { res: response.data });
             resolve();
           },
           (err) => {

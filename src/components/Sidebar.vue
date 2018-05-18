@@ -2,34 +2,40 @@
   <div :class="`sidebar ${status === 'active' ? 'open' : ''}`">
     <button @click="close" class="sidebar__closeIcon">Close</button>
     <img src="../assets/logo.png">
-    <h2>Resumo</h2>
+    <h2><a @click.prevent="closeRoute(`/`)">Resumo</a></h2>
     <h2>Análise</h2>
     <nav>
       <ul>
-        <li>
-          <a href="#" @click.prevent="toggleSubmenu(1)">Panorama (3)</a>
-          <ul :class="submenu === 1 ? 'open' : ''">
-            <li><a href="#">Debate Geral</a></li>
-            <li><a href="#">Robôs na Rede</a></li>
-            <li><a href="#">Civilidade</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" @click.prevent="toggleSubmenu(2)">Candidatos (3)</a>
-          <ul :class="submenu === 2 ? 'open' : ''">
-            <li><a href="#">Lula</a></li>
-            <li><a href="#">Marina</a></li>
-            <li><a href="#">Manuela</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" @click.prevent="toggleSubmenu(3)">Temas (3)</a>
-          <ul :class="submenu === 3 ? 'open' : ''">
-            <li><a href="#">Economia</a></li>
-            <li><a href="#">Educação</a></li>
-            <li><a href="#">Segurança</a></li>
-          </ul>
-        </li>
+        <li v-if="panorams.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(1)">Panorama ({{ panorams.length }})</a>
+					<ul :class="`${submenu === 1 ? 'open' : ''}`">
+						<li v-for="item in panorams" :key="item.id">
+							<a @click.prevent="closeRoute(`/panorama/${item.id}`)" >
+								{{ item.name }}
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li v-if="candidates.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(2)">Candidatos ({{ candidates.length }})</a>
+					<ul :class="`${submenu === 2 ? 'open' : ''}`">
+						<li v-for="item in candidates" :key="item.id">
+							<a @click.prevent="closeRoute(`/candidate/${item.id}`)" >
+								{{ item.name }}
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li v-if="themes.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(3)">Temas ({{ themes.length }})</a>
+					<ul :class="`${submenu === 3 ? 'open' : ''}`">
+						<li v-for="item in themes" :key="item.id">
+							<a @click.prevent="closeRoute(`/theme/${item.id}`)" >
+								{{ item.name }}
+							</a>
+						</li>
+					</ul>
+				</li>
       </ul>
     </nav>
     <ul class="secundary">
@@ -56,12 +62,28 @@ export default {
       submenu: 0,
     }
   },
+  computed: {
+		candidates() {
+			return this.$store.state.candidates
+		},
+		themes() {
+			return this.$store.state.themes
+		},
+		panorams() {
+			return this.$store.state.panorams
+		},
+	},
   mounted() {
     this.handleTouch();
+    this.$store.dispatch('LOAD_ANALYSIS');
   },
   methods: {
     close() {
       this.$emit('closeSidebar', '');
+    },
+    closeRoute(route) {
+      this.$emit('closeSidebar', '');
+      this.$router.push(route);
     },
     handleTouch() {
       let touchstartX = 0;
@@ -97,7 +119,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .sidebar {
   position: absolute;
   top: 0;
@@ -126,6 +148,11 @@ export default {
 .sidebar h2 {
   font-weight: 400;
   font-size: 2.4em;
+}
+
+.sidebar h2 a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .sidebar ul {
@@ -184,7 +211,7 @@ export default {
   text-decoration: none;
 }
 
-.sidebar .social li {
+.social li {
   display: inline-block;
   margin-right: 10px;
 
@@ -199,7 +226,7 @@ export default {
   }
 }
 
-.sidebar .social li a {
+.social li a {
   display: block;
   width: 50px;
   height: 50px;

@@ -7,79 +7,81 @@
 		</header>
 		<nav>
 			<ul>
-				<li>
-					<a href="#" @click.prevent="toggleSubmenu(1)">Panorama (3)</a>
+				<li v-if="panorams.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(1)">Panorama ({{ panorams.length }})</a>
 					<ul :class="`analysis__submenu ${submenu === 1 ? 'open' : ''}`">
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Debate Geral
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Robôs na Rede
-								</a>
-							</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Civilidade
-							</a>
+						<li v-for="item in panorams" :key="item.id">
+							<router-link :to="`/panorama/${item.id}`">
+								<svg class="svg-icon">
+									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
+									<use xlink:href="#logo_eleitometro" v-else></use>
+								</svg>
+								{{ item.name }}
+							</router-link>
 						</li>
 					</ul>
 				</li>
-				<li>
-					<a href="#" @click.prevent="toggleSubmenu(2)">Candidatos (3)</a>
+				<li v-if="candidates.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(2)">Candidatos ({{ candidates.length }})</a>
 					<ul :class="`analysis__submenu ${submenu === 2 ? 'open' : ''}`">
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Lula
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Marina
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Manuela
-							</a>
+						<li v-for="item in candidates" :key="item.id">
+							<router-link :to="`/candidate/${item.id}`">
+								<svg class="svg-icon">
+									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
+									<use xlink:href="#logo_eleitometro" v-else></use>
+								</svg>
+								{{ item.name }}
+							</router-link>
 						</li>
 					</ul>
 				</li>
-				<li>
-					<a href="#" @click.prevent="toggleSubmenu(3)">Temas (3)</a>
+				<li v-if="themes.length > 1">
+					<a href="#" @click.prevent="toggleSubmenu(3)">Temas ({{ themes.length }})</a>
 					<ul :class="`analysis__submenu ${submenu === 3 ? 'open' : ''}`">
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Economia
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Educação
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="../assets/logo.png"> Segurança
-							</a>
+						<li v-for="item in themes" :key="item.id">
+							<router-link :to="`/theme/${item.id}`">
+								<svg class="svg-icon">
+									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
+									<use xlink:href="#logo_eleitometro" v-else></use>
+								</svg>
+								{{ item.name }}
+							</router-link>
 						</li>
 					</ul>
 				</li>
 			</ul>
 		</nav>
+		<Footer />
 	</div>
 </template>
 
 <script>
+import Footer from './Footer';
+
 export default {
 	name: 'Analysis',
+	components: {
+		Footer,
+	},
 	data() {
     return {
-      submenu: 0,
+			submenu: 0,
     }
-  },
+	},
+	computed: {
+		candidates() {
+			return this.$store.state.candidates
+		},
+		themes() {
+			return this.$store.state.themes
+		},
+		panorams() {
+			return this.$store.state.panorams
+		},
+	},
+	mounted() {
+		this.$store.dispatch('LOAD_ANALYSIS');
+	},
 	methods: {
 		toggleSubmenu(item) {
       if (this.submenu === item) {
@@ -127,7 +129,6 @@ export default {
 }
 
 .analysis .analysis__submenu {
-  padding-left: 30px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 300ms, margin-top 300ms;
@@ -140,7 +141,7 @@ export default {
 
 .analysis .analysis__submenu li {
 	float: left;
-	width: 49.5%;
+	width: 49%;
 	display: block;
 	border-radius: 8px;
 	background: #f2f2f2;
@@ -151,9 +152,11 @@ export default {
 	}
 }
 
-.analysis .analysis__submenu img {
+.analysis .analysis__submenu svg {
 	display: block;
-	margin: 0 auto 10px;
+	margin: 0 auto;
+	max-width: 100%;
+	max-height: 100px;
 }
 
 .analysis .analysis__submenu a {
