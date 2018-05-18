@@ -2,7 +2,7 @@
   <div :class="`sidebar ${status === 'active' ? 'open' : ''}`">
     <button @click="close" class="sidebar__closeIcon">Close</button>
     <img src="../assets/logo.png">
-    <h2>Resumo</h2>
+    <h2><a @click.prevent="closeRoute(`/`)">Resumo</a></h2>
     <h2>Análise</h2>
     <nav>
       <ul>
@@ -148,6 +148,11 @@ export default {
 .sidebar h2 {
   font-weight: 400;
   font-size: 2.4em;
+}
+
+.sidebar h2 a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .sidebar ul {
