@@ -1,7 +1,9 @@
 <template>
   <div :class="`launchScreen ${status === 'done' ? 'hidden' : ''}`">
     <div class="launchScreen__container">
-      <img src="../assets/logo.png">
+      <svg class="svg-icon">
+        <use xlink:href="#logo_eleitometro"></use>
+      </svg>
       <h1>Eleitômetro</h1>
       <h2>{{ subtitle }}</h2>
     </div>
@@ -68,7 +70,7 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-.launchScreen__container img {
+.launchScreen__container svg {
   min-width: 130px;
   height: auto;
   margin-bottom: 20px;
