@@ -19,17 +19,17 @@ export default new Router({
       component: CardView,
     },
     {
-      path: '/candidates/:id',
+      path: '/candidate/:id',
       name: 'Candidatos',
       component: Analyze,
     },
     {
-      path: '/themes/:id',
+      path: '/theme/:id',
       name: 'Temas',
       component: Analyze,
     },
     {
-      path: '/panorams/:id',
+      path: '/panorama/:id',
       name: 'Panoramas',
       component: Analyze,
     },
