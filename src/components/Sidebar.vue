@@ -10,9 +10,9 @@
 					<a href="#" @click.prevent="toggleSubmenu(1)">Panorama ({{ panorams.length }})</a>
 					<ul :class="`${submenu === 1 ? 'open' : ''}`">
 						<li v-for="item in panorams" :key="item.id">
-							<router-link :to="`/panorams/${item.id}`">
+							<a @click.prevent="closeRoute(`/panorama/${item.id}`)" >
 								{{ item.name }}
-							</router-link>
+							</a>
 						</li>
 					</ul>
 				</li>
@@ -20,9 +20,9 @@
 					<a href="#" @click.prevent="toggleSubmenu(2)">Candidatos ({{ candidates.length }})</a>
 					<ul :class="`${submenu === 2 ? 'open' : ''}`">
 						<li v-for="item in candidates" :key="item.id">
-							<router-link :to="`/candidates/${item.id}`">
+							<a @click.prevent="closeRoute(`/candidate/${item.id}`)" >
 								{{ item.name }}
-							</router-link>
+							</a>
 						</li>
 					</ul>
 				</li>
@@ -30,9 +30,9 @@
 					<a href="#" @click.prevent="toggleSubmenu(3)">Temas ({{ themes.length }})</a>
 					<ul :class="`${submenu === 3 ? 'open' : ''}`">
 						<li v-for="item in themes" :key="item.id">
-							<router-link :to="`/themes/${item.id}`">
+							<a @click.prevent="closeRoute(`/theme/${item.id}`)" >
 								{{ item.name }}
-							</router-link>
+							</a>
 						</li>
 					</ul>
 				</li>
@@ -80,6 +80,10 @@ export default {
   methods: {
     close() {
       this.$emit('closeSidebar', '');
+    },
+    closeRoute(route) {
+      this.$emit('closeSidebar', '');
+      this.$router.push(route);
     },
     handleTouch() {
       let touchstartX = 0;

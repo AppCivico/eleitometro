@@ -11,7 +11,7 @@
 					<a href="#" @click.prevent="toggleSubmenu(1)">Panorama ({{ panorams.length }})</a>
 					<ul :class="`analysis__submenu ${submenu === 1 ? 'open' : ''}`">
 						<li v-for="item in panorams" :key="item.id">
-							<router-link :to="`/panorams/${item.id}`">
+							<router-link :to="`/panorama/${item.id}`">
 								<svg class="svg-icon">
 									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
 									<use xlink:href="#logo_eleitometro" v-else></use>
@@ -25,7 +25,7 @@
 					<a href="#" @click.prevent="toggleSubmenu(2)">Candidatos ({{ candidates.length }})</a>
 					<ul :class="`analysis__submenu ${submenu === 2 ? 'open' : ''}`">
 						<li v-for="item in candidates" :key="item.id">
-							<router-link :to="`/candidates/${item.id}`">
+							<router-link :to="`/candidate/${item.id}`">
 								<svg class="svg-icon">
 									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
 									<use xlink:href="#logo_eleitometro" v-else></use>
@@ -39,7 +39,7 @@
 					<a href="#" @click.prevent="toggleSubmenu(3)">Temas ({{ themes.length }})</a>
 					<ul :class="`analysis__submenu ${submenu === 3 ? 'open' : ''}`">
 						<li v-for="item in themes" :key="item.id">
-							<router-link :to="`/themes/${item.id}`">
+							<router-link :to="`/theme/${item.id}`">
 								<svg class="svg-icon">
 									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
 									<use xlink:href="#logo_eleitometro" v-else></use>
