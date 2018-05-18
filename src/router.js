@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import CardView from './views/CardView.vue';
-import Editorial from './views/Editorial.vue';
+import Analyze from './views/Analyze.vue';
 
 Vue.use(Router);
 
@@ -21,17 +21,17 @@ export default new Router({
     {
       path: '/candidates/:id',
       name: 'Candidatos',
-      component: Editorial,
+      component: Analyze,
     },
     {
       path: '/themes/:id',
       name: 'Temas',
-      component: Editorial,
+      component: Analyze,
     },
     {
       path: '/panorams/:id',
       name: 'Panoramas',
-      component: Editorial,
+      component: Analyze,
     },
   ],
 });
