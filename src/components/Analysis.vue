@@ -12,7 +12,11 @@
 					<ul :class="`analysis__submenu ${submenu === 1 ? 'open' : ''}`">
 						<li v-for="item in panorams" :key="item.id">
 							<router-link :to="`/panorams/${item.id}`">
-								<img src="../assets/logo.png"> {{ item.name }}
+								<svg class="svg-icon">
+									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
+									<use xlink:href="#logo_eleitometro" v-else></use>
+								</svg>
+								{{ item.name }}
 							</router-link>
 						</li>
 					</ul>
@@ -22,7 +26,11 @@
 					<ul :class="`analysis__submenu ${submenu === 2 ? 'open' : ''}`">
 						<li v-for="item in candidates" :key="item.id">
 							<router-link :to="`/candidates/${item.id}`">
-								<img src="../assets/logo.png"> {{ item.name }}
+								<svg class="svg-icon">
+									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
+									<use xlink:href="#logo_eleitometro" v-else></use>
+								</svg>
+								{{ item.name }}
 							</router-link>
 						</li>
 					</ul>
@@ -32,7 +40,11 @@
 					<ul :class="`analysis__submenu ${submenu === 3 ? 'open' : ''}`">
 						<li v-for="item in themes" :key="item.id">
 							<router-link :to="`/themes/${item.id}`">
-								<img src="../assets/logo.png"> {{ item.name }}
+								<svg class="svg-icon">
+									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
+									<use xlink:href="#logo_eleitometro" v-else></use>
+								</svg>
+								{{ item.name }}
 							</router-link>
 						</li>
 					</ul>
@@ -117,7 +129,6 @@ export default {
 }
 
 .analysis .analysis__submenu {
-  padding-left: 30px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 300ms, margin-top 300ms;
@@ -130,7 +141,7 @@ export default {
 
 .analysis .analysis__submenu li {
 	float: left;
-	width: 49.5%;
+	width: 49%;
 	display: block;
 	border-radius: 8px;
 	background: #f2f2f2;
@@ -141,9 +152,11 @@ export default {
 	}
 }
 
-.analysis .analysis__submenu img {
+.analysis .analysis__submenu svg {
 	display: block;
-	margin: 0 auto 10px;
+	margin: 0 auto;
+	max-width: 100%;
+	max-height: 100px;
 }
 
 .analysis .analysis__submenu a {
