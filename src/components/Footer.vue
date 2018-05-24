@@ -2,8 +2,8 @@
   <footer class="footer">
     <section class="footer__section section--border">
       <ul class="secundary">
-        <li><a href="#">Sobre a FVG DAPP</a></li>
-        <li><a href="#">Metodologia</a></li>
+        <li><router-link to="/about">Sobre a FVG DAPP</router-link></li>
+        <li><router-link to="/metodology">Metodologia</router-link></li>
         <li><a href="#">Assinar Newsletter</a></li>
       </ul>
       <ul class="social">
@@ -33,7 +33,7 @@ export default {
   background-color: #66757f;
   color: #fff;
   text-align: left;
-
+  margin-top: 30px;
 }
 
 .footer .footer__section {
