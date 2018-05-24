@@ -6,16 +6,19 @@
     </header>
     <Sidebar :status="sidebar" @closeSidebar="toggleSidebar('')"/>
     <router-view/>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Sidebar from '@/components/Sidebar.vue';
+import Footer from './components/Footer';
 
 export default {
   name: 'App',
   components: {
     Sidebar,
+    Footer,
   },
   computed: {
     pageTitle() {
