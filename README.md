@@ -22,3 +22,17 @@ $ npm test
 # lint code
 $ npm run lint
 ```
+
+## SVGs
+
+Just put them in the `src/assets/svg` folder and webpack will take care of it.
+
+### Usage
+
+``` html
+  <svg class="svg-icon">
+    <use xlink:href="#title"></use>
+  </svg>
+```
+
+title being the literal name of the svg file

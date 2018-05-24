@@ -10,13 +10,18 @@
         <div v-html="description.description"></div>
       </section>
     </template>
-    <template>Sem informações</template>
+    <template>{{ emptyMessage }}</template>
   </main>
 </template>
 
 <script>
 export default {
   name: 'Analyze',
+  data() {
+    return {
+      emptyMessage: 'Carregando',
+    };
+  },
   computed: {
     id() {
       return this.$route.params.id;
@@ -48,7 +53,12 @@ export default {
         id,
         type: this.type,
       }
-      this.$store.dispatch('LOAD_ANALYZE', payload);
+      this.$store.dispatch('LOAD_ANALYZE', payload)
+        .then(() => {
+          if (this.analyze.length < 1) {
+            this.emptyMessage = 'Sem informações';
+          }
+        })
     },
   },
 }
