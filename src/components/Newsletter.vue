@@ -3,6 +3,7 @@
     <input type="email" name="email" v-model="email" placeholder="Seu email" class="newsletter__input">
     <button type="submit" class="newsletter__button" :disabled="loading">subscribe</button>
     <p class="error">{{ errorMessage }}</p>
+    <p class="success">{{ successMessage }}</p>
   </form>
 </template>
 
@@ -14,6 +15,7 @@ export default {
       loading: false,
       errorMessage: '',
       email: '',
+      successMessage: '',
     };
   },
   methods: {
@@ -89,4 +91,15 @@ export default {
 	background-repeat: no-repeat;
 	background-position: center;
 }
+
+p.error {
+  margin-top: 10px;
+  color: #ffa10b;
+}
+
+p.success {
+  margin-top: 10px;
+  color:#15ff0a;
+}
+
 </style>
