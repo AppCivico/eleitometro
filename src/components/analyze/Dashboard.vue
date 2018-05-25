@@ -2,12 +2,12 @@
   <section class="dashboard" v-if="content">
     <nav>
       <ul>
-        <li><a href="#" @click.prevent="changeSection('period1')" :class="`${activeSection === 'period1' ? 'active' : ''}`">HOJE</a></li>
-        <li><a href="#" @click.prevent="changeSection('period7')" :class="`${activeSection === 'period7' ? 'active' : ''}`">7 DIAS</a></li>
-        <li><a href="#" @click.prevent="changeSection('period30')" :class="`${activeSection === 'period30' ? 'active' : ''}`">30 DIAS</a></li>
+        <li @click.prevent="changeSection('period1')" :class="`${activeSection === 'period1' ? 'active' : ''}`"><a href="#">HOJE</a></li>
+        <li @click.prevent="changeSection('period7')" :class="`${activeSection === 'period7' ? 'active' : ''}`"><a href="#">7 DIAS</a></li>
+        <li @click.prevent="changeSection('period30')" :class="`${activeSection === 'period30' ? 'active' : ''}`"><a href="#">30 DIAS</a></li>
       </ul>
     </nav>
-    <Chart :content="chartContent" :visibility="loadChart ? 'visible' : ''"/>
+    <Chart :content="chartContent" :visibility="loadChart"/>
     <div class="dashboard__content">
       <h3>Menções Totais: {{ active.mentions_total }} (+{{ active.mentions_increased }})</h3>
       <div>
@@ -35,8 +35,13 @@ export default {
   data() {
     return {
       activeSection: 'period1',
-      loadChart: false,
+      loadChart: '',
     };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loadChart = 'visible';
+    }, 1000);
   },
   computed: {
     active() {
@@ -45,9 +50,9 @@ export default {
     chartContent() {
       const data = {
         graph: {
-          type: this.activeSection.graph_type,
-          points: this.activeSection.points,
-          total: this.activeSection.mentions_total,
+          type: this.active.graph_type,
+          points: this.active.points,
+          total: this.active.mentions_total,
         },
       };
       return data;
@@ -56,7 +61,7 @@ export default {
   methods: {
     changeSection(section) {
       this.activeSection = section;
-      this.loadChart = true;
+      this.loadChart = 'reload';
     },
   },
 }
@@ -65,6 +70,13 @@ export default {
 <style lang="scss">
 .dashboard {
   position: relative;
+}
+
+.dashboard nav {
+  display: block;
+  background: #fff;
+  margin-left: -12%;
+  margin-right: -12%;
 }
 
 .dashboard nav ul {
@@ -86,6 +98,7 @@ export default {
 }
 
 .dashboard nav li a {
+  text-decoration: none;
   font-size: 1.6em;
   font-weight: 600;
   color: #66757f;
