@@ -7,8 +7,16 @@
         <li><a href="#" @click.prevent="changeSection('period30')" :class="`${activeSection === 'period30' ? 'active' : ''}`">30 DIAS</a></li>
       </ul>
     </nav>
-    <div class="dashboard__section">
-      <Chart :content="chartContent" :visibility="loadChart ? 'visible' : ''"/>
+    <Chart :content="chartContent" :visibility="loadChart ? 'visible' : ''"/>
+    <div class="dashboard__content">
+      <h3>Menções Totais: {{ active.mentions_total }} (+{{ active.mentions_increased }})</h3>
+      <div>
+        <svg class="svg-icon">
+          <use xlink:href="#panorama_robos"></use>
+        </svg>
+        <h4>Contas automatizadas pelo uso de robôs</h4>
+        <span class="value">{{ active.robot_count }} (+{{ active.robot_increased }})</span>
+      </div>
     </div>
   </section>
 </template>
@@ -31,13 +39,15 @@ export default {
     };
   },
   computed: {
+    active() {
+      return this.content[this.activeSection];
+    },
     chartContent() {
-      const activeSection = this.content[this.activeSection];
       const data = {
         graph: {
-          type: activeSection.graph_type,
-          points: activeSection.points,
-          total: activeSection.mentions_total,
+          type: this.activeSection.graph_type,
+          points: this.activeSection.points,
+          total: this.activeSection.mentions_total,
         },
       };
       return data;
@@ -52,8 +62,33 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .dashboard {
   position: relative;
 }
+
+.dashboard nav ul {
+  list-style: none;
+}
+
+.dashboard nav li {
+  display: inline-block;
+  padding: 5px 10px;
+
+  &.active {
+    color: #1771dd;
+    border-bottom: 5px solid #1771dd;
+
+    a {
+      color: #1771dd;
+    }
+  }
+}
+
+.dashboard nav li a {
+  font-size: 1.6em;
+  font-weight: 600;
+  color: #66757f;
+}
+
 </style>
