@@ -1,5 +1,5 @@
 <template>
-  <section class="analyze__description" v-if="content.name">
+  <section class="analyze__description" v-if="content">
     <svg class="svg-icon">
       <use :xlink:href="`#${content.emojiSymbolId}`"></use>
     </svg>
