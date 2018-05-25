@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <section class="footer__section section--border">
       <ul class="secundary">
         <li><router-link to="/about">Sobre a FVG DAPP</router-link></li>
