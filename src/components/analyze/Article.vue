@@ -19,7 +19,11 @@ export default {
   },
   computed: {
     mediaType() {
-      return this.content.media.indexOf('youtube') > -1 ? 'video' : 'image';
+      if (this.content.media) {
+        return this.content.media.indexOf('youtube') > -1 ? 'video' : 'image';
+      } else {
+        return 'image'
+      }
     },
     videoId() {
       if (this.mediaType === 'video') {
