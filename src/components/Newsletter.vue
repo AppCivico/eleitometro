@@ -35,7 +35,7 @@ export default {
     },
     subscribe(email) {
       const data = {
-        email,
+        mail: email,
       };
 
       this.$store.dispatch('SUBSCRIBE', data)
@@ -45,8 +45,8 @@ export default {
         }).catch((err) => {
           this.toggleLoading();
 
-          if (err.error) {
-            this.errorMessage = err.error;
+          if (err.data.error) {
+            this.errorMessage = err.data.error;
           } else {
             this.errorMessage = 'Ocorreu um erro inesperado, tente novamente';
           }
