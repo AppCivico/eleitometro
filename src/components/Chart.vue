@@ -64,7 +64,6 @@ export default {
       }
     },
     lineChart(ctx, graph) {
-      console.log('linha', graph.points)
       const data = graph.points;
       const labels = data.map((item, i) => `${24 - (24/(i + 1))}h`);
 
