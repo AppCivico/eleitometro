@@ -2,7 +2,7 @@
   <section
     class="analyze__card"
     v-if="content"
-    v-html="content.frontTHML"
+    v-html="content.frontHTML"
     :style="{backgroundColor: content.backgroundColor}"
     >
   </section>
