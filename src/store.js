@@ -107,5 +107,23 @@ export default new Vuex.Store({
         );
       });
     },
+    // eslint-disable-next-line
+    SUBSCRIBE({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        axios({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          url: `${api}/subscribe`,
+          data,
+        })
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((err) => {
+            console.error(err.response);
+            reject(err.response);
+          });
+      });
+    },
   },
 });
