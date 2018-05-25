@@ -35,7 +35,6 @@ export default {
     },
     subscribe(email) {
       const data = {
-        name: 'user',
         email,
       };
 
