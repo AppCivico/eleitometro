@@ -1,12 +1,12 @@
 <template>
   <div class="chart">
-    <h3 class="chart__title" v-html="content.title" />
+    <h3 class="chart__title" v-html="content.title" v-if="content.title"/>
     <template v-if="content.graph">
       <div class="chart__graph">
         <canvas ref="myChartCanvas" width="400" height="200"></canvas>
       </div>
       <hr class="graph__separator">
-      <p class="graph__total">Total: {{ total }}</p>
+      <p class="graph__total" v-if="content.total">Total: {{ total }}</p>
     </template>
     <div class="chart__description" v-html="content.description" />
   </div>
