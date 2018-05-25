@@ -2,9 +2,10 @@
   <main class="analyze">
     <template v-if="analyze.length > 0" v-for="(item, i) in analyze">
       <Description :content="item" :type="type" v-if="item.type === 'description'" :key="i"/>
-      <Dashboard :content="item" v-if="item.type === 'dashboard'" :key="i"/>
-      <SimpleCard :content="item" v-if="item.type === 'card'" :key="i"/>
-      <Media :content="item" v-if="item.type === 'media'" :key="i"/>
+      <Dashboard :content="item" v-if="item.type === 'dashboard'" :key="item.type+i"/>
+      <Card :content="item" v-if="item.type === 'card'" :key="item.type+i"/>
+      <Media :content="item" v-if="item.type === 'media'" :key="item.type+i"/>
+      <Article :content="item" v-if="item.type === 'media'" :key="item.type+i"/>
     </template>
     <template v-else>{{ emptyMessage }}</template>
   </main>
@@ -13,16 +14,18 @@
 <script>
 import Description from '../components/analyze/Description';
 import Dashboard from '../components/analyze/Dashboard';
-import SimpleCard from '../components/analyze/SimpleCard';
+import Card from '../components/Card';
 import Media from '../components/analyze/Media';
+import Article from '../components/analyze/Article';
 
 export default {
   name: 'Analyze',
   components: {
     Description,
     Dashboard,
-    SimpleCard,
+    Card,
     Media,
+    Article,
   },
   data() {
     return {
@@ -65,3 +68,36 @@ export default {
   },
 }
 </script>
+
+<style>
+.analyze {
+  padding: 0 10%;
+  background-color: #f2f2f2;
+}
+
+.analyze > section,
+.analyze > div {
+  padding-bottom: 30px;
+}
+
+.analyze .card {
+  float: none;
+  padding-left: 0;
+  padding-right: 0;
+  perspective: unset;
+  height: auto;
+}
+
+.analyze .card__front {
+  position: relative;
+  top: auto;
+  left: auto;
+  font-size: 0.6em;
+  min-height: 300px;
+}
+
+.analyze .card__share.open {
+  padding: 30px;
+}
+</style>
+
