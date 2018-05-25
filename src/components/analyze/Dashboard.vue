@@ -8,15 +8,13 @@
       </ul>
     </nav>
     <Chart :content="chartContent" :visibility="loadChart"/>
-    <div class="dashboard__content">
-      <h3>Menções Totais: {{ active.mentions_total }} (+{{ active.mentions_increased }})</h3>
-      <div>
-        <svg class="svg-icon">
-          <use xlink:href="#panorama_robos"></use>
-        </svg>
-        <h4>Contas automatizadas pelo uso de robôs</h4>
-        <span class="value">{{ active.robot_count }} (+{{ active.robot_increased }})</span>
-      </div>
+    <h3>Menções Totais: <span>{{ active.mentions_total }} (+{{ active.mentions_increased }}%)</span></h3>
+    <div class="dashboard__robots">
+      <svg class="svg-icon">
+        <use xlink:href="#panorama_robos"></use>
+      </svg>
+      <h4>Contas automatizadas pelo uso de robôs</h4>
+      <span class="value">{{ active.robot_count }} (+{{ active.robot_increased }}%)</span>
     </div>
   </section>
 </template>
@@ -104,4 +102,31 @@ export default {
   color: #66757f;
 }
 
+.dashboard h3 {
+  font-size: 2.4em;
+  font-weight: 300;
+  color: #66757f;
+  margin: 30px 0;
+}
+
+.dashboard h3 span {
+  color: #1771dd;
+}
+
+.dashboard__robots {
+  background: #fff;
+  padding: 10px 30px 30px;
+  border-radius: 14px;
+}
+
+.dashboard__robots h4 {
+  font-size: 1.4em;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.dashboard__robots .value {
+  font-size: 2.4em;
+  color: #66757f;
+}
 </style>
