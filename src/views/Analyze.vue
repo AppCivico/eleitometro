@@ -1,22 +1,20 @@
 <template>
   <main class="analyze">
-    <template v-if="analyze.length > 0">
-      <section class="analyze__description">
-        <svg class="svg-icon">
-          <use :xlink:href="`#${description.emojiSymbolId}`"></use>
-        </svg>
-        <h2>{{ description.name }}</h2>
-        <h3 v-if="type === 'candidate'">{{ description.politicalParty }}</h3>
-        <div v-html="description.description"></div>
-      </section>
+    <template v-if="analyze.length > 0" v-for="(item, i) in analyze">
+      <Description :content="item" :type="type" v-if="item.type === 'description'" :key="i"/>
     </template>
-    <template>{{ emptyMessage }}</template>
+    <template v-else>{{ emptyMessage }}</template>
   </main>
 </template>
 
 <script>
+import Description from '../components/analyze/Description';
+
 export default {
   name: 'Analyze',
+  components: {
+    Description,
+  },
   data() {
     return {
       emptyMessage: 'Carregando',
@@ -33,11 +31,6 @@ export default {
       const arr = this.$route.path.split('/');
       return arr[1];
     },
-    description() {
-      if(this.analyze.length > 0) {
-        return this.analyze.find(item => item.type === 'description');
-      }
-    }
   },
   watch: {
     id(val) {
