@@ -42,6 +42,12 @@ export default {
           }, 600);
         }
       }
+
+      if (value === 'reload') {
+        if (this.content.graph){
+          this.mountChart();
+        }
+      }
     },
   },
   methods: {
@@ -58,6 +64,7 @@ export default {
       }
     },
     lineChart(ctx, graph) {
+      console.log('linha', graph.points)
       const data = graph.points;
       const labels = data.map((item, i) => `${24 - (24/(i + 1))}h`);
 
@@ -149,6 +156,7 @@ export default {
 
 <style>
 .chart {
+  width: 100%;
   text-align: left;
 }
 
