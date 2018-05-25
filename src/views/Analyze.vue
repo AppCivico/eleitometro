@@ -6,6 +6,7 @@
       <Card :content="item" v-if="item.type === 'card'" :key="item.type+i"/>
       <Media :content="item" v-if="item.type === 'media'" :key="item.type+i"/>
       <Article :content="item" v-if="item.type === 'media'" :key="item.type+i"/>
+      <Cloud :content="item" v-if="item.type === 'cloud'" :key="item.type+i"/>
     </template>
     <template v-else>{{ emptyMessage }}</template>
   </main>
@@ -17,6 +18,7 @@ import Dashboard from '../components/analyze/Dashboard';
 import Card from '../components/Card';
 import Media from '../components/analyze/Media';
 import Article from '../components/analyze/Article';
+import Cloud from '../components/analyze/Cloud';
 
 export default {
   name: 'Analyze',
@@ -26,6 +28,7 @@ export default {
     Card,
     Media,
     Article,
+    Cloud,
   },
   data() {
     return {
