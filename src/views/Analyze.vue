@@ -2,6 +2,7 @@
   <main class="analyze">
     <template v-if="analyze.length > 0" v-for="(item, i) in analyze">
       <Description :content="item" :type="type" v-if="item.type === 'description'" :key="i"/>
+      <Dashboard :content="item" v-if="item.type === 'dashboard'" :key="i"/>
     </template>
     <template v-else>{{ emptyMessage }}</template>
   </main>
@@ -9,11 +10,13 @@
 
 <script>
 import Description from '../components/analyze/Description';
+import Dashboard from '../components/analyze/Dashboard';
 
 export default {
   name: 'Analyze',
   components: {
     Description,
+    Dashboard,
   },
   data() {
     return {
