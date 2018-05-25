@@ -32,13 +32,13 @@
               </a>
             </li>
           </ul>
-          <button class="card__flipBtn card__flipBtn--back" @click="toggleShare">flip this</button>
+          <button class="card__flipBtn card__flipBtn--back" @click="toggleShare" v-if="content.verse">flip this</button>
           <button class="card__shareBtn" @click="toggleShare">share this</button>
         </div>
-        <button class="card__flipBtn" @click="flipCard">flip this</button>
+        <button class="card__flipBtn" @click="flipCard" v-if="content.verse">flip this</button>
         <button class="card__shareBtn" @click="toggleShare">share this</button>
       </div>
-      <div class="card__back">
+      <div class="card__back" v-if="content.verse">
         <Chart
           :content="content.verse"
           :visibility="isFlipped ? 'visible' : ''"
@@ -87,7 +87,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .card {
   float: left;
   padding: 0 1%;
