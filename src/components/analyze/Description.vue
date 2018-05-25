@@ -21,7 +21,9 @@ export default {
 
 <style>
 .analyze__description {
-  padding: 0 15%;
+  background-color: #fff;
+  margin-left: -12%;
+  margin-right: -12%;
 }
 
 .analyze__description svg {
