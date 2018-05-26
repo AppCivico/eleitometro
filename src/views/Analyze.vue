@@ -62,6 +62,10 @@ export default {
   mounted() {
     this.getData(this.id);
   },
+  beforeRouteLeave (to, from, next) {
+    this.$store.dispatch('CLEAN_ANALYZE');
+    next();
+  },
   methods: {
     getData(id) {
       const payload = {
