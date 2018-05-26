@@ -22,6 +22,7 @@
 
 <script>
 import Card from './Card.vue';
+import config from '../config';
 
 export default {
   name: 'Summary',
@@ -44,7 +45,7 @@ export default {
       if (this.cards.length > 0) {
         return this.cards[this.activeCard].backgroundColor;
       }
-      return '#3ea0fb';
+      return config.colors.blue;
     }
   },
   mounted() {

@@ -121,7 +121,7 @@ export default {
 .card__front {
 	z-index: 2;
 	transform: rotateY(0deg);
-  color: #fff;
+  color: $white;
   text-align: left;
 }
 
@@ -136,7 +136,7 @@ export default {
 
 .card__back {
 	transform: rotateY(180deg);
-  background-color: #f2f2f2;
+  background-color: $grayLight;
 }
 
 .card__flipBtn{

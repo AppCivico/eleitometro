@@ -19,15 +19,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .post {
   padding: 0 15%;
-  color: #66757f;
+  color: $gray;
   text-align: left;
 }
 
 .post h3 {
-  color: #000;
+  color: $black;
   font-size: 2.4em;
   font-weight: 700;
   margin-bottom: 30px;

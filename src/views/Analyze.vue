@@ -72,10 +72,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .analyze {
   padding: 0 10%;
-  background-color: #f2f2f2;
+  background-color: $grayLight;
 }
 
 .analyze > section,

@@ -33,9 +33,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .analyze__media {
-  background: #fff;
+  background: $white;
   padding: 20px 0;
   margin-bottom: 30px;
   border-radius: 14px;
@@ -50,7 +50,7 @@ export default {
 
 .analyze__media h3 {
   font-size: 2.4em;
-  color: #66757f;
+  color: $gray;
   font-weight: 300;
   margin-bottom: 20px;
 }

@@ -38,9 +38,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .analyze__article {
-  background: #fff;
+  background: $white;
   padding: 20px 0;
   margin-bottom: 30px;
   border-radius: 14px;
@@ -60,7 +60,7 @@ export default {
 
 .analyze__article h3 {
   font-size: 2.4em;
-  color: #66757f;
+  color: $gray;
   font-weight: 300;
   margin-bottom: 20px;
 }
@@ -76,14 +76,14 @@ export default {
 .analyze__article .article__writer {
   font-size: 1.2em;
   margin-bottom: 20px;
-  color: #66757f;
+  color: $gray;
   font-weight: 700;
   display: block;
 }
 
 .analyze__article > a {
   font-size: 1.2em;
-  color: #66757f;
+  color: $gray;
   font-weight: 700;
   margin-top: 20px;
   display: block;

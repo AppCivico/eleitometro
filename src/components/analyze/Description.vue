@@ -19,9 +19,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .analyze__description {
-  background-color: #fff;
+  background-color: $white;
   margin-left: -12%;
   margin-right: -12%;
 }
@@ -37,7 +37,7 @@ export default {
 
 .analyze__description h3 {
   font-size: 1.6em;
-  color: #66757f;
+  color: $gray;
 }
 
 .analyze__description div {
