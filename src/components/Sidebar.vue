@@ -39,9 +39,9 @@
       </ul>
     </nav>
     <ul class="secundary">
-      <li><a href="#">Sobre a FVG DAPP</a></li>
-      <li><a href="#">Metodologia</a></li>
-      <li><a href="#">Assinar Newsletter</a></li>
+      <li><a href="#" @click.prevent="closeRoute(`/about`)">Sobre a FVG DAPP</a></li>
+      <li><a href="#" @click.prevent="closeRoute(`/metodology`)">Metodologia</a></li>
+      <li><a href="#footer" @click="close()">Assinar Newsletter</a></li>
     </ul>
     <ul class="social">
       <li class="facebook"><a href="#">Facebook</a></li>

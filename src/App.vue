@@ -6,16 +6,19 @@
     </header>
     <Sidebar :status="sidebar" @closeSidebar="toggleSidebar('')"/>
     <router-view/>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Sidebar from '@/components/Sidebar.vue';
+import Footer from './components/Footer';
 
 export default {
   name: 'App',
   components: {
     Sidebar,
+    Footer,
   },
   computed: {
     pageTitle() {
@@ -107,5 +110,9 @@ img {
   background-image: url('./assets/icon-menu.png');
   border: 0;
   text-indent: -9999px;
+}
+
+.svg-icon {
+  width: 100%;
 }
 </style>
