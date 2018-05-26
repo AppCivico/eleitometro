@@ -119,7 +119,7 @@ export default {
   display: block;
   height: 4px;
   width: 0;
-  background: #66757f;
+  background: $gray;
   transition: width 250ms;
   border-radius: 2px;
 }

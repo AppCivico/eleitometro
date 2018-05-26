@@ -41,6 +41,7 @@ export default {
       this.$store.dispatch('SUBSCRIBE', data)
         .then(() => {
           this.email = '';
+          this.errorMessage = '';
           this.successMessage = 'E-mail cadastrado com sucesso';
         }).catch((err) => {
           this.toggleLoading();
@@ -65,9 +66,9 @@ export default {
   width: 100%;
   background-color: transparent;
   border: 0;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid $white;
   padding: 10px 30px 10px 0;
-  color: #fff;
+  color: $white;
   font-size: 1.4em;
   font-weight: 300;
 
@@ -93,12 +94,12 @@ export default {
 
 p.error {
   margin-top: 10px;
-  color: #ffa10b;
+  color: $orange;
 }
 
 p.success {
   margin-top: 10px;
-  color:#15ff0a;
+  color: $green;
 }
 
 </style>

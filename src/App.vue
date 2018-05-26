@@ -54,7 +54,7 @@ button {
 }
 
 body {
-  background: grey;
+  background: $grayLight;
   height: 100%;
   font-size: 62.5%;
 }
@@ -68,9 +68,9 @@ img {
   position: relative;
   font-family: 'Roboto Slab', serif;
   text-align: center;
-  color: #000;
+  color:$black;
   margin: 0 auto;
-  background: white;
+  background: $white;
   max-width: 480px;
   min-height: 100%;
   overflow: hidden;

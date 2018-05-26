@@ -1,14 +1,16 @@
 <template>
   <main class="analyze">
-    <template v-if="analyze.length > 0" v-for="(item, i) in analyze">
-      <Description :content="item" :type="type" v-if="item.type === 'description'" :key="i"/>
-      <Dashboard :content="item" v-if="item.type === 'dashboard'" :key="item.type+i"/>
-      <Card :content="item" v-if="item.type === 'card'" :key="item.type+i"/>
-      <Media :content="item" v-if="item.type === 'media'" :key="item.type+i"/>
-      <Article :content="item" v-if="item.type === 'media'" :key="item.type+i"/>
-      <Cloud :content="item" v-if="item.type === 'cloud'" :key="item.type+i"/>
+    <template v-if="analyze.length > 0">
+      <template v-for="(item, i) in analyze">
+        <Description :content="item" :type="type" v-if="item.type === 'description'" :key="i"/>
+        <Dashboard :content="item" v-if="item.type === 'dashboard'" :key="item.type+i"/>
+        <Card :content="item" v-if="item.type === 'card'" :key="item.type+i"/>
+        <Media :content="item" v-if="item.type === 'media'" :key="item.type+i"/>
+        <Article :content="item" v-if="item.type === 'media'" :key="item.type+i"/>
+        <Cloud :content="item" v-if="item.type === 'cloud'" :key="item.type+i"/>
+      </template>
     </template>
-    <template v-else>{{ emptyMessage }}</template>
+    <template v-else><h3 class="analyze__message">{{ emptyMessage }}</h3></template>
   </main>
 </template>
 
@@ -32,12 +34,15 @@ export default {
   },
   data() {
     return {
-      emptyMessage: 'Carregando',
+      emptyMessage: 'Carregando informações',
     };
   },
   computed: {
+    route() {
+      return this.$route;
+    },
     id() {
-      return this.$route.params.id;
+      return this.route.params.id;
     },
     analyze() {
       return this.$store.state.analyze;
@@ -48,12 +53,18 @@ export default {
     },
   },
   watch: {
-    id(val) {
-      this.getData(val);
+    route(val) {
+      this.$store.dispatch('CLEAN_ANALYZE');
+      this.emptyMessage = 'Carregando informações';
+      this.getData(this.id);
     }
   },
   mounted() {
     this.getData(this.id);
+  },
+  beforeRouteLeave (to, from, next) {
+    this.$store.dispatch('CLEAN_ANALYZE');
+    next();
   },
   methods: {
     getData(id) {
@@ -66,16 +77,18 @@ export default {
           if (this.analyze.length < 1) {
             this.emptyMessage = 'Sem informações';
           }
-        })
+        }).catch(() => {
+          this.emptyMessage = 'Ocorreu um erro inesperado ao buscar informações, tente recarregar a página';
+        });
     },
   },
 }
 </script>
 
-<style>
+<style lang="scss">
 .analyze {
   padding: 0 10%;
-  background-color: #f2f2f2;
+  background-color: $grayLight;
 }
 
 .analyze > section,
@@ -102,5 +115,10 @@ export default {
 .analyze .card__share.open {
   padding: 30px;
 }
-</style>
 
+.analyze__message {
+  font-size: 1.8em;
+  padding: 20px 10%;
+  text-align: left;
+}
+</style>

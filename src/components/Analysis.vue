@@ -139,7 +139,7 @@ export default {
 	width: 49%;
 	display: block;
 	border-radius: 8px;
-	background: #f2f2f2;
+	background: $grayLight;
 	padding: 20px;
 
 	&:nth-of-type(2n) {

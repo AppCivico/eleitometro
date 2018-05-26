@@ -34,10 +34,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .footer {
-  background-color: #66757f;
-  color: #fff;
+  background-color: $gray;
+  color: $white;
   text-align: left;
   margin-top: 30px;
 }

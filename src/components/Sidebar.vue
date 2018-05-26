@@ -126,7 +126,7 @@ export default {
   right: -100%;
   width: 90%;
   height: 100%;
-  background: #f2f2f2;
+  background: $grayLight;
   opacity: 1;
   overflow: hidden;
   padding: 50px 30px;
@@ -230,7 +230,7 @@ export default {
   display: block;
   width: 50px;
   height: 50px;
-  background-color: #fff;
+  background-color: $white;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
@@ -238,7 +238,7 @@ export default {
   transition: background-color 250ms;
 
   &:hover {
-    background-color: #f2f2f2;
+    background-color: $grayLight;
   }
 }
 

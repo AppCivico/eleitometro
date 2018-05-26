@@ -153,7 +153,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .chart {
   width: 100%;
   text-align: left;
@@ -174,8 +174,8 @@ export default {
 }
 
 .graph__total {
-  background: #fff;
-  color: #66757f;
+  background: $white;
+  color: $gray;
   text-align: center;
   font-size: 1.4em;
   font-weight: 700;

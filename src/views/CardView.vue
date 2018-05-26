@@ -42,10 +42,10 @@ export default {
 
 .cardView__button {
 	font-size: 2em;
-	color: #fff;
+	color: $white;
 	text-decoration: none;
 	text-align: left;
-	background-color: #66757f;
+	background-color: $gray;
 	background-image: url('../assets/icon-arrow-right.png');
 	background-repeat: no-repeat;
 	background-position: center right 20px;

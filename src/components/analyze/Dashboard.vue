@@ -72,7 +72,7 @@ export default {
 
 .dashboard nav {
   display: block;
-  background: #fff;
+  background: $white;
   margin-left: -12%;
   margin-right: -12%;
 }
@@ -86,11 +86,11 @@ export default {
   padding: 5px 10px;
 
   &.active {
-    color: #1771dd;
-    border-bottom: 5px solid #1771dd;
+    color: $blue;
+    border-bottom: 5px solid $blue;
 
     a {
-      color: #1771dd;
+      color: $blue;
     }
   }
 }
@@ -99,22 +99,22 @@ export default {
   text-decoration: none;
   font-size: 1.6em;
   font-weight: 600;
-  color: #66757f;
+  color: $gray;
 }
 
 .dashboard h3 {
   font-size: 2.4em;
   font-weight: 300;
-  color: #66757f;
+  color: $gray;
   margin: 30px 0;
 }
 
 .dashboard h3 span {
-  color: #1771dd;
+  color: $blue;
 }
 
 .dashboard__robots {
-  background: #fff;
+  background: $white;
   padding: 10px 30px 30px;
   border-radius: 14px;
 }
@@ -127,6 +127,6 @@ export default {
 
 .dashboard__robots .value {
   font-size: 2.4em;
-  color: #66757f;
+  color: $gray;
 }
 </style>
