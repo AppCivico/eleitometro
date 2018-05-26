@@ -107,6 +107,9 @@ export default new Vuex.Store({
         );
       });
     },
+    CLEAN_ANALYZE({ commit }) {
+      commit('SET_ANALYZE', { res: [] });
+    },
     // eslint-disable-next-line
     SUBSCRIBE({ commit }, data) {
       return new Promise((resolve, reject) => {
