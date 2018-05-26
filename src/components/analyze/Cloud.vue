@@ -22,16 +22,25 @@ export default {
   computed: {
     types() {
       const types = [];
-      /* if (this.content) {
+      if (this.content) {
         this.content.words.map(item => {
           console.log(item.label);
-          if (types.findIndex(item.label) === -1) {
-            types.push(item.label);
+          if (types.findIndex((typesItem) => typesItem.title === item.label) === -1) {
+            const data = {
+              title: item.label,
+              name: this.cleanLabel(item.label),
+            }
+            types.push(data);
           }
         })
-      } */
+      }
       return types
     }
+  },
+  methods: {
+    cleanLabel(label) {
+      return label.toLowerCase().replace(/\s/g, '');
+    },
   },
 }
 </script>
