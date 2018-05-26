@@ -41,6 +41,7 @@ export default {
       this.$store.dispatch('SUBSCRIBE', data)
         .then(() => {
           this.email = '';
+          this.errorMessage = '';
           this.successMessage = 'E-mail cadastrado com sucesso';
         }).catch((err) => {
           this.toggleLoading();
