@@ -4,10 +4,10 @@
       class="summary__wrapper"
       :style="{
         width: `${cardsQt * 100}%`,
-        marginLeft: `-${activeCard * 100}%`,
+        marginLeft: `-${activeCard * 95}%`,
       }"
     >
-      <Card v-for="card in cards" :key="card.id" :content="card" :width="100 / cardsQt"/>
+      <Card v-for="card in cards" :key="card.id" :content="card" :width="95 / cardsQt"/>
     </div>
     <div class="scrollBar">
       <span
