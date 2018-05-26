@@ -24,6 +24,8 @@ export default {
   background-color: $white;
   margin-left: -12%;
   margin-right: -12%;
+  padding-right: 10%;
+  padding-left: 10%;
 }
 
 .analyze__description svg {
