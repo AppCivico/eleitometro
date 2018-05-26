@@ -18,3 +18,31 @@ export default {
     name: 'About'
 }
 </script>
+
+<style>
+.post {
+  padding: 0 15%;
+  color: #66757f;
+  text-align: left;
+}
+
+.post h3 {
+  color: #000;
+  font-size: 2.4em;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.post h4 {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.post p,
+.post ul,
+.post ol {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+</style>

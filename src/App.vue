@@ -111,4 +111,8 @@ img {
   border: 0;
   text-indent: -9999px;
 }
+
+.svg-icon {
+  width: 100%;
+}
 </style>

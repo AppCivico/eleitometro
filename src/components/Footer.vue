@@ -1,10 +1,11 @@
 <template>
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <section class="footer__section section--border">
       <ul class="secundary">
         <li><router-link to="/about">Sobre a FVG DAPP</router-link></li>
         <li><router-link to="/metodology">Metodologia</router-link></li>
         <li><a href="#">Assinar Newsletter</a></li>
+        <Newsletter />
       </ul>
       <ul class="social">
         <li class="facebook"><a href="#">Facebook</a></li>
@@ -23,8 +24,13 @@
 </template>
 
 <script>
+import Newsletter from './Newsletter';
+
 export default {
   name: 'Footer',
+  components: {
+    Newsletter,
+  }
 }
 </script>
 
