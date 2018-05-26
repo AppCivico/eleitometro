@@ -54,7 +54,6 @@ export default {
   },
   watch: {
     route(val) {
-      console.log('mudou', val);
       this.$store.dispatch('CLEAN_ANALYZE');
       this.emptyMessage = 'Carregando informações';
       this.getData(this.id);
