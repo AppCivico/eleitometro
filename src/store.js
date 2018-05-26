@@ -4,7 +4,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 
-const api = 'https://dapi-eleitometro.appcivico.com';
+import config from './config';
 
 Vue.use(Vuex);
 
@@ -21,18 +21,18 @@ export default new Vuex.Store({
     SET_CARDS(state, { res }) {
       // remove after admin in ready
       const resColor = res;
-      resColor[0].backgroundColor = '#3ea0fb';
-      resColor[1].backgroundColor = '#33cc66';
-      resColor[2].backgroundColor = '#f4900c';
-      resColor[3].backgroundColor = '#f94e63';
-      resColor[4].backgroundColor = '#3ea0fb';
+      resColor[0].backgroundColor = config.colors.blue;
+      resColor[1].backgroundColor = config.colors.green;
+      resColor[2].backgroundColor = config.colors.orange;
+      resColor[3].backgroundColor = config.colors.red;
+      resColor[4].backgroundColor = config.colors.blue;
 
       state.cards = res;
     },
     SET_CARD(state, { res }) {
       state.card = res[0];
       // remove after admin in ready
-      state.card.backgroundColor = '#3ea0fb';
+      state.card.backgroundColor = config.colors.blue;
     },
     SET_CANDIDATES(state, { res }) {
       state.candidates = res;
@@ -50,7 +50,7 @@ export default new Vuex.Store({
   actions: {
     LOAD_CARDS({ commit }) {
       return new Promise((resolve, reject) => {
-        axios.get(`${api}/cards`).then(
+        axios.get(`${config.api}/cards`).then(
           (response) => {
             commit('SET_CARDS', { res: response.data });
             resolve();
@@ -64,7 +64,7 @@ export default new Vuex.Store({
     },
     LOAD_CARD({ commit }, id) {
       return new Promise((resolve, reject) => {
-        axios.get(`${api}/cards/${id}`).then(
+        axios.get(`${config.api}/cards/${id}`).then(
           (response) => {
             commit('SET_CARD', { res: response.data });
             resolve();
@@ -78,13 +78,13 @@ export default new Vuex.Store({
     },
     LOAD_ANALYSIS({ commit }) {
       function getCandidates() {
-        return axios.get(`${api}/candidates`);
+        return axios.get(`${config.api}/candidates`);
       }
       function getThemes() {
-        return axios.get(`${api}/themes`);
+        return axios.get(`${config.api}/themes`);
       }
       function getPanorams() {
-        return axios.get(`${api}/panoramas`);
+        return axios.get(`${config.api}/panoramas`);
       }
 
       axios.all([getCandidates(), getThemes(), getPanorams()]).then(axios.spread((candidates, themes, panorams) => {
@@ -95,7 +95,7 @@ export default new Vuex.Store({
     },
     LOAD_ANALYZE({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        axios.get(`${api}/analyse/${payload.type}/${payload.id}`).then(
+        axios.get(`${config.api}/analyse/${payload.type}/${payload.id}`).then(
           (response) => {
             commit('SET_ANALYZE', { res: response.data });
             resolve();
@@ -113,7 +113,7 @@ export default new Vuex.Store({
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          url: `${api}/subscribe`,
+          url: `${config.api}/subscribe`,
           data,
         })
           .then((response) => {
