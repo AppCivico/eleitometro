@@ -17,7 +17,7 @@ export default {
     Card,
   },
   mounted() {
-    this.$store.dispatch('LOAD_CARD', this.$route.params.id);
+	  this.$store.dispatch('LOAD_CARD', this.$route.params.id);
   },
   computed: {
     card() {
