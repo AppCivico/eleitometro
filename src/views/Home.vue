@@ -41,14 +41,13 @@ export default {
       return;
     } else {
       next((vm) => {
-        vm.status = 'start';
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+          vm.status = 'done';
+        } else {
+          vm.status = 'start';
+        }
       });
     }    
-  },
-  mounted() {
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      this.status = 'done';
-    }
   },
   methods: {
     animateLauchScreen() {
