@@ -16,6 +16,7 @@ export default new Vuex.Store({
     candidates: [],
     panorams: [],
     themes: [],
+    userType: '',
   },
   mutations: {
     SET_CARDS(state, { res }) {
@@ -45,6 +46,9 @@ export default new Vuex.Store({
     },
     SET_ANALYZE(state, { res }) {
       state.analyze = res;
+    },
+    SET_USER_TYPE(state, { res }) {
+      state.userType = res;
     },
   },
   actions: {
@@ -127,6 +131,9 @@ export default new Vuex.Store({
             reject(err.response);
           });
       });
+    },
+    USER_TYPE({ commit }, type) {
+      commit('SET_USER_TYPE', { res: type });
     },
   },
 });

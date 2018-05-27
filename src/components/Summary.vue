@@ -4,10 +4,10 @@
       class="summary__wrapper"
       :style="{
         width: `${cardsQt * 100}%`,
-        marginLeft: `-${activeCard * 100}%`,
+        marginLeft: `-${activeCard * 95}%`,
       }"
     >
-      <Card v-for="card in cards" :key="card.id" :content="card" :width="100 / cardsQt"/>
+      <Card v-for="card in cards" :key="card.id" :content="card" :width="95 / cardsQt"/>
     </div>
     <div class="scrollBar">
       <span
@@ -35,6 +35,9 @@ export default {
     }
   },
   computed: {
+    userType() {
+      return this.$store.state.userType;
+    },
     cards() {
       return this.$store.state.cards;
     },
@@ -47,6 +50,11 @@ export default {
       }
       return config.colors.blue;
     }
+  },
+  watch: {
+    userType() {
+      this.handleTouch();
+    },
   },
   mounted() {
     this.handleTouch();
@@ -65,18 +73,40 @@ export default {
 
       const gestureZone = document.querySelector('.summary');
 
-      gestureZone.addEventListener('touchstart', (event) => {
-        this.touchStart = event.changedTouches[0].screenX;
-      }, false);
+      if (this.userType === 'touch') {
+        gestureZone.addEventListener('touchstart', (event) => {
+          this.touchStart = event.changedTouches[0].screenX;
+        }, false);
 
-      gestureZone.addEventListener('touchend', (event) => {
-        this.touchEnd = event.changedTouches[0].screenX;
-        this.handleGesture(this.touchStart, this.touchEnd);
-      }, false);
+        gestureZone.addEventListener('touchend', (event) => {
+          this.touchEnd = event.changedTouches[0].screenX;
+          this.handleGesture(this.touchStart, this.touchEnd);
+        }, false);
+      } else {
+        gestureZone.addEventListener('mousedown', (event) => {
+          this.touchStart = event.screenX;
+        }, false);
+
+        gestureZone.addEventListener('mouseup', (event) => {
+          this.touchEnd = event.screenX;
+          this.handleGesture(this.touchStart, this.touchEnd);
+        }, false);
+      }
     },
     handleGesture(start, end) {
       const handleWidth = Math.abs(end - start);
-      if (handleWidth > 100) {
+      let move = false;
+      if (this.userType === 'touch') {
+        if (handleWidth > 100) {
+          move = true;
+        }
+      } else {
+        if (handleWidth > 50) {
+          move = true;
+        }
+      }
+
+      if (move) {
         if (end < start) {
           this.swipeCard('left');
         } else if (end > start) {

@@ -2,12 +2,12 @@
   <main class="analyze">
     <template v-if="analyze.length > 0">
       <template v-for="(item, i) in analyze">
-        <Description :content="item" :type="type" v-if="item.type === 'description'" :key="i"/>
-        <Dashboard :content="item" v-if="item.type === 'dashboard'" :key="item.type+i"/>
-        <Card :content="item" v-if="item.type === 'card'" :key="item.type+i"/>
-        <Media :content="item" v-if="item.type === 'media'" :key="item.type+i"/>
-        <Article :content="item" v-if="item.type === 'media'" :key="item.type+i"/>
-        <Cloud :content="item" v-if="item.type === 'cloud'" :key="item.type+i"/>
+        <Description :content="item" :type="type" v-if="item.type === 'description'" :key="item.type+Math.random()"/>
+        <Dashboard :content="item" v-else-if="item.type === 'dashboard'" :key="item.type+Math.random()"/>
+        <Card :content="item" v-else-if="item.type === 'card'" :key="item.type+Math.random()"/>
+        <Media :content="item" v-else-if="item.type === 'media'" :key="item.type+Math.random()"/>
+        <Article :content="item" v-else-if="item.type === 'article'" :key="item.type+Math.random()"/>
+        <Cloud :content="item" v-else-if="item.type === 'cloud'" :key="item.type+Math.random()"/>
       </template>
     </template>
     <template v-else><h3 class="analyze__message">{{ emptyMessage }}</h3></template>
@@ -87,7 +87,7 @@ export default {
 
 <style lang="scss">
 .analyze {
-  padding: 0 10%;
+  padding: 0 10% 30px;
   background-color: $grayLight;
 }
 

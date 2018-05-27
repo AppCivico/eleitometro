@@ -30,6 +30,13 @@ export default {
       sidebar: '',
     }
   },
+  mounted() {
+    const onFirstTouch = () => {
+      this.$store.dispatch('USER_TYPE', 'touch');
+      window.removeEventListener('touchstart', onFirstTouch, false);
+    }
+    window.addEventListener('touchstart', onFirstTouch, false);
+  },
   methods: {
     toggleSidebar(status) {
       this.sidebar = status;
@@ -61,7 +68,7 @@ body {
 
 img {
   max-width: 100%;
-	height: auto;
+  height: auto;
 }
 
 #app {

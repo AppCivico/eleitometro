@@ -10,7 +10,7 @@
     </div>
     -->
     <div class="article__content" v-html="content.description"></div>
-    <a :href="content.link" targe="_blank">LER MATÉRIA</a>
+    <a v-if="content.link" :href="content.link" target="_blank">LER MATÉRIA</a>
   </section>
 </template>
 

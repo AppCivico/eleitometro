@@ -90,7 +90,7 @@ export default {
 <style lang="scss">
 .card {
   float: left;
-  padding: 0 1%;
+  padding: 0 0.5%;
   height: 470px;
   width: 100%;
   perspective: 1000px;
@@ -128,6 +128,10 @@ export default {
 .card__front .front__content {
   font-size: 3em;
   font-weight: 300;
+}
+
+.front__content svg {
+  max-width: 100%;
 }
 
 .card__front strong {

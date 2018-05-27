@@ -1,19 +1,21 @@
 <template>
   <div :class="`launchScreen ${status === 'done' ? 'hidden' : ''}`">
-    <div class="launchScreen__container">
-      <svg class="svg-icon">
-        <use xlink:href="#logo_eleitometro"></use>
-      </svg>
-      <h1>Eleitômetro</h1>
-      <h2>{{ subtitle }}</h2>
+    <div class="launchScreen__wrapper">
+      <div class="launchScreen__container">
+        <svg class="svg-icon">
+          <use xlink:href="#logo_eleitometro"></use>
+        </svg>
+        <h1>Eleitômetro</h1>
+        <h2>{{ subtitle }}</h2>
+      </div>
+      <div :class="`loadingBar ${status !== 'start' ? 'visible' : ''}`">
+        <span :style="{
+          width: `${loading}%`,
+          backgroundColor: status === 'done' ? '#3ea0fb' : '',
+        }" />
+      </div>
+      <img src="../assets/fgv-logo.png" class="fgvlogo">
     </div>
-    <div :class="`loadingBar ${status !== 'start' ? 'visible' : ''}`">
-      <span :style="{
-        width: `${loading}%`,
-        backgroundColor: status === 'done' ? '#3ea0fb' : '',
-      }" />
-    </div>
-    <img src="../assets/fgv-logo.png" class="fgvlogo">
   </div>
 </template>
 
@@ -63,11 +65,17 @@ export default {
   }
 }
 
-.launchScreen__container {
+.launchScreen__wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.launchScreen__container {
+  margin: 0 auto;
+  max-width: 75%;
 }
 
 .launchScreen__container svg {
@@ -88,18 +96,15 @@ export default {
 }
 
 .launchScreen .fgvlogo {
-  position: absolute;
-  left: 50%;
-  bottom: 50px;
+  position: relative;
+  margin: 0 auto;
   max-width: 120px;
   height: auto;
-  margin-left: -60px;
 }
 
 .loadingBar {
-  position: absolute;
-  bottom: 100px;
-  left: 10%;
+  position: relative;
+  margin: 10% auto 5%;
   width: 80%;
   height: 2px;
   background: #dcdcdc;
