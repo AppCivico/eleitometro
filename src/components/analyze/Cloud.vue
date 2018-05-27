@@ -35,7 +35,6 @@ export default {
       let i = 1;
       if (this.content) {
         this.content.words.map(item => {
-          console.log(item.label);
           if (types.findIndex((typesItem) => typesItem.title === item.label) === -1) {
             const data = {
               title: item.label,
