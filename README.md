@@ -4,6 +4,11 @@
 
 Requires NPM version > 5
 
+## Customization
+
+Scripts: `src/config.js` 
+Style: `src/styles/_variables`
+
 ## Build Setup
 
 ``` bash
@@ -36,3 +41,13 @@ Just put them in the `src/assets/svg` folder and webpack will take care of it.
 ```
 
 title being the literal name of the svg file
+
+## TODO
+
+1 - Fix line chart (Waiting API fix);
+2 - Fix Panorama analyze page (Waiting API fix);
+3 - Desktop layout;
+4 - Improve animations;
+    4.1 - Start moving summary on touchstart;
+    4.2 - LaunchScreen leave animation;
+5 - Lazy loading
