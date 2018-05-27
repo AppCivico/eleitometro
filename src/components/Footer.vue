@@ -4,7 +4,7 @@
       <ul class="secundary">
         <li><router-link to="/about">Sobre a FVG DAPP</router-link></li>
         <li><router-link to="/metodology">Metodologia</router-link></li>
-        <li><a href="#">Assinar Newsletter</a></li>
+        <li><a href="#" @click.prevent="''">Assinar Newsletter</a></li>
         <Newsletter />
       </ul>
       <ul class="social">
