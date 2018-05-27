@@ -21,14 +21,37 @@ export default {
   },
   data() {
     return {
-      status: 'start',
+      status: '',
     }
+  },
+  watch: {
+    status(val) {
+      if (val === 'start') {
+        this.animateLauchScreen();
+      } else  {
+        this.$store.dispatch('LOAD_CARDS');
+      }
+    },
+  },
+  beforeRouteEnter (to, from, next) {
+    if (from.name !== null) {
+      next((vm) => {
+        vm.status = 'done';
+      });
+      return;
+    } else {
+      next((vm) => {
+        vm.status = 'start';
+      });
+    }    
   },
   mounted() {
     if (window.matchMedia('(display-mode: standalone)').matches) {
       this.status = 'done';
-      this.$store.dispatch('LOAD_CARDS');
-    } else {
+    }
+  },
+  methods: {
+    animateLauchScreen() {
       setTimeout(() => {
         this.status = 'loading';
         this.$store.dispatch('LOAD_CARDS')
@@ -38,7 +61,7 @@ export default {
             }, 1000);
           });
       }, 1000);
-    }
+    },
   }
 };
 </script>
