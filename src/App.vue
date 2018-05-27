@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header class="header">
-      <h2>{{ pageTitle }}</h2>
+      <h2 :class="this.card.created_at ? 'small' : ''">{{ pageTitle }}</h2>
       <button @click="toggleSidebar('active')" class="header__menuIcon">Abrir menu</button>
     </header>
     <Sidebar :status="sidebar" @closeSidebar="toggleSidebar('')"/>
@@ -22,8 +22,14 @@ export default {
   },
   computed: {
     pageTitle() {
+      if (this.card.created_at) {
+        return `${this.$route.name} ${this.card.created_at}`;
+      }
       return this.$route.name;
-    }
+    },
+    card() {
+			return this.$store.state.card;
+		},
   },
   data() {
     return {
@@ -94,6 +100,10 @@ img {
   font-weight: 400;
   font-size: 2.4em;
   line-height: 1em;
+
+  &.small {
+    font-size: 2em;
+  }
 }
 
 .header h3 {
