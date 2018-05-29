@@ -64,8 +64,8 @@ export default {
       }
     },
     lineChart(ctx, graph) {
-      const data = graph.points;
-      const labels = data.map((item, i) => `${24 - (24/(i + 1))}h`);
+      const data = graph.points.map(item => item.value);
+      const labels = graph.points.map(item => item.label);
 
       const myChart = new Chart(ctx, {
         type: 'line',
@@ -92,11 +92,11 @@ export default {
             }],
           },
         },
-      });
+      })
     },
     barChart(ctx, graph) {
-      const data = graph.points;
-      const labels = data.map((item, i) => `${i}`);
+      const data = graph.points.map(item => item.value);
+      const labels = graph.points.map(item => item.label);
 
       const myChart = new Chart(ctx, {
         type: 'bar',
