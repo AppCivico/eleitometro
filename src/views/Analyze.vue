@@ -4,6 +4,7 @@
       <template v-for="(item, i) in analyze">
         <Description :content="item" :type="type" v-if="item.type === 'description'" :key="item.type+Math.random()"/>
         <Dashboard :content="item" v-else-if="item.type === 'dashboard'" :key="item.type+Math.random()"/>
+        <Ranking :content="item" v-else-if="item.type === 'ranking'" :key="item.type+Math.random()"/>
         <Card :content="item" v-else-if="item.type === 'card'" :key="item.type+Math.random()"/>
         <Media :content="item" v-else-if="item.type === 'media'" :key="item.type+Math.random()"/>
         <Article :content="item" v-else-if="item.type === 'article'" :key="item.type+Math.random()"/>
@@ -17,6 +18,7 @@
 <script>
 import Description from '../components/analyze/Description';
 import Dashboard from '../components/analyze/Dashboard';
+import Ranking from '../components/analyze/Ranking';
 import Card from '../components/Card';
 import Media from '../components/analyze/Media';
 import Article from '../components/analyze/Article';
@@ -27,6 +29,7 @@ export default {
   components: {
     Description,
     Dashboard,
+    Ranking,
     Card,
     Media,
     Article,
