@@ -97,11 +97,11 @@ export default {
       const handleWidth = Math.abs(end - start);
       let move = false;
       if (this.userType === 'touch') {
-        if (handleWidth > 100) {
+        if (handleWidth > 60) {
           move = true;
         }
       } else {
-        if (handleWidth > 50) {
+        if (handleWidth > 30) {
           move = true;
         }
       }
