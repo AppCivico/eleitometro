@@ -2,7 +2,9 @@
   <section class="analyze__article" v-if="content">
     <span class="article__writer">ANÁLISE FGV DAPP</span>
     <h3 v-html="content.title"></h3>
-    <img :src="content.image" alt="article thumbnail" v-if="mediaType === 'image'">
+    <template v-if="mediaType === 'image'">
+      <img :src="content.image" alt="article thumbnail" v-if="content.image">
+    </template>
     <div class="video__wrapper" v-else>
       <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${videoId}?rel=0&amp;controls=0&amp;showinfo=0`" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
