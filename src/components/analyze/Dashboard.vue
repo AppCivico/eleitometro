@@ -8,13 +8,13 @@
       </ul>
     </nav>
     <Chart :content="chartContent" :visibility="loadChart"/>
-    <h3>Menções Totais: <span>{{ formatNumber(active.mentions_total) }} (+{{ active.mentions_increased }}%)</span></h3>
+    <h3>Menções Totais: <span>{{ formatNumber(active.mentions_total) }} ({{ active.mentions_increased > 0 ? '+' : ''}}{{ active.mentions_increased }}%)</span></h3>
     <div class="dashboard__robots">
       <svg class="svg-icon">
         <use xlink:href="#panorama_robos"></use>
       </svg>
       <h4>Contas automatizadas pelo uso de robôs</h4>
-      <span class="value">{{ formatNumber(active.robot_count) }} (+{{ active.robot_increased }}%)</span>
+      <span class="value">{{ formatNumber(active.robot_count) }} ({{ active.robot_increased > 0 ? '+' : ''}}{{ active.robot_increased }}%)</span>
     </div>
   </section>
 </template>
