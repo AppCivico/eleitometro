@@ -4,11 +4,14 @@
     <template v-if="content.graph">
       <div class="chart__graph">
         <canvas ref="myChartCanvas" width="400" height="200"></canvas>
+        <div class="chart__legends" v-if="legends !== ''" v-html="legends"></div>
       </div>
-      <hr class="graph__separator">
-      <p class="graph__total" v-if="content.total">Total: {{ total }}</p>
+      <template v-if="content.total">
+        <hr class="graph__separator">
+        <p class="graph__total" v-if="content.total">Total: {{ total }}</p>
+      </template>
     </template>
-    <div class="chart__description" v-html="content.description" />
+    <div class="chart__description" v-html="content.description" v-if="content.description"/>
   </div>
 </template>
 
@@ -24,6 +27,7 @@ export default {
   data() {
     return {
       firstFlip: true,
+      legends: '',
     }
   },
   computed: {
@@ -139,15 +143,26 @@ export default {
               backgroundColor: [
                 'rgb(244,144,12)',
                 'rgb(62, 160, 251)',
-              ]
+                'rgb(51, 204, 102)',
+                'rgb(249, 78, 99)',
+                'rgb(11, 82, 147)',
+                'rgb(14, 122, 50)',
+                'rgb(132, 9, 24)',
+              ],
+              borderColor: 'transparent',
             },
           ],
         },
         options: {
           responsive: true,
           cutoutPercentage: 90,
+          legend: {
+            display: false,
+          }
         },
       });
+
+      this.legends = myChart.generateLegend();
     },
   }
 }
@@ -184,4 +199,25 @@ export default {
   margin: 10px 0;
 }
 
+.chart__legends {
+  margin-top: 10px;
+}
+
+.chart__legends ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chart__legends li {
+  font-size: 1.4em;
+}
+
+.chart__legends li span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
 </style>
