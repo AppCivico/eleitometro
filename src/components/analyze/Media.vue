@@ -2,7 +2,7 @@
   <section class="analyze__media" v-if="content">
     <h3 v-html="content.title"></h3>
     <img :src="content.image" alt="article thumbnail" v-if="mediaType === 'image'">
-    <div class="video__wrapper">
+    <div class="video__wrapper" v-else>
       <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${videoId}?rel=0&amp;controls=0&amp;showinfo=0`" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
     <div class="media__content" v-html="content.description"></div>

@@ -2,6 +2,7 @@
   <form @submit.prevent="validateForm" class="newsletter">
     <input type="email" name="email" v-model="email" placeholder="Seu email" class="newsletter__input">
     <button type="submit" class="newsletter__button" :disabled="loading">subscribe</button>
+    <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6LeykV0UAAAAABov2kUF8C-okpFRwhHpi0qlcGcZ"></div>
     <p class="error">{{ errorMessage }}</p>
     <p class="success">{{ successMessage }}</p>
   </form>
@@ -38,20 +39,26 @@ export default {
         mail: email,
       };
 
-      this.$store.dispatch('SUBSCRIBE', data)
-        .then(() => {
-          this.email = '';
-          this.errorMessage = '';
-          this.successMessage = 'E-mail cadastrado com sucesso';
-        }).catch((err) => {
-          this.toggleLoading();
+      const captcha = grecaptcha.getResponse();
+      if (captcha !== '') {
+        this.$store.dispatch('SUBSCRIBE', data)
+          .then(() => {
+            this.email = '';
+            this.errorMessage = '';
+            this.successMessage = 'E-mail cadastrado com sucesso';
+          }).catch((err) => {
+            this.toggleLoading();
 
-          if (err.data.error) {
-            this.errorMessage = err.data.error;
-          } else {
-            this.errorMessage = 'Ocorreu um erro inesperado, tente novamente';
-          }
-        });
+            if (err.data.error) {
+              this.errorMessage = err.data.error;
+            } else {
+              this.errorMessage = 'Ocorreu um erro inesperado, tente novamente';
+            }
+          });
+      } else {
+        this.toggleLoading();
+        this.errorMessage = 'É obrigatório confirmar o checkbox acima';
+      }
     }
   }
 }
@@ -102,4 +109,9 @@ p.success {
   color: $green;
 }
 
+.g-recaptcha {
+  margin-top: 10px;
+  transform: scale(0.85);
+  transform-origin: 0 0;
+}
 </style>

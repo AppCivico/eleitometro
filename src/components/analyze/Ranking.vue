@@ -1,5 +1,17 @@
 <template>
   <section class="ranking" v-if="content">
+    <template v-if="type === 'candidate'">
+      <h3>Temas associados ao candidato</h3>
+      <div class="ranking__description">Tópicos centrais ao discurso eleitoral do candidato versus os temas mais mencionados em relação ao mesmo na rede</div>
+    </template>
+    <template v-else-if="type === 'theme'">
+      <h3>Candidatos associados ao tema</h3>
+      <div class="ranking__description">Em relação ao discurso eleitoral dos candidatos</div>
+    </template>
+    <template v-else>
+      <h3>Temas associados ao panorama</h3>
+      <div class="ranking__description">Em relação aos temas mais mencionados</div>
+    </template>
     <Chart :content="chartContent" :visibility="loadChart"/>
   </section>
 </template>
@@ -11,6 +23,7 @@ export default {
   name: 'Ranking',
   props: {
     content: Object,
+    type: String,
   },
   components: {
     Chart,
@@ -49,67 +62,16 @@ export default {
 </script>
 
 <style lang="scss">
-.dashboard {
-  position: relative;
-}
-
-.dashboard nav {
-  display: block;
-  background: $white;
-  margin-left: -12%;
-  margin-right: -12%;
-}
-
-.dashboard nav ul {
-  list-style: none;
-}
-
-.dashboard nav li {
-  display: inline-block;
-  padding: 5px 10px;
-
-  &.active {
-    color: $blue;
-    border-bottom: 5px solid $blue;
-
-    a {
-      color: $blue;
-    }
-  }
-}
-
-.dashboard nav li a {
-  text-decoration: none;
-  font-size: 1.6em;
-  font-weight: 600;
-  color: $gray;
-}
-
-.dashboard h3 {
+.ranking h3 {
   font-size: 2.4em;
-  font-weight: 300;
-  color: $gray;
-  margin: 30px 0;
-}
-
-.dashboard h3 span {
-  color: $blue;
-}
-
-.dashboard__robots {
-  background: $white;
-  padding: 10px 30px 30px;
-  border-radius: 14px;
-}
-
-.dashboard__robots h4 {
-  font-size: 1.4em;
   font-weight: 400;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  padding: 0 5%;
 }
 
-.dashboard__robots .value {
-  font-size: 2.4em;
-  color: $gray;
+.ranking__description {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  padding: 0 5%;
 }
 </style>

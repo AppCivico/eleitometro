@@ -44,8 +44,8 @@
       <li><a href="#footer" @click="close()">Assinar Newsletter</a></li>
     </ul>
     <ul class="social">
-      <li class="facebook"><a href="#">Facebook</a></li>
-      <li class="twitter"><a href="#">Twitter</a></li>
+      <li class="facebook"><a href="https://www.facebook.com/FGV.DAPP" target="_blank">Facebook</a></li>
+      <li class="twitter"><a href="https://twitter.com/fgvdapp " target="_blank">Twitter</a></li>
       <li class="instagram"><a href="#">Instagram</a></li>
     </ul>
   </div>
