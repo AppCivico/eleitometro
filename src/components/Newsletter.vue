@@ -111,5 +111,7 @@ p.success {
 
 .g-recaptcha {
   margin-top: 10px;
+  transform: scale(0.85);
+  transform-origin: 0 0;
 }
 </style>
