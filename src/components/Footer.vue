@@ -8,16 +8,16 @@
         <Newsletter />
       </ul>
       <ul class="social">
-        <li class="facebook"><a href="#">Facebook</a></li>
-        <li class="twitter"><a href="#">Twitter</a></li>
-        <li class="instagram"><a href="#">Instagram</a></li>
+        <li class="facebook"><a href="https://www.facebook.com/FGV.DAPP" target="_blank">Facebook</a></li>
+        <li class="twitter"><a href="https://twitter.com/fgvdapp " target="_blank">Twitter</a></li>
+        <li class="instagram"><a href="#" target="_blank">Instagram</a></li>
       </ul>
     </section>
     <section class="footer__section">
       <img src="../assets/logo-white.png">
       <p class="footer__disclaimer">
         <strong>Eleitômetro 2018</strong><br>
-        FGV DAPP – Todos os direitos reservados®
+        <a href="http://www.dapp.fgv.br" target="_blank">FGV DAPP</a> – Todos os direitos reservados®
       </p>
     </section>
   </footer>
@@ -69,5 +69,9 @@ export default {
 .footer .footer__disclaimer {
   font-weight: 300;
   font-size: 1.4em;
+}
+
+.footer .footer__disclaimer a {
+  color: inherit;
 }
 </style>
