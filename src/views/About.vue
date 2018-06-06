@@ -1,15 +1,13 @@
 <template>
   <main class="post">
-    <h3>Lorem ipsum dolor sit amet consectetur</h3>
-    <p>adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+    <h3>Sobre a FGV-DAPP</h3>
+    <p>A FGV/DAPP Busca qualificar o debate público por meio da transparência de dados, da participação social e do diálogo na sociedade em rede.</p>
 
-    <h4>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h4>
-    <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+    <h4>A EQUIPE</h4>
+    <p>A DAPP produz análises de políticas públicas com uma equipe interdisciplinar e diversificada, de sólida formação em áreas como Sociologia, Ciência Política, Antropologia, Linguística, Economia, Administração Pública, Relações Internacionais, Estatística, Matemática, Filosofia e Comunicação Social, aliadas às áreas de Tecnologia da Informação e Design.</p>
 
-    <h4>1914 translation by H. Rackham</h4>
-    <p>"But I must explain to you how all this mistaken idea</p>
-
-    <p>of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. </p>
+    <h4>LINHAS DE PESQUISA APLICADA</h4>
+    <p>A DAPP desenvolve pesquisa social aplicada com o objetivo de promover a inovação para políticas públicas, produzindo análises qualificadas e disponibilizando diversas ferramentas de visualização e análise de dados. Suas metodologias de pesquisa reúnem métodos quantitativos e qualitativos em integração com a análise de redes sociais e interface com áreas de tecnologia e design. <a href="http://dapp.fgv.br/wp-content/themes/Dapp/downloads/livro-site-BR-web.pdf" target="_blank">[saiba mais]</a></p>
   </main>
 </template>
 
@@ -37,6 +35,7 @@ export default {
   font-size: 1.8em;
   font-weight: 700;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .post p,
