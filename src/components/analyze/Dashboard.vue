@@ -59,7 +59,7 @@ export default {
   methods: {
     changeSection(section) {
       this.activeSection = section;
-      this.loadChart = 'reload';
+      this.loadChart = `reload ${section}`;
     },
     formatNumber(amount) {
       let formated = `${amount}`;

@@ -43,7 +43,7 @@ export default {
         }
       }
 
-      if (value === 'reload') {
+      if (value.indexOf('reload') > -1) {
         if (this.content.graph){
           this.mountChart();
         }
