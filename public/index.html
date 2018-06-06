@@ -23,5 +23,13 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script type="text/javascript">
+      var onloadCallback = function () {
+        grecaptcha.render('g-recaptcha', {
+          'sitekey': '6LeykV0UAAAAABov2kUF8C-okpFRwhHpi0qlcGcZ'
+        });
+      };
+    </script>
+    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
   </body>
 </html>
