@@ -1,10 +1,10 @@
 <template>
   <main class="analyze">
     <template v-if="analyze.length > 0">
-      <template v-for="(item, i) in analyze">
+      <template v-for="item in analyze">
         <Description :content="item" :type="type" v-if="item.type === 'description'" :key="item.type+Math.random()"/>
         <Dashboard :content="item" v-else-if="item.type === 'dashboard'" :key="item.type+Math.random()"/>
-        <Ranking :content="item" v-else-if="item.type === 'ranking'" :key="item.type+Math.random()"/>
+        <Ranking :content="item" v-else-if="item.type === 'ranking'" :type="type" :key="item.type+Math.random()"/>
         <Card :content="item" v-else-if="item.type === 'card'" :key="item.type+Math.random()"/>
         <Media :content="item" v-else-if="item.type === 'media'" :key="item.type+Math.random()"/>
         <Article :content="item" v-else-if="item.type === 'article'" :key="item.type+Math.random()"/>
