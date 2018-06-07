@@ -3,7 +3,7 @@
     <h3 class="chart__title" v-html="content.title" v-if="content.title"/>
     <template v-if="content.graph">
       <div class="chart__graph">
-        <canvas ref="myChartCanvas" width="400" height="200"></canvas>
+        <canvas ref="myChartCanvas" width="400" :height="content.graph.type === 'pizza' ? 250 : 350"></canvas>
         <div class="chart__legends" v-if="legends !== ''" v-html="legends"></div>
       </div>
       <template v-if="content.total">
