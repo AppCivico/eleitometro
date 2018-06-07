@@ -80,7 +80,7 @@ export default {
               label: '',
               data,
               fill: false,
-              borderColor: 'rgb(244,144,12)',
+              borderColor: graph.color ? graph.color : 'rgb(244,144,12)',
               lineTension: 0.1,
             },
           ],
