@@ -77,7 +77,7 @@ export default {
           labels,
           datasets: [
             {
-              label: 'b',
+              label: '',
               data,
               fill: false,
               borderColor: 'rgb(244,144,12)',
@@ -92,6 +92,9 @@ export default {
           },
           scales: {
             xAxes: [{
+              gridLines: {
+                display: false,
+              },
               ticks: {
                 callback: function(value, index, values) {
                   if (value.indexOf(':') > -1) {
@@ -142,6 +145,9 @@ export default {
           },
           scales: {
             xAxes: [{
+              gridLines: {
+                display: type === 'bar' ? false : true,
+              },
               barThickness: 10,
               ticks: {
                 callback: function(value, index, values) {
@@ -153,6 +159,9 @@ export default {
               }
             }],
             yAxes: [{
+              gridLines: {
+                display: type !== 'bar' ? false : true,
+              },
               ticks: {
                 callback: function(value, index, values) {
                   if (value > 999) {
