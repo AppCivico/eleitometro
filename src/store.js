@@ -31,9 +31,12 @@ export default new Vuex.Store({
       state.cards = res;
     },
     SET_CARD(state, { res }) {
-      state.card = res[0];
-      // remove after admin in ready
-      state.card.backgroundColor = config.colors.blue;
+      if (res.length > 0) {
+        state.card = res[0];
+        if (!state.card.backgroundColor) {
+          state.card.backgroundColor = config.colors.blue;
+        }
+      }
     },
     SET_CANDIDATES(state, { res }) {
       state.candidates = res;
@@ -56,6 +59,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios.get(`${config.api}/cards`).then(
           (response) => {
+            console.log('res', response);
             commit('SET_CARDS', { res: response.data });
             resolve();
           },
