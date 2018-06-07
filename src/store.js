@@ -66,9 +66,10 @@ export default new Vuex.Store({
         );
       });
     },
-    LOAD_CARD({ commit }, id) {
+    LOAD_CARD({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        axios.get(`${config.api}/cards/${id}`).then(
+        const endpoint = payload.source === 'resume' ? 'cards' : 'card_editorial';
+        axios.get(`${config.api}/${endpoint}/${payload.id}`).then(
           (response) => {
             commit('SET_CARD', { res: response.data });
             resolve();
