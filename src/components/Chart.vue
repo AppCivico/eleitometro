@@ -77,7 +77,7 @@ export default {
           labels,
           datasets: [
             {
-              label: '',
+              label: 'b',
               data,
               fill: false,
               borderColor: 'rgb(244,144,12)',
@@ -92,11 +92,12 @@ export default {
           },
           scales: {
             xAxes: [{
-              display: false,
               ticks: {
                 callback: function(value, index, values) {
-                  if (value > 999) {
-                    return `${value/1000}k`
+                  if (value.indexOf(':') > -1) {
+                    return value.substring(0, value.length - 3)
+                  } else if (value.indexOf('/') > -1) {
+                    return value.split('/')[0]
                   }
                   return value
                 }
