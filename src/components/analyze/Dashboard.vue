@@ -2,7 +2,7 @@
   <section class="dashboard" v-if="content">
     <nav>
       <ul>
-        <li @click.prevent="changeSection('period1')" :class="`${activeSection === 'period1' ? 'active' : ''}`"><a href="#">HOJE</a></li>
+        <li v-if="this.content.period1.points.length > 0" @click.prevent="changeSection('period1')" :class="`${activeSection === 'period1' ? 'active' : ''}`"><a href="#">HOJE</a></li>
         <li @click.prevent="changeSection('period7')" :class="`${activeSection === 'period7' ? 'active' : ''}`"><a href="#">7 DIAS</a></li>
         <li @click.prevent="changeSection('period30')" :class="`${activeSection === 'period30' ? 'active' : ''}`"><a href="#">MÊS</a></li>
       </ul>
