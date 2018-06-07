@@ -54,6 +54,7 @@ export default {
           type: this.active.graph_type,
           points: this.active.points,
           total: this.active.mentions_total,
+          color: 'rgb(62, 160, 251)',
         },
       };
       return data;

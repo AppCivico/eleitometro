@@ -3,7 +3,7 @@
     <h3 class="chart__title" v-html="content.title" v-if="content.title"/>
     <template v-if="content.graph">
       <div class="chart__graph">
-        <canvas ref="myChartCanvas" width="400" height="200"></canvas>
+        <canvas ref="myChartCanvas" width="400" :height="content.graph.type === 'pizza' ? 250 : 350"></canvas>
         <div class="chart__legends" v-if="legends !== ''" v-html="legends"></div>
       </div>
       <template v-if="content.total">
@@ -77,10 +77,10 @@ export default {
           labels,
           datasets: [
             {
-              label: 'b',
+              label: '',
               data,
               fill: false,
-              borderColor: 'rgb(244,144,12)',
+              borderColor: graph.color ? graph.color : 'rgb(244,144,12)',
               lineTension: 0.1,
             },
           ],
@@ -92,6 +92,9 @@ export default {
           },
           scales: {
             xAxes: [{
+              gridLines: {
+                display: false,
+              },
               ticks: {
                 callback: function(value, index, values) {
                   if (value.indexOf(':') > -1) {
@@ -142,6 +145,9 @@ export default {
           },
           scales: {
             xAxes: [{
+              gridLines: {
+                display: type === 'bar' ? false : true,
+              },
               barThickness: 10,
               ticks: {
                 callback: function(value, index, values) {
@@ -153,6 +159,9 @@ export default {
               }
             }],
             yAxes: [{
+              gridLines: {
+                display: type !== 'bar' ? false : true,
+              },
               ticks: {
                 callback: function(value, index, values) {
                   if (value > 999) {
