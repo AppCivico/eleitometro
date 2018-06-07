@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     pageTitle() {
-      if (this.card.created_at) {
+      if (this.$route.fullPath.indexOf('source') > -1) {
         return `${this.$route.name} ${this.card.created_at}`;
       }
       return this.$route.name;
