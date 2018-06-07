@@ -70,12 +70,9 @@ export default {
   computed: {
     shareUrl() {
       if (this.content.verse) {
-        return encodeURIComponent(`${window.location.href}card/${this.content.id}?source=resume`);
+        return encodeURIComponent(`${window.location.origin}/#/card/${this.content.id}?source=resume`);
       }
-      const url = window.location.href.split('/');
-      url.splice(-1, 1);
-      const finalUrl = url.join('/');
-      return encodeURIComponent(`${finalUrl}/card/${this.content.id}?source=editorial`);
+      return encodeURIComponent(`${window.location.origin}/#/card/${this.content.id}?source=editorial`);
     },
     shareTitle() {
       const cleanTitle = this.content.frontHTML.replace(/(<([^>]+)>)/ig, '');
