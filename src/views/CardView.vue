@@ -1,11 +1,11 @@
 <template>
   <main class="cardView">
     <div class="cardView__wrapper">
-      <template v-if="status === 'loading'">
+      <template v-if="status !== 'loading'">
         <Card v-if="card.id" :content="card" :width="100"/>
-        <p v-else class="warning">Carregando informações</p>
+        <p v-else class="warning">Esse card não foi encontrado :(</p>
       </template>
-      <p v-else class="warning">Esse card não foi encontrado :(</p>
+      <p v-else class="warning">Carregando informações</p>
     </div>
     <router-link to="/" class="cardView__button">Acessar Eleitômetro</router-link>
   </main>
