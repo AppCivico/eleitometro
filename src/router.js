@@ -19,6 +19,9 @@ export default new Router({
       path: '/card/:id',
       name: 'Resumo em',
       component: CardView,
+      query: {
+        source: String,
+      },
     },
     {
       path: '/candidate/:id',
@@ -49,7 +52,7 @@ export default new Router({
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
-    }  
+    }
     return { x: 0, y: 0 }
   },
 });

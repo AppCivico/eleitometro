@@ -77,7 +77,7 @@ export default {
           labels,
           datasets: [
             {
-              label: '',
+              label: 'b',
               data,
               fill: false,
               borderColor: 'rgb(244,144,12)',
@@ -92,7 +92,26 @@ export default {
           },
           scales: {
             xAxes: [{
-              display: false,
+              ticks: {
+                callback: function(value, index, values) {
+                  if (value.indexOf(':') > -1) {
+                    return value.substring(0, value.length - 3)
+                  } else if (value.indexOf('/') > -1) {
+                    return value.split('/')[0]
+                  }
+                  return value
+                }
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                callback: function(value, index, values) {
+                  if (value > 999) {
+                    return `${value/1000}k`
+                  }
+                  return value
+                }
+              }
             }],
           },
         },
@@ -101,9 +120,10 @@ export default {
     barChart(ctx, graph) {
       const data = graph.points.map(item => item.value);
       const labels = graph.points.map(item => item.label);
+      const type = graph.style ? 'horizontalBar' : 'bar';
 
       const myChart = new Chart(ctx, {
-        type: 'bar',
+        type: type,
         data: {
           labels,
           datasets: [
@@ -122,8 +142,25 @@ export default {
           },
           scales: {
             xAxes: [{
-              display: false,
               barThickness: 10,
+              ticks: {
+                callback: function(value, index, values) {
+                  if (value > 999) {
+                    return `${value/1000}k`
+                  }
+                  return value
+                }
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                callback: function(value, index, values) {
+                  if (value > 999) {
+                    return `${value/1000}k`
+                  }
+                  return value
+                }
+              }
             }],
           },
         },

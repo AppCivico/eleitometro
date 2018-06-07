@@ -4,10 +4,10 @@
       <ul>
         <li @click.prevent="changeSection('period1')" :class="`${activeSection === 'period1' ? 'active' : ''}`"><a href="#">HOJE</a></li>
         <li @click.prevent="changeSection('period7')" :class="`${activeSection === 'period7' ? 'active' : ''}`"><a href="#">7 DIAS</a></li>
-        <li @click.prevent="changeSection('period30')" :class="`${activeSection === 'period30' ? 'active' : ''}`"><a href="#">30 DIAS</a></li>
+        <li @click.prevent="changeSection('period30')" :class="`${activeSection === 'period30' ? 'active' : ''}`"><a href="#">MÊS</a></li>
       </ul>
     </nav>
-    <Chart :content="chartContent" :visibility="loadChart"/>
+    <Chart v-if="chartContent.graph.points.length > 0" :content="chartContent" :visibility="loadChart"/>
     <h3 v-if="active.mentions_total">Menções Totais: <span>{{ formatNumber(active.mentions_total) }} ({{ active.mentions_increased > 0 ? '+' : ''}}{{ active.mentions_increased }}%)</span></h3>
     <div class="dashboard__robots" v-if="active.robot_count">
       <svg class="svg-icon">
@@ -40,6 +40,9 @@ export default {
     setTimeout(() => {
       this.loadChart = 'visible';
     }, 1000);
+    if (this.content.period1.points.length <= 0) {
+      this.activeSection = 'period7';
+    }
   },
   computed: {
     active() {

@@ -31,9 +31,12 @@ export default new Vuex.Store({
       state.cards = res;
     },
     SET_CARD(state, { res }) {
-      state.card = res[0];
-      // remove after admin in ready
-      state.card.backgroundColor = config.colors.blue;
+      if (res.length > 0) {
+        state.card = res[0];
+        if (!state.card.backgroundColor) {
+          state.card.backgroundColor = config.colors.blue;
+        }
+      }
     },
     SET_CANDIDATES(state, { res }) {
       state.candidates = res;
@@ -66,9 +69,10 @@ export default new Vuex.Store({
         );
       });
     },
-    LOAD_CARD({ commit }, id) {
+    LOAD_CARD({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        axios.get(`${config.api}/cards/${id}`).then(
+        const endpoint = payload.source === 'resume' ? 'cards' : 'card_editorial';
+        axios.get(`${config.api}/${endpoint}/${payload.id}`).then(
           (response) => {
             commit('SET_CARD', { res: response.data });
             resolve();

@@ -43,6 +43,7 @@ export default {
       const data = {
         graph: {
           type: 'barras',
+          style: 'horizontal',
           points: this.content.elements
         },
       };

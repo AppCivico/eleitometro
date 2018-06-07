@@ -69,7 +69,10 @@ export default {
   },
   computed: {
     shareUrl() {
-      return encodeURIComponent(`${window.location.href}card/${this.content.id}`);
+      if (this.content.verse) {
+        return encodeURIComponent(`${window.location.origin}/#/card/${this.content.id}?source=resume`);
+      }
+      return encodeURIComponent(`${window.location.origin}/#/card/${this.content.id}?source=editorial`);
     },
     shareTitle() {
       const cleanTitle = this.content.frontHTML.replace(/(<([^>]+)>)/ig, '');
