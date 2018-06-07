@@ -59,7 +59,6 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios.get(`${config.api}/cards`).then(
           (response) => {
-            console.log('res', response);
             commit('SET_CARDS', { res: response.data });
             resolve();
           },
