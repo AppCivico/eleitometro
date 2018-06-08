@@ -45,8 +45,9 @@
     </ul>
     <ul class="social">
       <li class="facebook"><a href="https://www.facebook.com/FGV.DAPP" target="_blank">Facebook</a></li>
-      <li class="twitter"><a href="https://twitter.com/fgvdapp " target="_blank">Twitter</a></li>
+      <li class="twitter"><a href="https://twitter.com/fgvdapp" target="_blank">Twitter</a></li>
       <li class="instagram"><a href="#">Instagram</a></li>
+      <li class="linkedin"><a href="https://www.linkedin.com/showcase/fgv-dapp/" target="_blank">LinkedIn</a></li>
     </ul>
   </div>
 </template>
@@ -223,6 +224,9 @@ export default {
   }
   &.instagram a {
     background-image: url('../assets/icon-instagram.png');
+  }
+  &.linkedin a {
+    background-image: url('../assets/icon-linkedin.png');
   }
 }
 
