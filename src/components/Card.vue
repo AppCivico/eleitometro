@@ -248,6 +248,6 @@ export default {
 }
 
 .card__flipBtn--back {
-  background-image: url('../assets/icon-back.png');
+  background-image: url('../assets/icon-back@3x.png');
 }
 </style>
