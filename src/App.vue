@@ -139,4 +139,9 @@ img {
   max-height: 38px;
   vertical-align: bottom;
 }
+
+.svg-icon--mid {
+  max-width: 45%;
+  max-height: 90px;
+}
 </style>
