@@ -32,7 +32,10 @@ export default {
   },
   computed: {
     total() {
-      return this.content.graph.total.toLocaleString('pt-BR');
+      if (this.content.graph.total) {
+        return this.content.graph.total.toLocaleString('pt-BR');
+      }
+      return null
     },
   },
   watch: {
