@@ -133,10 +133,6 @@ export default {
   font-weight: 300;
 }
 
-.front__content svg {
-  max-width: 100%;
-}
-
 .card__front strong {
   font-weight: 700;
 }

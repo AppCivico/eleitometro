@@ -137,5 +137,6 @@ img {
   max-width: 38px;
   display: inline;
   max-height: 38px;
+  vertical-align: bottom;
 }
 </style>
