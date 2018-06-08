@@ -3,7 +3,7 @@
     <h3 class="chart__title" v-html="content.title" v-if="content.title"/>
     <template v-if="content.graph">
       <div class="chart__graph">
-        <canvas ref="myChartCanvas" width="400" :height="content.graph.type === 'pizza' ? 200 : 350"></canvas>
+        <canvas ref="myChartCanvas" width="400" :height="content.graph.type === 'pizza' ? 200 : 300"></canvas>
         <div class="chart__legends" v-if="legends !== ''" v-html="legends"></div>
       </div>
       <template v-if="content.total">
@@ -67,23 +67,69 @@ export default {
         this.barChart(ctx, graph);
       }
     },
+    createDatasets(points) {
+      const colors = [
+        'rgb(244,144,12)',
+        'rgb(62, 160, 251)',
+        'rgb(51, 204, 102)',
+        'rgb(249, 78, 99)',
+        'rgb(11, 82, 147)',
+        'rgb(14, 122, 50)',
+        'rgb(132, 9, 24)',
+      ];
+
+      const lines = [];
+      const labels = [];
+      let i = 0;
+      points.map(item => {
+        if (lines.findIndex((linesItem) => linesItem.label === item.line) === -1) {
+          const data = {
+            label: item.line,
+            data: points.filter((subitem) => subitem.line === item.line).map(item2 => item2.value),
+            fill: false,
+            borderColor: colors[i],
+            backgroundColor: colors[i],
+            lineTension: 0.1,
+          } 
+          i = i + 1;
+          lines.push(data);
+          labels.push(points.filter((subitem) => subitem.line === item.line).map(item2 => item2.label));
+        }
+      });
+      
+      const value = {
+        lines,
+        labels,
+      };
+      return value;
+    },
     lineChart(ctx, graph) {
-      const data = graph.points.map(item => item.value);
-      const labels = graph.points.map(item => item.label);
+      const isMultiple = graph.points[0].line ? true : false;
+      let datasets = [];
+      let labels = [];
+
+      if (isMultiple) {
+        const data = this.createDatasets(graph.points);
+        datasets = data.lines;
+        labels = data.labels[0];
+      } else {
+        labels = graph.points.map(item => item.label);
+        datasets = [
+          {
+            label: '',
+            data: graph.points.map(item => item.value),
+            fill: false,
+            borderColor: graph.color ? graph.color : 'rgb(244,144,12)',
+            lineTension: 0.1,
+          },
+        ];
+      }
 
       const myChart = new Chart(ctx, {
         type: 'line',
         data: {
           labels,
-          datasets: [
-            {
-              label: '',
-              data,
-              fill: false,
-              borderColor: graph.color ? graph.color : 'rgb(244,144,12)',
-              lineTension: 0.1,
-            },
-          ],
+          datasets,
         },
         options: {
           responsive: true,
@@ -118,7 +164,11 @@ export default {
             }],
           },
         },
-      })
+      });
+
+      if (isMultiple) {
+        this.legends = myChart.generateLegend();
+      }
     },
     barChart(ctx, graph) {
       const data = graph.points.map(item => item.value);
