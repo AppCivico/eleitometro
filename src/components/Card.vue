@@ -151,7 +151,9 @@ export default {
   top: 20px;
   right: 20px;
   background-color: transparent;
-  background-image: url('../assets/icon-graph.png');
+  background-image: url('../assets/icon-graph@3x.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
   width: 30px;
   height: 30px;
   border: 0;
