@@ -22,11 +22,11 @@ export default new Vuex.Store({
     SET_CARDS(state, { res }) {
       // remove after admin in ready
       const resColor = res;
-      resColor[0].backgroundColor = config.colors.blue;
-      resColor[1].backgroundColor = config.colors.green;
-      resColor[2].backgroundColor = config.colors.orange;
-      resColor[3].backgroundColor = config.colors.red;
-      resColor[4].backgroundColor = config.colors.blue;
+      resColor[0].backgroundColor = resColor[0].backgroundColor || config.colors.blue;
+      resColor[1].backgroundColor = resColor[1].backgroundColor || config.colors.green;
+      resColor[2].backgroundColor = resColor[2].backgroundColor || config.colors.orange;
+      resColor[3].backgroundColor = resColor[3].backgroundColor || config.colors.red;
+      resColor[4].backgroundColor = resColor[4].backgroundColor || config.colors.blue;
 
       state.cards = res;
     },

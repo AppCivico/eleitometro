@@ -132,4 +132,11 @@ img {
 .svg-icon {
   width: 100%;
 }
+
+.svg-icon--inline {
+  max-width: 38px;
+  display: inline;
+  max-height: 38px;
+  vertical-align: bottom;
+}
 </style>
