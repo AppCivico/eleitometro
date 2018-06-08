@@ -165,7 +165,9 @@ export default {
   bottom: 20px;
   right: 20px;
   background-color: transparent;
-  background-image: url('../assets/icon-share.png');
+  background-image: url('../assets/icon-share@3x.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
   width: 30px;
   height: 31px;
   border: 0;
@@ -193,10 +195,10 @@ export default {
       opacity: 1;
 
       .card__flipBtn--back {
-        background-image: url('../assets/icon-close-w.png');
+        background-image: url('../assets/icon-close-w@3x.png');
       }
       .card__shareBtn {
-        background-image: url('../assets/icon-share-w.png');
+        background-image: url('../assets/icon-share-w@3x.png');
       }
     }
 }
