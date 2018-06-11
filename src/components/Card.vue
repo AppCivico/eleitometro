@@ -129,11 +129,11 @@ export default {
 }
 
 .card__front .front__content {
-  font-size: 3em;
+  font-size: 2.8em;
   font-weight: 300;
 }
 
-.front__content .svg-icon--mid + p {
+.front__content .svg-icon + p {
   font-size: 0.9em;
 }
 
