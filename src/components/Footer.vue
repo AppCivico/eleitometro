@@ -45,6 +45,12 @@ export default {
 
 .footer .footer__section {
   padding: 10% 5%;
+
+  @media (min-width: 769px) {
+    padding: 5% 5% 2%;
+    width: 100%;
+    display: table;
+  }
 }
 
 .section--border {
@@ -54,6 +60,12 @@ export default {
 .footer .secundary {
   margin: 0 0 40px 0;
   list-style: none;
+
+  @media (min-width: 769px) {
+    width: 40%;
+    float: left;
+    margin: 0 3% 0 0;
+  }
 }
 
 .footer .secundary li {
