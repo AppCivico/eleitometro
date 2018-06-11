@@ -93,13 +93,13 @@ export default {
             borderColor: colors[i],
             backgroundColor: colors[i],
             lineTension: 0.1,
-          } 
+          }
           i = i + 1;
           lines.push(data);
           labels.push(points.filter((subitem) => subitem.line === item.line).map(item2 => item2.label));
         }
       });
-      
+
       const value = {
         lines,
         labels,
@@ -208,7 +208,8 @@ export default {
                     return `${value/1000}k`
                   }
                   return value
-                }
+                },
+                autoSkip: false,
               }
             }],
             yAxes: [{
@@ -221,7 +222,8 @@ export default {
                     return `${value/1000}k`
                   }
                   return value
-                }
+                },
+                autoSkip: false,
               }
             }],
           },
