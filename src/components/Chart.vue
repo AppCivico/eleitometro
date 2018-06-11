@@ -3,7 +3,7 @@
     <h3 class="chart__title" v-html="content.title" v-if="content.title"/>
     <template v-if="content.graph">
       <div class="chart__graph">
-        <canvas ref="myChartCanvas" width="400" :height="content.graph.type === 'pizza' ? 200 : 300"></canvas>
+        <canvas ref="myChartCanvas" width="400" :height="chartHeight"></canvas>
         <div class="chart__legends" v-if="legends !== ''" v-html="legends"></div>
       </div>
       <template v-if="content.total">
@@ -28,6 +28,7 @@ export default {
     return {
       firstFlip: true,
       legends: '',
+      chartHeight: 0,
     }
   },
   computed: {
@@ -56,6 +57,13 @@ export default {
         }
       }
     },
+  },
+  mounted() {
+    if (window.outerWidth <= 768) {
+      this.chartHeight = this.content.graph.type === 'pizza' ? 200 : 300;
+    } else {
+      this.chartHeight = this.content.graph.type === 'pizza' ? 120 : 200;
+    }
   },
   methods: {
     mountChart() {

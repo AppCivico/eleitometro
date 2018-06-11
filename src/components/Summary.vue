@@ -32,13 +32,6 @@ export default {
   props: {
     status: String,
   },
-  watch: {
-    status(val) {
-      if (val) {
-
-      }
-    }
-  },
   components: {
     Card,
   },
@@ -126,21 +119,25 @@ export default {
         }, false);
       } else {
         gestureZone.addEventListener('mousedown', (event) => {
-          this.ongoingTouches.push(this.copyTouch(event));
-          this.touchStart = event.screenX;
-        }, false);
-
-        gestureZone.addEventListener('mousemove', (event) => {
-          if (this.ongoingTouches.length > 0) {
-            const currentTouch = event.screenX;
-            this.handleMove(currentTouch);
+          if (event.target.localName !== 'button') {
+            this.ongoingTouches.push(this.copyTouch(event));
+            this.touchStart = event.screenX;
           }
         }, false);
 
+        // gestureZone.addEventListener('mousemove', (event) => {
+        //   if (this.ongoingTouches.length > 0) {
+        //     const currentTouch = event.screenX;
+        //     this.handleMove(currentTouch);
+        //   }
+        // }, false);
+
         gestureZone.addEventListener('mouseup', (event) => {
-          this.touchEnd = event.screenX;
-          this.ongoingTouches = [];
-          this.handleGesture(this.touchStart, this.touchEnd);
+          if (event.target.localName !== 'button') {
+            this.touchEnd = event.screenX;
+            this.ongoingTouches = [];
+            this.handleGesture(this.touchStart, this.touchEnd);
+          }
         }, false);
       }
     },
@@ -165,7 +162,7 @@ export default {
           move = true;
         }
       } else {
-        if (handleWidth > 30) {
+        if (handleWidth > 80) {
           move = true;
         }
       }
