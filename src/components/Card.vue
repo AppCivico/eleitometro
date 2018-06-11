@@ -223,16 +223,16 @@ export default {
     padding-right: 10px;
   }
   &.facebook a {
-    background-image: url('../assets/share-facebook.png');
+    background-image: url('../assets/share-facebook.svg');
   }
   &.twitter a {
-    background-image: url('../assets/share-twitter.png');
+    background-image: url('../assets/share-twitter.svg');
   }
   &.whatsapp a {
-    background-image: url('../assets/share-whatsapp.png');
+    background-image: url('../assets/share-whatsapp.svg');
   }
   &.telegram a {
-    background-image: url('../assets/share-telegram.png');
+    background-image: url('../assets/share-telegram.svg');
   }
 }
 
@@ -242,7 +242,8 @@ export default {
   height: 81px;
   font-size: 0;
   border-radius: 50%;
-  background-size: 100%;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.3);
