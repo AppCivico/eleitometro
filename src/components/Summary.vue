@@ -48,7 +48,7 @@ export default {
       touchStart: 0,
       touchEnd: 0,
       movement: '0',
-      ongoingTouches: [{ screenX: window.outerWidth * 2 }],
+      ongoingTouches: [],
     }
   },
   computed: {
@@ -78,6 +78,9 @@ export default {
   },
   mounted() {
     this.handleTouch();
+    if (window.outerWidth <= 768) {
+      this.ongoingTouches = [{ screenX: window.outerWidth * 2 }];
+    }
   },
   methods: {
     copyTouch(touch) {
@@ -117,8 +120,10 @@ export default {
         }, false);
 
         gestureZone.addEventListener('mousemove', (event) => {
-          const currentTouch = event.screenX;
-          this.handleMove(currentTouch);
+          if (this.ongoingTouches.length > 0) {
+            const currentTouch = event.screenX;
+            this.handleMove(currentTouch);
+          }
         }, false);
 
         gestureZone.addEventListener('mouseup', (event) => {
@@ -149,7 +154,7 @@ export default {
           move = true;
         }
       } else {
-        if (handleWidth > 40) {
+        if (handleWidth > 30) {
           move = true;
         }
       }
