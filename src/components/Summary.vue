@@ -4,7 +4,7 @@
       class="summary__wrapper"
       :style="{
         width: `${cardsQt * 100}%`,
-        marginLeft: `-${activeCard * 95}%`,
+        marginLeft: movement,
       }"
     >
       <div class="card card__cta" :style="{ width: `${95 / cardsQt}%`}">
@@ -35,6 +35,11 @@ export default {
   data() {
     return {
       activeCard: 0,
+      touchStart: 0,
+      touchEnd: 0,
+      touchCurrent: 0,
+      movement: '0',
+      ongoingTouches: [],
     }
   },
   computed: {
@@ -48,11 +53,14 @@ export default {
       return this.cards.length + 1;
     },
     barColor() {
+      if (this.activeCard === 0) {
+        return config.colors.gray;
+      }
       if (this.cards.length > 0) {
-        return this.cards[this.activeCard].backgroundColor;
+        return this.cards[this.activeCard - 1].backgroundColor;
       }
       return config.colors.blue;
-    }
+    },
   },
   watch: {
     userType() {
@@ -63,22 +71,40 @@ export default {
     this.handleTouch();
   },
   methods: {
+    copyTouch(touch) {
+      return { identifier: touch.identifier, screenX: touch.screenX };
+    },
     swipeCard(movement) {
       if (movement === 'left' && this.activeCard < this.cardsQt - 1) {
         this.activeCard = this.activeCard + 1;
       } else if (movement === 'right' && this.activeCard > 0) {
         this.activeCard = this.activeCard - 1;
       }
+
+      this.movement = `-${this.activeCard * 95}%`;
     },
     handleTouch() {
-      let touchstartX = 0;
-      let touchendX = 0;
-
       const gestureZone = document.querySelector('.summary');
 
       if (this.userType === 'touch') {
         gestureZone.addEventListener('touchstart', (event) => {
+          this.ongoingTouches.push(this.copyTouch(event.changedTouches[0]));
           this.touchStart = event.changedTouches[0].screenX;
+        }, false);
+
+        gestureZone.addEventListener('touchmove', (event) => {
+          const currentTouch = event.changedTouches[0].screenX;
+          const lastItem = this.ongoingTouches[this.ongoingTouches.length - 1];
+          const currentMovement = parseFloat(this.movement, 10);
+          if (lastItem) {
+            if (currentTouch < lastItem.screenX) {
+              const newMovement = currentMovement - 1;
+              this.movement = `${newMovement}%`;
+            } else if (currentTouch > lastItem.screenX) {
+              const newMovement = currentMovement + 1;
+              this.movement = `${newMovement}%`;
+            }
+          }
         }, false);
 
         gestureZone.addEventListener('touchend', (event) => {
@@ -115,6 +141,8 @@ export default {
         } else if (end > start) {
           this.swipeCard('right');
         }
+      } else {
+        this.movement = `-${this.activeCard * 95}%`;
       }
     }
   },
