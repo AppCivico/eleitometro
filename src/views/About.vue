@@ -19,7 +19,7 @@ export default {
 
 <style lang="scss">
 .post {
-  padding: 0 15%;
+  padding: 0 5%;
   color: $gray;
   text-align: left;
 }

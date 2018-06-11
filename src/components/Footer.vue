@@ -44,7 +44,7 @@ export default {
 }
 
 .footer .footer__section {
-  padding: 10%;
+  padding: 10% 5%;
 }
 
 .section--border {
