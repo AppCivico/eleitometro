@@ -53,6 +53,8 @@ export default {
 
 .cardView__wrapper .card {
   float: none;
+  max-width: 470px;
+  margin: 0 auto;
 }
 
 .cardView__button {
