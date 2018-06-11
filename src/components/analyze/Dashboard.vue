@@ -8,13 +8,13 @@
       </ul>
     </nav>
     <Chart v-if="chartContent.graph.points.length > 0" :content="chartContent" :visibility="loadChart"/>
-    <h3 v-if="active.mentions_total">Menções Totais: <span>{{ formatNumber(active.mentions_total) }} <template v-if="active.mentions_increased">({{ active.mentions_increased > 0 ? '+' : ''}}{{ active.mentions_increased }}% variação)</template></span></h3>
+    <h3 v-if="active.mentions_total">Menções Totais: <span>{{ formatNumber(active.mentions_total) }} <template v-if="active.mentions_increased"><br>({{ active.mentions_increased > 0 ? '+' : ''}}{{ active.mentions_increased }}% variação)</template></span></h3>
     <div class="dashboard__robots" v-if="active.robot_count">
       <svg class="svg-icon">
         <use xlink:href="#panorama_robos"></use>
       </svg>
       <h4>Contas automatizadas pelo uso de robôs</h4>
-      <span class="value">{{ formatNumber(active.robot_count) }} <template v-if="active.robot_increased">({{ active.robot_increased > 0 ? '+' : ''}}{{ active.robot_increased }}% variação)</template></span>
+      <span class="value">{{ formatNumber(active.robot_count) }} <template v-if="active.robot_increased"><br>({{ active.robot_increased > 0 ? '+' : ''}}{{ active.robot_increased }}% variação)</template></span>
     </div>
   </section>
 </template>
