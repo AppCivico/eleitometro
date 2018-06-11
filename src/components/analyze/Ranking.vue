@@ -1,17 +1,7 @@
 <template>
   <section class="ranking" v-if="content">
-    <template v-if="type === 'candidate'">
-      <h3>Temas associados ao candidato</h3>
-      <div class="ranking__description">Tópicos centrais ao discurso eleitoral do candidato versus os temas mais mencionados em relação ao mesmo na rede</div>
-    </template>
-    <template v-else-if="type === 'theme'">
-      <h3>Candidatos associados ao tema</h3>
-      <div class="ranking__description">Em relação ao discurso eleitoral dos candidatos</div>
-    </template>
-    <template v-else>
-      <h3>Temas associados ao panorama</h3>
-      <div class="ranking__description">Em relação aos temas mais mencionados</div>
-    </template>
+    <h3>{{ content.title }}</h3>
+    <div class="ranking__description" v-html="content.description"></div>
     <Chart :content="chartContent" :visibility="loadChart"/>
   </section>
 </template>
