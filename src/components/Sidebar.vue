@@ -147,6 +147,10 @@ export default {
   left: 0;
   width: 10%;
   height: 100%;
+
+  @media (min-width: 769px) {
+    width: 60%;
+  }
 }
 
 .sidebar__content {
@@ -157,6 +161,10 @@ export default {
   height: 100%;
   background: $grayLight;
   padding: 50px 30px;
+
+  @media (min-width: 769px) {
+    width: 40%;
+  }
 }
 
 .sidebar img {
