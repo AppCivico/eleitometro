@@ -90,7 +90,7 @@ export default {
 
 <style lang="scss">
 .analyze {
-  padding: 0 10% 30px;
+  padding: 0 5% 30px;
   background-color: $grayLight;
 }
 
