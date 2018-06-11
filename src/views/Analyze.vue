@@ -92,11 +92,42 @@ export default {
 .analyze {
   padding: 0 5% 30px;
   background-color: $grayLight;
+
+   @media (min-width: 769px) {
+    width: 100%;
+    display: table;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 0;
+  }
 }
 
 .analyze > section,
 .analyze > div {
   padding-bottom: 30px;
+
+  @media (min-width: 769px) {
+    float: left;
+    width: 48%;
+    margin: 0 1% 30px;
+  }
+}
+
+.analyze .analyze__description,
+.analyze .dashboard {
+  @media (min-width: 769px) {
+    width: auto;
+    float: none;
+    flex-basis: 100%;
+    margin: 0;
+  }
+}
+
+.analyze .dashboard {
+  @media (min-width: 769px) {
+    margin-bottom: 30px;
+  }
 }
 
 .analyze .card {

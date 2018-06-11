@@ -7,14 +7,18 @@
         <li @click.prevent="changeSection('period30')" :class="`${activeSection === 'period30' ? 'active' : ''}`"><a href="#">MÊS</a></li>
       </ul>
     </nav>
-    <Chart v-if="chartContent.graph.points.length > 0" :content="chartContent" :visibility="loadChart"/>
-    <h3 v-if="active.mentions_total">Menções Totais: <span>{{ formatNumber(active.mentions_total) }} <template v-if="active.mentions_increased"><br>({{ active.mentions_increased > 0 ? '+' : ''}}{{ active.mentions_increased }}% variação)</template></span></h3>
-    <div class="dashboard__robots" v-if="active.robot_count">
-      <svg class="svg-icon">
-        <use xlink:href="#panorama_robos"></use>
-      </svg>
-      <h4>Contas automatizadas pelo uso de robôs</h4>
-      <span class="value">{{ formatNumber(active.robot_count) }} <template v-if="active.robot_increased"><br>({{ active.robot_increased > 0 ? '+' : ''}}{{ active.robot_increased }}% variação)</template></span>
+    <div class="dashboard__container">
+      <div class="dashboard__chart">
+        <Chart v-if="chartContent.graph.points.length > 0" :content="chartContent" :visibility="loadChart"/>
+        <h3 v-if="active.mentions_total">Menções Totais: <span>{{ formatNumber(active.mentions_total) }} <template v-if="active.mentions_increased"><br>({{ active.mentions_increased > 0 ? '+' : ''}}{{ active.mentions_increased }}% variação)</template></span></h3>
+      </div>
+      <div class="dashboard__robots" v-if="active.robot_count">
+        <svg class="svg-icon">
+          <use xlink:href="#panorama_robos"></use>
+        </svg>
+        <h4>Contas automatizadas pelo uso de robôs</h4>
+        <span class="value">{{ formatNumber(active.robot_count) }} <template v-if="active.robot_increased"><br>({{ active.robot_increased > 0 ? '+' : ''}}{{ active.robot_increased }}% variação)</template></span>
+      </div>
     </div>
   </section>
 </template>
@@ -79,6 +83,10 @@ export default {
 <style lang="scss">
 .dashboard {
   position: relative;
+
+  @media (min-width: 769px) {
+    border-bottom: 2px solid $gray;
+  }
 }
 
 .dashboard nav {
@@ -86,6 +94,11 @@ export default {
   background: $white;
   margin-left: -12%;
   margin-right: -12%;
+
+  @media (min-width: 769px) {
+    margin: 0;
+    margin-bottom: 20px;
+  }
 }
 
 .dashboard nav ul {
@@ -128,6 +141,12 @@ export default {
   background: $white;
   padding: 10px 30px 30px;
   border-radius: 14px;
+
+  @media (min-width: 769px) {
+    width: 50%;
+    display: table-cell;
+    vertical-align: middle;
+  }
 }
 
 .dashboard__robots h4 {
@@ -139,5 +158,20 @@ export default {
 .dashboard__robots .value {
   font-size: 2.4em;
   color: $gray;
+}
+
+.dashboard__chart {
+  @media (min-width: 769px) {
+    display: table-cell;
+    width: 50%;
+    padding-right: 20px;
+  }
+}
+
+.dashboard__container {
+  @media (min-width: 769px) {
+    display: table;
+    width: 100%;
+  }
 }
 </style>
