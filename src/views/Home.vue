@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <LaunchScreen :status="status"/>
-    <Summary />
+    <Summary :status="status" />
     <Analysis />
   </div>
 </template>
@@ -47,7 +47,7 @@ export default {
           vm.status = 'start';
         }
       });
-    }    
+    }
   },
   methods: {
     animateLauchScreen() {

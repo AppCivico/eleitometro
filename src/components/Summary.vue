@@ -1,5 +1,5 @@
 <template>
-  <div class="summary">
+  <div :class="`summary ${status === 'done' ? 'active' : ''}`">
     <div
       class="summary__wrapper"
       :style="{
@@ -29,6 +29,16 @@ import config from '../config';
 
 export default {
   name: 'Summary',
+  props: {
+    status: String,
+  },
+  watch: {
+    status(val) {
+      if (val) {
+
+      }
+    }
+  },
   components: {
     Card,
   },
@@ -161,6 +171,13 @@ export default {
 <style scoped lang="scss">
 .summary {
   width: 100%;
+  margin-left: 100%;
+  transition-timing-function: ease-in;
+  transition: margin-left 500ms 500ms;
+
+  &.active {
+    margin-left: 0;
+  }
 }
 .summary__wrapper {
   display: table;

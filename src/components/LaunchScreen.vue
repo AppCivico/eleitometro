@@ -53,15 +53,13 @@ export default {
   width: 100%;
   height: 100%;
   background: white;
-  opacity: 1;
-  max-height: 1000px;
   overflow: hidden;
-  transition: opacity 500ms, max-height 100ms 500ms;
+  transition-timing-function: ease-in;
+  transition: left 500ms 500ms;
   z-index: 5;
 
   &.hidden {
-    max-height: 0;
-    opacity: 0;
+    left: -100%;
   }
 }
 
