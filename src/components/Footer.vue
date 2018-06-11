@@ -20,6 +20,14 @@
         <strong>Eleitômetro 2018</strong><br>
         <a href="http://www.dapp.fgv.br" target="_blank">FGV DAPP</a> – Todos os direitos reservados®
       </p>
+      <p class="footer__copyright">
+        Desenvolvido por
+        <a href="https://appcivico.com/" target="_blank">
+          <svg class="svg-icon svg-icon--inline">
+            <use xlink:href="#logo-appcivico"></use>
+          </svg>
+        </a>
+      </p>
     </section>
   </footer>
 </template>
@@ -82,9 +90,15 @@ export default {
 .footer .footer__disclaimer {
   font-weight: 300;
   font-size: 1.4em;
+  margin-bottom: 20px;
 }
 
 .footer .footer__disclaimer a {
   color: inherit;
+}
+
+.footer__copyright .svg-icon--inline{
+  max-width: 72px;
+  max-height: 17px;
 }
 </style>
