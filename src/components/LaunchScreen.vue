@@ -168,6 +168,7 @@ export default {
     width: 64px;
     height: 65px;
     margin-top: -20px;
+    margin-bottom: 20px;
     transition: opacity 500ms 200ms, max-height 100ms 200ms;
   }
 }

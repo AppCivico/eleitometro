@@ -97,6 +97,10 @@ export default {
   height: 470px;
   width: 100%;
   perspective: 1000px;
+
+  @media (min-width: 769px) {
+    padding: 0 0.2%;
+  }
 }
 
 .card__flipper {

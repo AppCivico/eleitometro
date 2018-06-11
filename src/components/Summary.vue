@@ -7,10 +7,10 @@
         marginLeft: movement,
       }"
     >
-      <div class="card card__cta" :style="{ width: `${95 / cardsQt}%`}">
+      <div class="card card__cta" :style="{ width: `${cardWidth}%`}">
         <h3>Deslize para saber tudo sobre as eleições nas redes<svg class="svg-icon svg-icon--inline"><use xlink:href="#icon_seta_direita"></use></svg></h3>
       </div>
-      <Card v-for="card in cards" :key="card.id" :content="card" :width="95 / cardsQt"/>
+      <Card v-for="card in cards" :key="card.id" :content="card" :width="cardWidth"/>
     </div>
     <div class="scrollBar">
       <span
@@ -61,6 +61,13 @@ export default {
     cardsQt() {
       return this.cards.length + 1;
     },
+    cardWidth() {
+      if (window.outerWidth <= 768) {
+        return (95 / this.cardsQt);
+      }
+
+      return (95 / (this.cardsQt * 2));
+    },
     barColor() {
       if (this.activeCard === 0) {
         return config.colors.gray;
@@ -93,7 +100,11 @@ export default {
         this.activeCard = this.activeCard - 1;
       }
 
-      this.movement = `-${this.activeCard * 95}%`;
+      if (window.outerWidth <= 768) {
+        this.movement = `-${this.activeCard * 95}%`;
+      } else {
+        this.movement = `-${this.activeCard * (95 / 2)}%`;
+      }
     },
     handleTouch() {
       const gestureZone = document.querySelector('.summary');
