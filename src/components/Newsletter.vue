@@ -70,6 +70,7 @@ export default {
 }
 
 .newsletter__input {
+  appearance: none;
   width: 100%;
   background-color: transparent;
   border: 0;
