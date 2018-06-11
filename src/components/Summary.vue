@@ -7,6 +7,9 @@
         marginLeft: `-${activeCard * 95}%`,
       }"
     >
+      <div class="card card__cta" :style="{ width: `${95 / cardsQt}%`}">
+        <h3>Deslize para saber tudo sobre as eleições nas redes<svg class="svg-icon svg-icon--inline"><use xlink:href="#icon_seta_direita"></use></svg></h3>
+      </div>
       <Card v-for="card in cards" :key="card.id" :content="card" :width="95 / cardsQt"/>
     </div>
     <div class="scrollBar">
@@ -42,7 +45,7 @@ export default {
       return this.$store.state.cards;
     },
     cardsQt() {
-      return this.cards.length;
+      return this.cards.length + 1;
     },
     barColor() {
       if (this.cards.length > 0) {
@@ -147,5 +150,18 @@ export default {
   background: gray;
   transition: left 250ms, background-color 250ms;
   border-radius: 2px;
+}
+.card__cta {
+  text-align: left;
+}
+
+.card__cta h3 {
+  font-weight: 300;
+  font-size: 3em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
 }
 </style>
