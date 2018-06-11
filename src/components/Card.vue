@@ -210,17 +210,23 @@ export default {
 
 .card__share ul {
   list-style: none;
-  margin-top: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
 
 .card__share ul li {
   display: inline-block;
   width: 49.5%;
   text-align: left;
+  padding-left: 5px;
 
   &:nth-of-type(odd) {
     text-align: right;
-    padding-right: 10px;
+    padding-left: 0;
+    padding-right: 5px;
   }
   &.facebook a {
     background-image: url('../assets/share-facebook.svg');
