@@ -134,7 +134,7 @@ export default {
 }
 
 .front__content .svg-icon + p {
-  font-size: 0.9em;
+  font-size: 0.85em;
 }
 
 .card__front strong {
