@@ -85,6 +85,7 @@ export default {
     height: auto;
     max-width: 320px;
     margin: 0 auto;
+    z-index: 1;
   }
 }
 
