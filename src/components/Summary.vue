@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     copyTouch(touch) {
-      return { identifier: touch.identifier, screenX: touch.screenX };
+      return { screenX: touch.screenX };
     },
     swipeCard(movement) {
       if (movement === 'left' && this.activeCard < this.cardsQt - 1) {
@@ -94,17 +94,7 @@ export default {
 
         gestureZone.addEventListener('touchmove', (event) => {
           const currentTouch = event.changedTouches[0].screenX;
-          const lastItem = this.ongoingTouches[this.ongoingTouches.length - 1];
-          const currentMovement = parseFloat(this.movement, 10);
-          if (lastItem) {
-            if (currentTouch < lastItem.screenX) {
-              const newMovement = currentMovement - 1;
-              this.movement = `${newMovement}%`;
-            } else if (currentTouch > lastItem.screenX) {
-              const newMovement = currentMovement + 1;
-              this.movement = `${newMovement}%`;
-            }
-          }
+          this.handleMove(currentTouch);
         }, false);
 
         gestureZone.addEventListener('touchend', (event) => {
@@ -113,13 +103,33 @@ export default {
         }, false);
       } else {
         gestureZone.addEventListener('mousedown', (event) => {
+          this.ongoingTouches.push(this.copyTouch(event));
           this.touchStart = event.screenX;
+        }, false);
+
+        gestureZone.addEventListener('mousemove', (event) => {
+          const currentTouch = event.screenX;
+          this.handleMove(currentTouch);
         }, false);
 
         gestureZone.addEventListener('mouseup', (event) => {
           this.touchEnd = event.screenX;
+          this.ongoingTouches = [];
           this.handleGesture(this.touchStart, this.touchEnd);
         }, false);
+      }
+    },
+    handleMove(current) {
+      const lastItem = this.ongoingTouches[this.ongoingTouches.length - 1];
+      const currentMovement = parseFloat(this.movement, 10);
+      if (lastItem) {
+        if (current < lastItem.screenX) {
+          const newMovement = currentMovement - 1;
+          this.movement = `${newMovement}%`;
+        } else if (current > lastItem.screenX) {
+          const newMovement = currentMovement + 1;
+          this.movement = `${newMovement}%`;
+        }
       }
     },
     handleGesture(start, end) {
