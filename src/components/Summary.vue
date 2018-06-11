@@ -37,9 +37,8 @@ export default {
       activeCard: 0,
       touchStart: 0,
       touchEnd: 0,
-      touchCurrent: 0,
       movement: '0',
-      ongoingTouches: [],
+      ongoingTouches: [{ screenX: window.outerWidth * 2 }],
     }
   },
   computed: {
@@ -136,11 +135,11 @@ export default {
       const handleWidth = Math.abs(end - start);
       let move = false;
       if (this.userType === 'touch') {
-        if (handleWidth > 60) {
+        if (handleWidth > 70) {
           move = true;
         }
       } else {
-        if (handleWidth > 30) {
+        if (handleWidth > 40) {
           move = true;
         }
       }
