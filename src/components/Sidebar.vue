@@ -1,54 +1,57 @@
 <template>
   <div :class="`sidebar ${status === 'active' ? 'open' : ''}`">
-    <button @click="close" class="sidebar__closeIcon">Close</button>
-    <img src="../assets/logo.png">
-    <h2><a @click.prevent="closeRoute(`/`)">Resumo</a></h2>
-    <h2>Análise</h2>
-    <nav>
-      <ul>
-        <li v-if="panorams.length > 1">
-					<a href="#" @click.prevent="toggleSubmenu(1)">Panorama ({{ panorams.length }})</a>
-					<ul :class="`${submenu === 1 ? 'open' : ''}`">
-						<li v-for="item in panorams" :key="item.id">
-							<a @click.prevent="closeRoute(`/panorama/${item.id}`)" >
-								{{ item.name }}
-							</a>
-						</li>
-					</ul>
-				</li>
-				<li v-if="candidates.length > 1">
-					<a href="#" @click.prevent="toggleSubmenu(2)">Candidatos ({{ candidates.length }})</a>
-					<ul :class="`${submenu === 2 ? 'open' : ''}`">
-						<li v-for="item in candidates" :key="item.id">
-							<a @click.prevent="closeRoute(`/candidate/${item.id}`)" >
-								{{ item.name }}
-							</a>
-						</li>
-					</ul>
-				</li>
-				<li v-if="themes.length > 1">
-					<a href="#" @click.prevent="toggleSubmenu(3)">Temas ({{ themes.length }})</a>
-					<ul :class="`${submenu === 3 ? 'open' : ''}`">
-						<li v-for="item in themes" :key="item.id">
-							<a @click.prevent="closeRoute(`/theme/${item.id}`)" >
-								{{ item.name }}
-							</a>
-						</li>
-					</ul>
-				</li>
+    <div @click="close" class="sidebar__close"></div>
+    <div class="sidebar__content">
+      <button @click="close" class="sidebar__closeIcon">Close</button>
+      <img src="../assets/logo.png">
+      <h2><a @click.prevent="closeRoute(`/`)">Resumo</a></h2>
+      <h2>Análise</h2>
+      <nav>
+        <ul>
+          <li v-if="panorams.length > 1">
+            <a href="#" @click.prevent="toggleSubmenu(1)">Panorama ({{ panorams.length }})</a>
+            <ul :class="`${submenu === 1 ? 'open' : ''}`">
+              <li v-for="item in panorams" :key="item.id">
+                <a @click.prevent="closeRoute(`/panorama/${item.id}`)" >
+                  {{ item.name }}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li v-if="candidates.length > 1">
+            <a href="#" @click.prevent="toggleSubmenu(2)">Candidatos ({{ candidates.length }})</a>
+            <ul :class="`${submenu === 2 ? 'open' : ''}`">
+              <li v-for="item in candidates" :key="item.id">
+                <a @click.prevent="closeRoute(`/candidate/${item.id}`)" >
+                  {{ item.name }}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li v-if="themes.length > 1">
+            <a href="#" @click.prevent="toggleSubmenu(3)">Temas ({{ themes.length }})</a>
+            <ul :class="`${submenu === 3 ? 'open' : ''}`">
+              <li v-for="item in themes" :key="item.id">
+                <a @click.prevent="closeRoute(`/theme/${item.id}`)" >
+                  {{ item.name }}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <ul class="secundary">
+        <li><a href="#" @click.prevent="closeRoute(`/about`)">Sobre a FVG DAPP</a></li>
+        <li><a href="#" @click.prevent="closeRoute(`/metodology`)">Metodologia</a></li>
+        <li><a href="#footer" @click="close()">Assinar Newsletter</a></li>
       </ul>
-    </nav>
-    <ul class="secundary">
-      <li><a href="#" @click.prevent="closeRoute(`/about`)">Sobre a FVG DAPP</a></li>
-      <li><a href="#" @click.prevent="closeRoute(`/metodology`)">Metodologia</a></li>
-      <li><a href="#footer" @click="close()">Assinar Newsletter</a></li>
-    </ul>
-    <ul class="social">
-      <li class="facebook"><a href="https://www.facebook.com/FGV.DAPP" target="_blank">Facebook</a></li>
-      <li class="twitter"><a href="https://twitter.com/fgvdapp" target="_blank">Twitter</a></li>
-      <li class="instagram"><a href="#">Instagram</a></li>
-      <li class="linkedin"><a href="https://www.linkedin.com/showcase/fgv-dapp/" target="_blank">LinkedIn</a></li>
-    </ul>
+      <ul class="social">
+        <li class="facebook"><a href="https://www.facebook.com/FGV.DAPP" target="_blank">Facebook</a></li>
+        <li class="twitter"><a href="https://twitter.com/fgvdapp" target="_blank">Twitter</a></li>
+        <li class="instagram"><a href="#">Instagram</a></li>
+        <li class="linkedin"><a href="https://www.linkedin.com/showcase/fgv-dapp/" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -125,12 +128,10 @@ export default {
   position: absolute;
   top: 0;
   right: -100%;
-  width: 90%;
+  width: 100%;
   height: 100%;
-  background: $grayLight;
   opacity: 1;
   overflow: hidden;
-  padding: 50px 30px;
   text-align: left;
   transition: right 500ms;
   z-index: 5;
@@ -138,6 +139,24 @@ export default {
   &.open {
     right: 0;
   }
+}
+
+.sidebar__close {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10%;
+  height: 100%;
+}
+
+.sidebar__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 90%;
+  height: 100%;
+  background: $grayLight;
+  padding: 50px 30px;
 }
 
 .sidebar img {
@@ -214,19 +233,27 @@ export default {
 
 .social li {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 5px;
 
   &.facebook a {
-    background-image: url('../assets/icon-facebook.png');
+    background-image: url('../assets/icon-facebook.svg');
   }
   &.twitter a {
-    background-image: url('../assets/icon-twitter.png');
+    background-image: url('../assets/icon-twitter.svg');
   }
   &.instagram a {
-    background-image: url('../assets/icon-instagram.png');
+    background-image: url('../assets/icon-instagram.svg');
   }
   &.linkedin a {
-    background-image: url('../assets/icon-linkedin.png');
+    background-image: url('../assets/icon-linkedin.svg');
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  @media (min-width: 321px) {
+    margin-right: 10px;
   }
 }
 
