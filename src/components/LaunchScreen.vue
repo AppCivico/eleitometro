@@ -14,6 +14,9 @@
           backgroundColor: status === 'done' ? '#3ea0fb' : '',
         }" />
       </div>
+      <svg class="svg-icon launchScreen__arrow">
+          <use xlink:href="#icon_seta_baixo"></use>
+        </svg>
       <img src="../assets/fgv-logo.png" class="fgvlogo">
     </div>
   </div>
@@ -60,6 +63,28 @@ export default {
 
   &.hidden {
     left: -100%;
+
+    @media (min-width: 769px) {
+      left: 0;
+
+      .loadingBar {
+        opacity: 0;
+      }
+      .launchScreen__arrow {
+        max-height: 1000px;
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (min-width: 769px) {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
 
@@ -69,6 +94,13 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+
+  @media (min-width: 769px) {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+  }
 }
 
 .launchScreen__container {
@@ -98,6 +130,10 @@ export default {
   margin: 0 auto;
   max-width: 120px;
   height: auto;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
 }
 
 .loadingBar {
@@ -107,12 +143,8 @@ export default {
   height: 2px;
   background: #dcdcdc;
   border-radius: 2px;
-  opacity: 0;
-  transition: opacity 100ms;
-
-  &.visible {
-    opacity: 1;
-  }
+  opacity: 1;
+  transition: opacity 100ms 500ms;
 }
 
 .loadingBar span {
@@ -125,5 +157,18 @@ export default {
   background: $gray;
   transition: width 250ms;
   border-radius: 2px;
+}
+
+.launchScreen__arrow {
+  opacity: 0;
+  width: 0;
+  max-height: 0;
+
+  @media (min-width: 769px) {
+    width: 64px;
+    height: 65px;
+    margin-top: -20px;
+    transition: opacity 500ms 200ms, max-height 100ms 200ms;
+  }
 }
 </style>

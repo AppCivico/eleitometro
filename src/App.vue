@@ -84,7 +84,7 @@ img {
   color:$black;
   margin: 0 auto;
   background: $white;
-  max-width: 480px;
+  max-width: 1024px;
   min-height: 100%;
   overflow: hidden;
 }
