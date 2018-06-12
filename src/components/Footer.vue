@@ -23,6 +23,7 @@
       <p class="footer__copyright">
         Desenvolvido por
         <a href="https://appcivico.com/" target="_blank">
+          AppCívico
           <svg class="svg-icon svg-icon--inline">
             <use xlink:href="#logo-appcivico"></use>
           </svg>
@@ -100,5 +101,9 @@ export default {
 .footer__copyright .svg-icon--inline{
   max-width: 72px;
   max-height: 17px;
+}
+
+.footer__copyright a {
+  font-size: 0;
 }
 </style>
