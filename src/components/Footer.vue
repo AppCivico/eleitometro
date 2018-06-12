@@ -15,7 +15,7 @@
       </ul>
     </section>
     <section class="footer__section">
-      <img src="../assets/logo-white.png">
+      <img src="../assets/logo-white.png" alt="FGV DAPP Logo">
       <p class="footer__disclaimer">
         <strong>Eleitômetro 2018</strong><br>
         <a href="http://www.dapp.fgv.br" target="_blank">FGV DAPP</a> – Todos os direitos reservados®

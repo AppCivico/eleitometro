@@ -3,7 +3,7 @@
     <div @click="close" class="sidebar__close"></div>
     <div class="sidebar__content">
       <button @click="close" class="sidebar__closeIcon">Close</button>
-      <img src="../assets/logo.png">
+      <img src="../assets/logo.png" alt="Eleitometro Logo">
       <h2><a @click.prevent="closeRoute(`/`)">Resumo</a></h2>
       <h2>Análise</h2>
       <nav>

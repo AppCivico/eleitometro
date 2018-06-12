@@ -17,7 +17,7 @@
       <svg class="svg-icon launchScreen__arrow">
           <use xlink:href="#icon_seta_baixo"></use>
         </svg>
-      <img src="../assets/fgv-logo.png" class="fgvlogo">
+      <img src="../assets/fgv-logo.png" alt="FGV DAPP Logo" class="fgvlogo">
     </div>
   </div>
 </template>
