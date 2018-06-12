@@ -5,7 +5,7 @@
         <li><router-link to="/about">Sobre a FVG DAPP</router-link></li>
         <li><router-link to="/metodology">Metodologia</router-link></li>
         <li><a href="#" @click.prevent="''">Assinar Newsletter</a></li>
-        <Newsletter />
+        <li><Newsletter /></li>
       </ul>
       <ul class="social">
         <li class="facebook"><a href="https://www.facebook.com/FGV.DAPP" target="_blank">Facebook</a></li>
