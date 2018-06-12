@@ -9,7 +9,7 @@
       <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${videoId}?rel=0&amp;controls=0&amp;showinfo=0`" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
     <div class="article__content" v-html="content.description"></div>
-    <a v-if="content.link" :href="content.link" target="_blank">LER MATÉRIA</a>
+    <a v-if="content.link" :href="content.link" target="_blank" rel="noopener">LER MATÉRIA</a>
   </section>
 </template>
 

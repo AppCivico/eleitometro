@@ -8,21 +8,21 @@
         <li><Newsletter /></li>
       </ul>
       <ul class="social">
-        <li class="facebook"><a href="https://www.facebook.com/FGV.DAPP" target="_blank">Facebook</a></li>
+        <li class="facebook"><a href="https://www.facebook.com/FGV.DAPP" target="_blank" rel="noopener">Facebook</a></li>
         <li class="twitter"><a href="https://twitter.com/fgvdapp" target="_blank">Twitter</a></li>
-        <li class="instagram"><a href="#" target="_blank">Instagram</a></li>
-        <li class="linkedin"><a href="https://www.linkedin.com/showcase/fgv-dapp/" target="_blank">LinkedIn</a></li>
+        <li class="instagram"><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+        <li class="linkedin"><a href="https://www.linkedin.com/showcase/fgv-dapp/" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
     </section>
     <section class="footer__section">
       <img src="../assets/logo-white.png" alt="FGV DAPP Logo">
       <p class="footer__disclaimer">
         <strong>Eleitômetro 2018</strong><br>
-        <a href="http://www.dapp.fgv.br" target="_blank">FGV DAPP</a> – Todos os direitos reservados®
+        <a href="http://www.dapp.fgv.br" target="_blank" rel="noopener">FGV DAPP</a> – Todos os direitos reservados®
       </p>
       <p class="footer__copyright">
         Desenvolvido por
-        <a href="https://appcivico.com/" target="_blank">
+        <a href="https://appcivico.com/" target="_blank" rel="noopener">
           AppCívico
           <svg class="svg-icon svg-icon--inline">
             <use xlink:href="#logo-appcivico"></use>

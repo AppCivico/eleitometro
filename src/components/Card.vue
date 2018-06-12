@@ -12,22 +12,22 @@
           <h3>Compartilhe<br>este card</h3>
           <ul>
             <li class="facebook">
-              <a target="_blank" :href="`https://www.facebook.com/sharer.php?u=${shareUrl}`">
+              <a target="_blank" rel="noopener" :href="`https://www.facebook.com/sharer.php?u=${shareUrl}`">
                 Compartilhe no Facebook
               </a>
             </li>
             <li class="twitter">
-              <a target="_blank" :href="`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`">
+              <a target="_blank" rel="noopener" :href="`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`">
                 Compartilhe no Twitter
               </a>
             </li>
             <li class="whatsapp">
-              <a target="_blank" :href="`https://api.whatsapp.com/send?text=${shareTitle}%20.%20Saiba%20mais%20em%20${shareUrl}`">
+              <a target="_blank" rel="noopener" :href="`https://api.whatsapp.com/send?text=${shareTitle}%20.%20Saiba%20mais%20em%20${shareUrl}`">
                 Compartilhe no Whatsapp
               </a>
             </li>
             <li class="telegram">
-              <a target="_blank" :href="`https://telegram.me/share/url?url=${shareUrl}&text=${shareTitle}`">
+              <a target="_blank" rel="noopener" :href="`https://telegram.me/share/url?url=${shareUrl}&text=${shareTitle}`">
                 Compartilhe no Telegram
               </a>
             </li>
