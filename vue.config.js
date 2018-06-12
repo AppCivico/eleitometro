@@ -26,7 +26,7 @@ module.exports = {
     workboxOptions: {
       runtimeCaching: [
         {
-          urlPattern: /dapi/,
+          urlPattern: /dapi-eleitometro/,
           handler: 'networkFirst',
         },
       ],
