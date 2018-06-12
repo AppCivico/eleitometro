@@ -26,12 +26,8 @@ module.exports = {
     workboxOptions: {
       runtimeCaching: [
         {
-          urlPattern: new RegExp('^https://dapi-eleitometro\.appcivico\.com/'),
+          urlPattern: /dapi/,
           handler: 'networkFirst',
-          options: {
-            networkTimeoutSeconds: 10,
-            cacheName: 'dapi-eleitometro',
-          },
         },
       ],
     },
