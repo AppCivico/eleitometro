@@ -24,9 +24,10 @@ module.exports = {
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
     workboxOptions: {
+      include: [/\.html$/, /\.js$/, /\.css$/, /\.svg$/, /\.png$/, /\.jpg$/],
       runtimeCaching: [
         {
-          urlPattern: /dapi-eleitometro/,
+          urlPattern: new RegExp('^https://dapi-eleitometro.appcivico.com/'),
           handler: 'networkFirst',
         },
       ],
