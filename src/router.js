@@ -2,9 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import CardView from './views/CardView.vue';
-import Analyze from './views/Analyze.vue';
-import Metodology from './views/Metodology.vue';
-import About from './views/About.vue';
 
 Vue.use(Router);
 
@@ -26,33 +23,33 @@ export default new Router({
     {
       path: '/candidate/:id',
       name: 'Candidatos',
-      component: Analyze,
+      component: () => import('./views/Analyze.vue'),
     },
     {
       path: '/theme/:id',
       name: 'Temas',
-      component: Analyze,
+      component: () => import('./views/Analyze.vue'),
     },
     {
       path: '/panorama/:id',
       name: 'Panoramas',
-      component: Analyze,
+      component: () => import('./views/Analyze.vue'),
     },
     {
       path: '/metodology',
       name: 'Metodologia',
-      component: Metodology,
+      component: () => import('./views/Metodology.vue'),
     },
     {
       path: '/about',
       name: 'Sobre',
-      component: About,
+      component: () => import('./views/About.vue'),
     },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
     }
-    return { x: 0, y: 0 }
+    return { x: 0, y: 0 };
   },
 });
