@@ -1,7 +1,9 @@
 <template>
   <form @submit.prevent="validateForm" class="newsletter">
-    <label for="email" class="newsletter__hidden">Email</label>
-    <input type="email" name="email" v-model="email" placeholder="Seu email" class="newsletter__input">
+    <label for="email">
+      <span class="newsletter__hidden">Email</span>
+      <input type="email" name="email" v-model="email" placeholder="Seu email" class="newsletter__input">
+    </label>
     <button type="submit" class="newsletter__button" :disabled="loading">subscribe</button>
     <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6LeykV0UAAAAABov2kUF8C-okpFRwhHpi0qlcGcZ"></div>
     <p class="error">{{ errorMessage }}</p>
@@ -118,6 +120,8 @@ p.success {
 }
 
 .newsletter__hidden {
-  display: none;
+  height: 0;
+  display: block;
+  overflow: hidden;
 }
 </style>
