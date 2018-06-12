@@ -17,4 +17,23 @@ module.exports = {
       },
     },
   },
+  pwa: {
+    name: 'Eleitômetro',
+    themeColor: '#33cc66',
+    msTileColor: '#000000',
+    appleMobileWebAppCapable: 'yes',
+    appleMobileWebAppStatusBarStyle: 'black',
+    workboxOptions: {
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp('^https://dapi-eleitometro\.appcivico\.com/'),
+          handler: 'networkFirst',
+          options: {
+            networkTimeoutSeconds: 10,
+            cacheName: 'dapi-eleitometro',
+          },
+        },
+      ],
+    },
+  },
 };
