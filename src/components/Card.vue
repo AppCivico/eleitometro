@@ -137,6 +137,10 @@ export default {
   font-weight: 300;
 }
 
+.card__front .front__content p::selection{
+  background: transparent;
+}
+
 .front__content .svg-icon + p {
   font-size: 0.85em;
 }
