@@ -108,10 +108,10 @@ export default {
           this.touchStart = event.changedTouches[0].screenX;
         }, false);
 
-        gestureZone.addEventListener('touchmove', (event) => {
-          const currentTouch = event.changedTouches[0].screenX;
-          this.handleMove(currentTouch);
-        }, false);
+        // gestureZone.addEventListener('touchmove', (event) => {
+        //   const currentTouch = event.changedTouches[0].screenX;
+        //   this.handleMove(currentTouch);
+        // }, false);
 
         gestureZone.addEventListener('touchend', (event) => {
           this.touchEnd = event.changedTouches[0].screenX;
