@@ -1,5 +1,5 @@
 /* eslint-disable */
-const __svg__ = { path: './assets/svg/*.svg', name: 'public/svg/[hash].svg' };
+const __svg__ = { path: './assets/svg/*.svg', name: 'svg/[hash].svg' };
 require('webpack-svgstore-plugin/src/helpers/svgxhr')(__svg__);
 
 import Vue from 'vue';
