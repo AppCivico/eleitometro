@@ -161,7 +161,7 @@ export default {
   width: 30px;
   height: 30px;
   border: 0;
-  text-indent: -999999px;
+  font-size: 0;
 }
 
 .card__shareBtn{
@@ -175,7 +175,7 @@ export default {
   width: 30px;
   height: 31px;
   border: 0;
-  text-indent: -999999px;
+  font-size: 0;
 }
 
 .card__share {
