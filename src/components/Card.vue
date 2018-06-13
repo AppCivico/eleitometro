@@ -133,7 +133,7 @@ export default {
 }
 
 .card__front .front__content {
-  font-size: 2.8em;
+  font-size: 2.6em;
   font-weight: 300;
 }
 
