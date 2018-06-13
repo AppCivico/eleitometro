@@ -5,7 +5,7 @@
         <svg class="svg-icon">
           <use xlink:href="#logo_eleitometro"></use>
         </svg>
-        <h1>Eleitômetro</h1>
+        <h1>#observa2018</h1>
         <h2>{{ subtitle }}</h2>
       </div>
       <div :class="`loadingBar ${status !== 'start' ? 'visible' : ''}`">

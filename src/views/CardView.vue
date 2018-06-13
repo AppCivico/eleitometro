@@ -7,7 +7,7 @@
       </template>
       <p v-else class="warning">Carregando informações</p>
     </div>
-    <router-link to="/" class="cardView__button">Acessar Eleitômetro</router-link>
+    <router-link to="/" class="cardView__button">Acessar #observa2018</router-link>
   </main>
 </template>
 
