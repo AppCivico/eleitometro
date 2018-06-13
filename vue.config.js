@@ -29,6 +29,10 @@ module.exports = {
           urlPattern: new RegExp('^https://dapi-eleitometro.appcivico.com/'),
           handler: 'networkFirst',
         },
+        {
+          urlPattern: /\.svg$/,
+          handler: 'networkFirst',
+        },
       ],
     },
   },
