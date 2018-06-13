@@ -78,9 +78,9 @@ export default {
   },
   mounted() {
     this.handleTouch();
-    if (window.outerWidth <= 768) {
-      this.ongoingTouches = [{ screenX: window.outerWidth * 2 }];
-    }
+    // if (window.outerWidth <= 768) {
+    //   this.ongoingTouches = [{ screenX: window.outerWidth * 2 }];
+    // }
   },
   methods: {
     copyTouch(touch) {
@@ -104,14 +104,14 @@ export default {
 
       if (this.userType === 'touch') {
         gestureZone.addEventListener('touchstart', (event) => {
-          this.ongoingTouches.push(this.copyTouch(event.changedTouches[0]));
+          // this.ongoingTouches.push(this.copyTouch(event.changedTouches[0]));
           this.touchStart = event.changedTouches[0].screenX;
         }, false);
 
-        gestureZone.addEventListener('touchmove', (event) => {
-          const currentTouch = event.changedTouches[0].screenX;
-          this.handleMove(currentTouch);
-        }, false);
+        // gestureZone.addEventListener('touchmove', (event) => {
+        //   const currentTouch = event.changedTouches[0].screenX;
+        //   this.handleMove(currentTouch);
+        // }, false);
 
         gestureZone.addEventListener('touchend', (event) => {
           this.touchEnd = event.changedTouches[0].screenX;
@@ -120,7 +120,7 @@ export default {
       } else {
         gestureZone.addEventListener('mousedown', (event) => {
           if (event.target.localName !== 'button') {
-            this.ongoingTouches.push(this.copyTouch(event));
+            //this.ongoingTouches.push(this.copyTouch(event));
             this.touchStart = event.screenX;
           }
         }, false);
@@ -135,7 +135,7 @@ export default {
         gestureZone.addEventListener('mouseup', (event) => {
           if (event.target.localName !== 'button') {
             this.touchEnd = event.screenX;
-            this.ongoingTouches = [];
+            //this.ongoingTouches = [];
             this.handleGesture(this.touchStart, this.touchEnd);
           }
         }, false);
@@ -158,11 +158,11 @@ export default {
       const handleWidth = Math.abs(end - start);
       let move = false;
       if (this.userType === 'touch') {
-        if (handleWidth > 70) {
+        if (handleWidth > 50) {
           move = true;
         }
       } else {
-        if (handleWidth > 80) {
+        if (handleWidth > 60) {
           move = true;
         }
       }

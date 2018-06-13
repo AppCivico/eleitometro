@@ -18,11 +18,10 @@ module.exports = {
     },
   },
   pwa: {
-    name: 'Eleitômetro',
+    name: '#observa2018',
     themeColor: '#33cc66',
     msTileColor: '#000000',
-    appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: 'black',
+    appleMobileWebAppCapable: 'no',
     workboxOptions: {
       include: [/\.html$/, /\.js$/, /\.css$/, /\.svg$/, /\.png$/, /\.jpg$/],
       runtimeCaching: [

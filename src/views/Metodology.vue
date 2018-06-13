@@ -1,15 +1,13 @@
 <template>
   <main class="post">
-    <h3>Lorem ipsum dolor sit amet consectetur</h3>
-    <p>adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-
-    <h4>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h4>
-    <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
-
-    <h4>1914 translation by H. Rackham</h4>
-    <p>"But I must explain to you how all this mistaken idea</p>
-
-    <p>of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. </p>
+    <h4>Sobre</h4>
+    <p>A ferramenta exibe de forma rápida, prática e harmoniosa detalhes sobre o debate eleitoral no Twitter em tempo real, explicitando informações sobre temas e candidatos em destaque na corrida eleitoral, presença de interferências ilegítimas e casos de discursos de ódio (homofobia, machismo, racismo, regionalismo, xenofobia, entre outras ofensas). As análises apresentadas são obtidas após uma sequência de procedimentos metodológicos aplicados pela equipe FGV DAPP.</p>
+    
+    <h4>Procedimentos metodológicos</h4>
+    <p>Os dados são adquiridos através de coleta feita em tempo real na API do Twitter e armazenados em um banco de dados interno para que sejam processados. O processamento inclui cálculos como acúmulo do volume de menções, percentuais e variações percentuais diárias dos dados. Por fim, a análise dos resultados é realizada manualmente pela equipe de pesquisadores através da criação de cards com textos explicativos.</p>
+    
+    <h4>Cards</h4>
+    <p>Os cards buscam apresentar de forma transparente o panorama resumido sobre os principais temas, candidatos e palavras de ódio citadas no debate nas redes. Para isso, contam com análises gráficas de evolução temporal por hora e por dia, volume acumulado de menções por categoria no dia, percentual de participação de robôs na semana e contribuição de cada palavra nos discursos de ódio gerados nas redes no contexto eleitoral naquela semana.</p>
   </main>
 </template>
 
@@ -21,7 +19,7 @@ export default {
 
 <style lang="scss">
 .post {
-  padding: 0 15%;
+  padding: 0 5%;
   color: $gray;
   text-align: left;
 }
