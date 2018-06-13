@@ -78,9 +78,9 @@ export default {
   },
   mounted() {
     this.handleTouch();
-    // if (window.outerWidth <= 768) {
-    //   this.ongoingTouches = [{ screenX: window.outerWidth * 2 }];
-    // }
+    if (window.outerWidth <= 768) {
+      this.ongoingTouches = [{ screenX: window.outerWidth * 2 }];
+    }
   },
   methods: {
     copyTouch(touch) {
@@ -104,14 +104,14 @@ export default {
 
       if (this.userType === 'touch') {
         gestureZone.addEventListener('touchstart', (event) => {
-          // this.ongoingTouches.push(this.copyTouch(event.changedTouches[0]));
+          this.ongoingTouches.push(this.copyTouch(event.changedTouches[0]));
           this.touchStart = event.changedTouches[0].screenX;
         }, false);
 
-        // gestureZone.addEventListener('touchmove', (event) => {
-        //   const currentTouch = event.changedTouches[0].screenX;
-        //   this.handleMove(currentTouch);
-        // }, false);
+        gestureZone.addEventListener('touchmove', (event) => {
+          const currentTouch = event.changedTouches[0].screenX;
+          this.handleMove(currentTouch);
+        }, false);
 
         gestureZone.addEventListener('touchend', (event) => {
           this.touchEnd = event.changedTouches[0].screenX;
@@ -120,7 +120,7 @@ export default {
       } else {
         gestureZone.addEventListener('mousedown', (event) => {
           if (event.target.localName !== 'button') {
-            //this.ongoingTouches.push(this.copyTouch(event));
+            // this.ongoingTouches.push(this.copyTouch(event));
             this.touchStart = event.screenX;
           }
         }, false);
@@ -144,7 +144,8 @@ export default {
     handleMove(current) {
       const lastItem = this.ongoingTouches[this.ongoingTouches.length - 1];
       const currentMovement = parseFloat(this.movement, 10);
-      if (lastItem) {
+      const movWidth = Math.abs(lastItem.screenX - current);
+      if (lastItem && movWidth > 30) {
         if (current < lastItem.screenX) {
           const newMovement = currentMovement - 1;
           this.movement = `${newMovement}%`;
