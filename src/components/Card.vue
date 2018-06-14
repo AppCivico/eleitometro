@@ -150,6 +150,10 @@ export default {
   background: transparent;
 }
 
+.card__front .front__content strong::selection{
+  background: transparent;
+}
+
 .front__content .svg-icon + p {
   font-size: 0.85em;
 }
