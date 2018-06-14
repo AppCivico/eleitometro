@@ -142,7 +142,7 @@ export default {
   position: relative;
   top: auto;
   left: auto;
-  font-size: 0.6em;
+  font-size: 0.8em;
   min-height: 300px;
 }
 
