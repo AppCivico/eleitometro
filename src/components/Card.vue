@@ -12,7 +12,7 @@
           <h3>Compartilhe<br>este card</h3>
           <ul>
             <li class="facebook">
-              <a target="_blank" rel="noopener" :href="`https://www.facebook.com/sharer.php?u=${shareUrl}`">
+              <a target="_blank" rel="noopener" href="#" @click.prevent="shareFacebook">
                 Compartilhe no Facebook
               </a>
             </li>
@@ -86,6 +86,9 @@ export default {
     toggleShare() {
       this.showShare = !this.showShare;
     },
+    shareFacebook() {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`, "pop", "width=600, height=400, scrollbars=no");
+    }
   },
 };
 </script>
