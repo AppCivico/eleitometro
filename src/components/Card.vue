@@ -87,7 +87,13 @@ export default {
       this.showShare = !this.showShare;
     },
     shareFacebook() {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`, "pop", "width=600, height=400, scrollbars=no");
+      let facebookLink = '';
+      if (this.content.verse) {
+        facebookLink = `${window.location.href}?source=resume`;
+      } else {
+        facebookLink = `${window.location.href}?source=editorial`;
+      }
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${facebookLink}`, "pop", "width=600, height=400, scrollbars=no");
     }
   },
 };
