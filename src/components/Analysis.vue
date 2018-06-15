@@ -1,97 +1,97 @@
 <template>
-	<div class="analysis">
-		<header class="header">
-			<h2>Análise</h2>
-			<h3>Os principais temas e candidatos da corrida eleitoral analisados em tempo real</h3>
-			<p>Escolha uma editoria:</p>
-		</header>
-		<nav>
-			<ul>
-				<li v-if="panorams.length > 1">
-					<a href="#" @click.prevent="toggleSubmenu(1)">Panorama ({{ panorams.length }})</a>
-					<ul :class="`analysis__submenu ${submenu === 1 ? 'open' : ''}`">
-						<li v-for="item in panorams" :key="item.id">
-							<router-link :to="`/panorama/${item.id}`">
-								<svg class="svg-icon">
-									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
-									<use xlink:href="#logo_eleitometro" v-else></use>
-								</svg>
-								{{ item.name }}
-							</router-link>
-						</li>
-					</ul>
-				</li>
-				<li v-if="candidates.length > 1">
-					<a href="#" @click.prevent="toggleSubmenu(2)">Candidatos ({{ candidates.length }})</a>
-					<ul :class="`analysis__submenu ${submenu === 2 ? 'open' : ''}`">
-						<li v-for="item in candidates" :key="item.id">
-							<router-link :to="`/candidate/${item.id}`">
-								<svg class="svg-icon">
-									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
-									<use xlink:href="#logo_eleitometro" v-else></use>
-								</svg>
-								{{ item.name }}
-							</router-link>
-						</li>
-					</ul>
-				</li>
-				<li v-if="themes.length > 1">
-					<a href="#" @click.prevent="toggleSubmenu(3)">Temas ({{ themes.length }})</a>
-					<ul :class="`analysis__submenu ${submenu === 3 ? 'open' : ''}`">
-						<li v-for="item in themes" :key="item.id">
-							<router-link :to="`/theme/${item.id}`">
-								<svg class="svg-icon">
-									<use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
-									<use xlink:href="#logo_eleitometro" v-else></use>
-								</svg>
-								{{ item.name }}
-							</router-link>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
-	</div>
+  <div class="analysis">
+    <header class="header">
+      <h2>Análise</h2>
+      <h3>Os principais temas e candidatos da corrida eleitoral analisados em tempo real</h3>
+      <p>Escolha uma editoria:</p>
+    </header>
+    <nav>
+      <ul>
+        <li v-if="panorams.length > 1">
+          <a href="#" @click.prevent="toggleSubmenu(1)">Panorama ({{ panorams.length }})</a>
+          <ul :class="`analysis__submenu ${submenu === 1 ? 'open' : ''}`">
+            <li v-for="item in panorams" :key="item.id">
+              <router-link :to="`/panorama/${item.id}`">
+                <svg class="svg-icon">
+                  <use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
+                  <use xlink:href="#logo_eleitometro" v-else></use>
+                </svg>
+                {{ item.name }}
+              </router-link>
+            </li>
+          </ul>
+        </li>
+        <li v-if="candidates.length > 1">
+          <a href="#" @click.prevent="toggleSubmenu(2)">Candidatos ({{ candidates.length }})</a>
+          <ul :class="`analysis__submenu ${submenu === 2 ? 'open' : ''}`">
+            <li v-for="item in candidates" :key="item.id">
+              <router-link :to="`/candidate/${item.id}`">
+                <svg class="svg-icon">
+                  <use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
+                  <use xlink:href="#logo_eleitometro" v-else></use>
+                </svg>
+                {{ item.name }}
+              </router-link>
+            </li>
+          </ul>
+        </li>
+        <li v-if="themes.length > 1">
+          <a href="#" @click.prevent="toggleSubmenu(3)">Temas ({{ themes.length }})</a>
+          <ul :class="`analysis__submenu ${submenu === 3 ? 'open' : ''}`">
+            <li v-for="item in themes" :key="item.id">
+              <router-link :to="`/theme/${item.id}`">
+                <svg class="svg-icon">
+                  <use :xlink:href="`#${item.emojiSymbolId}`" v-if="item.emojiSymbolId"></use>
+                  <use xlink:href="#logo_eleitometro" v-else></use>
+                </svg>
+                {{ item.name }}
+              </router-link>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script>
 
 export default {
-	name: 'Analysis',
-	data() {
+  name: 'Analysis',
+  data() {
     return {
-			submenu: 0,
+      submenu: 0,
     }
-	},
-	computed: {
-		candidates() {
-			return this.$store.state.candidates
-		},
-		themes() {
-			return this.$store.state.themes
-		},
-		panorams() {
-			return this.$store.state.panorams
-		},
-	},
-	mounted() {
-		this.$store.dispatch('LOAD_ANALYSIS');
-	},
-	methods: {
-		toggleSubmenu(item) {
+  },
+  computed: {
+    candidates() {
+      return this.$store.state.candidates
+    },
+    themes() {
+      return this.$store.state.themes
+    },
+    panorams() {
+      return this.$store.state.panorams
+    },
+  },
+  mounted() {
+    this.$store.dispatch('LOAD_ANALYSIS');
+  },
+  methods: {
+    toggleSubmenu(item) {
       if (this.submenu === item) {
         this.submenu = 0;
       } else {
         this.submenu = item;
       }
     }
-	}
+  }
 }
 </script>
 
 <style lang="scss">
 .analysis .header {
-	border-bottom: 2px solid #e2e2e2;
+  border-bottom: 2px solid #e2e2e2;
 }
 
 .analysis nav ul {
@@ -103,8 +103,8 @@ export default {
 }
 
 .analysis nav > ul > li {
-	padding: 20px;
-	border-bottom: 2px solid #e2e2e2;
+  padding: 20px;
+  border-bottom: 2px solid #e2e2e2;
 }
 
 .analysis nav > ul > li > a {
@@ -113,7 +113,7 @@ export default {
   background-repeat: no-repeat;
   background-position: center right;
   background-size: auto 30%;
-	font-weight: 700;
+  font-weight: 700;
   font-size: 2em;
   color: inherit;
   text-decoration: none;
@@ -130,28 +130,41 @@ export default {
 
   &.open {
     max-height: 1000px;
-		margin-top: 20px;
+    margin-top: 20px;
   }
 }
 
 .analysis .analysis__submenu li {
-	float: left;
-	width: 49%;
-	display: block;
-	border-radius: 8px;
-	background: $grayLight;
-	padding: 20px;
+  float: left;
+  width: 49%;
+  display: block;
+  border-radius: 8px;
+  background: $grayLight;
+  padding: 20px;
 
-	&:nth-of-type(2n) {
-		float: right;
-	}
+  &:nth-of-type(2n) {
+    float: right;
+  }
+
+  @media (min-width: 769px) {
+    width: 32%;
+    margin-right: 2%;
+    margin-bottom: 20px;
+
+    &:nth-of-type(2n) {
+      float: left;
+    }
+    &:nth-of-type(3n) {
+      margin-right: 0;
+    }
+  }
 }
 
 .analysis .analysis__submenu svg {
-	display: block;
-	margin: 0 auto;
-	max-width: 100%;
-	max-height: 100px;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100px;
 }
 
 .analysis .analysis__submenu a {
