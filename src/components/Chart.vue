@@ -102,7 +102,7 @@ export default {
             backgroundColor: colors[i],
             lineTension: 0.1,
             pointRadius: window.outerWidth <= 768 ? 4 : 3,
-          }
+          };
           i = i + 1;
           lines.push(data);
           labels.push(points.filter((subitem) => subitem.line === item.line).map(item2 => item2.label));
@@ -148,6 +148,26 @@ export default {
           responsive: true,
           legend: {
             display: false,
+          },
+          tooltips: {
+            callbacks: {
+              label(tooltipItem, data) {
+                const value = tooltipItem.yLabel;
+                if (value < 10) {
+                  var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                  if (label) {
+                    label += ': ';
+                  }
+                  label += `${Math.round(value * 100) / 100}%`;
+                  return label;
+                }
+
+                if (value > 999) {
+                  return `${Math.round(value/1000)}k`
+                }
+                return value
+              },
+            },
           },
           scales: {
             xAxes: [{
