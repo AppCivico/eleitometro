@@ -316,10 +316,13 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 .chart__legends li {
+  display: inline-block;
   font-size: 1.4em;
+  margin: 0 5px;
 }
 
 .chart__legends li span {
