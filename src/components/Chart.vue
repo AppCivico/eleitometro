@@ -263,6 +263,37 @@ export default {
     pieChart(ctx, graph) {
       const data = graph.points.map(item => item.value);
       const labels = graph.points.map(item => item.label);
+      const total = graph.total;
+
+      if (total) {
+        Chart.pluginService.register({
+          beforeDraw(chart) {
+            if (chart.config.type === 'doughnut') {
+              const width = chart.chart.width;
+              const height = chart.chart.height;
+              const ctx = chart.chart.ctx;
+
+              ctx.restore();
+
+              const formated = `${chart.options.total}`;
+              const label = 'Total:';
+              const labelX = Math.round((width - ctx.measureText(label).width) / 2);
+              const labelY = height / 3;
+              var formatedTotal = formated.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+              var totalX = Math.round((width - ctx.measureText(formatedTotal).width) / 2);
+              const totalY = height / 2.1;
+              const fontSize = (height / 100).toFixed(2);
+
+              ctx.font = `${fontSize}em RobotoSlab, serif`;
+              ctx.fillStyle = '#66757f';
+              ctx.textBaseline = "top";
+              ctx.fillText(label, labelX, labelY);
+              ctx.fillText(formatedTotal, totalX, totalY);
+              ctx.save();
+            }
+          }
+        });
+      }
 
       const myChart = new Chart(ctx, {
         type: 'doughnut',
@@ -285,6 +316,7 @@ export default {
           ],
         },
         options: {
+          total,
           responsive: true,
           cutoutPercentage: 90,
           legend: {
