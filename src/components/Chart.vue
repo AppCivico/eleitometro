@@ -101,6 +101,7 @@ export default {
             borderColor: colors[i],
             backgroundColor: colors[i],
             lineTension: 0.1,
+            pointRadius: window.outerWidth <= 768 ? 4 : 3,
           }
           i = i + 1;
           lines.push(data);
@@ -132,6 +133,7 @@ export default {
             fill: false,
             borderColor: graph.color ? graph.color : 'rgb(244,144,12)',
             lineTension: 0.1,
+            pointRadius: window.outerWidth <= 768 ? 4 : 3,
           },
         ];
       }
