@@ -307,7 +307,7 @@ export default {
 
 .chart__title {
   font-weight: 300;
-  font-size: 2.4em;
+  font-size: 2em;
 }
 
 .chart__description {
