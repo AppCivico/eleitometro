@@ -198,6 +198,10 @@ export default {
   transition: margin-left 250ms;
   margin-bottom: 20px;
   min-height: 470px;
+
+  @media (min-width: 769px) {
+    min-height: 380px;
+  }
 }
 .scrollBar {
   position: relative;
