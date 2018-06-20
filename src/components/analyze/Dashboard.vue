@@ -9,7 +9,8 @@
     </nav>
     <div class="dashboard__container">
       <div class="dashboard__chart">
-        <Chart v-if="chartContent.graph.points.length > 0" :content="chartContent" :visibility="loadChart"/>
+        <p class="dashboard__empty" v-if="chartContent.graph.points.length <= 0">Não há menções neste período</p>
+        <Chart :content="chartContent" :visibility="loadChart"/>
         <h3 v-if="active.mentions_total">Menções Totais: <span>{{ formatNumber(active.mentions_total) }} <template v-if="active.mentions_increased"><br>({{ active.mentions_increased > 0 ? '+' : ''}}{{ active.mentions_increased }}% variação)</template></span></h3>
       </div>
       <div class="dashboard__robots" v-if="active.robot_count">
@@ -173,5 +174,11 @@ export default {
     display: table;
     width: 100%;
   }
+}
+
+.dashboard__empty {
+  font-size: 1.4em;
+  color: $gray;
+  margin-top: 15px;
 }
 </style>
