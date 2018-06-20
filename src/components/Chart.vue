@@ -62,7 +62,11 @@ export default {
     if (window.outerWidth <= 768) {
       this.chartHeight = this.content.graph.type === 'pizza' ? 200 : 300;
     } else {
-      this.chartHeight = this.content.graph.type === 'pizza' ? 120 : 200;
+      if (this.$route.name === 'Resumo') {
+        this.chartHeight = this.content.graph.type === 'pizza' ? 120 : 150;
+      } else {
+        this.chartHeight = this.content.graph.type === 'pizza' ? 120 : 200;
+      }
     }
   },
   methods: {
