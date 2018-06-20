@@ -109,6 +109,7 @@ export default {
 
   @media (min-width: 769px) {
     padding: 0 0.2%;
+    height: 380px;
   }
 }
 
@@ -142,7 +143,7 @@ export default {
 }
 
 .card__front .front__content {
-  font-size: 2.6em;
+  font-size: 2.4em;
   font-weight: 300;
 }
 
@@ -165,6 +166,7 @@ export default {
 .card__back {
 	transform: rotateY(180deg);
   background-color: $grayLight;
+  overflow: hidden;
 }
 
 .card__flipBtn{
